@@ -11,7 +11,8 @@
     <title>Equipamentos</title>
 </head>
 <body>
-
+    @include('userbar')
+    
     @yield('content')
 
     <script src="{{asset('assets/boodstrap/jquery.min.js')}}"></script>

@@ -1,11 +1,11 @@
-@extends('layouts.equipamentos_layout')
+@extends('layouts.home_layout')
 
 @section('content')
     
      <div class="container">
         <div class="row">
             <div class="col">
-                <h3>Equipamentos CNH</h3>
+                <h3>CNH Sorocaba</h3>
                 <hr>
                 <div>
                     <a href="{{route('new_equip')}}" class="btn btn-primary">Cadastrar</a>

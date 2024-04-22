@@ -19,7 +19,8 @@ class EquipController extends Controller
         return view('equipList', ['equips' => $equips, 
                                 'msg' => 'Desativados',
                                 'route' => 'desat_list',
-                                'cond' => 'Des.']);
+                                'cond' => 'Des.',
+                                'title' => 'Equipamentos']);
     }
 
     //----------------------------------------------------------
@@ -34,7 +35,8 @@ class EquipController extends Controller
         return view('equipList', ['equips' => $equips, 
                                 'msg' => 'Voltar',
                                 'route' => 'equip',
-                                'cond' => 'Ativ.']);
+                                'cond' => 'Ativ.',
+                                'title' => 'Desativados']);
     }
 
     //----------------------------------------------------------

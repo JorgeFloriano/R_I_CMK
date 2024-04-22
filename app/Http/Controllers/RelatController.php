@@ -53,6 +53,9 @@ class RelatController extends Controller
     public function relat_form() {
 
         // return relatorio form
-        return view('relatorio_form');
+        $data = [
+            'title' => 'Relatório de inspeção'
+        ];
+        return view('relatorio_form', $data);
     }
 }

@@ -37,7 +37,7 @@ div#header2 {
 div#header3 {
   float: right;
   text-align: right;
-  font-size: 8px;
+  font-size: 10px;
   font-weight: bold;
 }
 
@@ -106,7 +106,7 @@ section.ask {
 }
 
   div.lab {
- 
+  width: 77%;
   float: left;
 }
 
@@ -204,7 +204,7 @@ div.infoTec {
 }
 
 input.itec {
-  width: 300px;
+  width: 75%;
   float: right;
   height: 20px;
   margin: 2px 0px;
@@ -212,7 +212,7 @@ input.itec {
 
 label.ltec {
   float: left;
-  width: 70px;
+  width: 24.5%;
   height: 20px;
   margin: 2px 0px;
 }
@@ -226,7 +226,7 @@ label.equip {
 
 .horario {
   float: left;
-  width: 74px;
+  width: 24.5%;
   height: 20px;
   margin: 2px 0px;
 }
@@ -236,7 +236,8 @@ div.itInfTec {
 }
 
 div.signature {
-  margin: 14px 0px -5px 0px;
+  margin:auto;
+  text-align: center;
 }
 @media (pointer: coarse) {
   body {

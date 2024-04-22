@@ -1,4 +1,4 @@
-@extends('layouts.equipamentos_layout')
+@extends('layouts.home_layout')
 
 @section('content')
 
@@ -15,11 +15,11 @@
                         <img src="{{asset('assets/img/logo_cmk.jpg')}}" alt="logo cmk" width="70px">
                     </div>
                     <div id="header2">
-                        <div>INSTRUÇÃO DE INSPEÇÃO</div>
-                        <div>TALHA ELÉTRICA DE CORRENTE</div>
+                        <div>TALHA ELÉTRICA</div>
+                        <div>DE CORRENTE</div>
                     </div>
                     <div id="header3">
-                        RI Nº 000
+                        Nº 000
                     </div>
                 </div>
                 <main>
@@ -45,7 +45,22 @@
                         <section id="trole" class="element">
                             TROLE - Capacidade: 500 kg
                         </section>
-                        
+                        <x-item-status num="1" message="Rodas e rolamentos"/>
+                        <x-item-status num="2" message="Fixação da talha e parafusos de fechamento"/>
+                        <x-item-status num="3" message="Batentes fim de curso"/>
+
+                        <section id="trole" class="element">
+                            TALHA - Capacidade: 500 kg
+                        </section>
+                        <x-item-status num="7" message="Guia da corrente"/>
+                        <x-item-status num="8" message="Batedor stop"/>
+                        <x-item-status num="9" message="Armazenador de corrente"/>
+                        <x-item-status num="10" message="Fixação superior"/>
+                        <x-item-status num="11" message="Fricção"/>
+                        <x-item-status num="12" message="Freio (regular se necessário)"/>
+                        <x-item-status num="13" message="Lubrificação"/>
+                        <x-item-status num="14" message="Carcaça"/>
+
                         <section class="item">
                             <section class="ask">
                                 <div class="lab"><label for="id15">15-Teste de carga (kg)</label></div>
@@ -58,18 +73,31 @@
                         <section id="trole" class="element">
                             REDUTOR
                         </section>
-                    
+                        <x-item-status num="16" message="Vazamento ( retentores, juntas e bujões )"/>
+                        <x-item-status num="17" message="Nível de óleo (completar se necessário)"/>
+                        <x-item-status num="18" message="Ruídos e aquecimento anormal"/>
+                        <x-item-status num="19" message="Reapertar parafusos de fixação"/>
 
                         <section id="trole" class="element">
                             CORRENTE
                         </section>
-                    
+                        <x-item-status num="20" message="Limpeza e lubrificação da corrente"/>
+                        <x-item-status num="21" message="Corrente prende, salta ou produz ruído"/>
+                        <x-item-status num="22" message="Amassamentos, estrias, fissuras, respingos de solda, corrosão ou deformação elo a elo"/>
+                        <x-item-status num="23" message="Montagem (verificar se a corrente não está torcida ou com a posição da solda invertida)"/>
+                        <x-item-status num="24" message="Pino de fixação (substituir no caso de qualquer imperfeição visível)"/>
 
                         <section id="trole" class="element">
                             BLOCO INFERIOR - Capacidade: 500 kg
                         </section>
                     
-                    
+                        <x-item-status num="25" message="Caixa do gancho"/>
+                        <x-item-status num="26" message="Carretel e rolamentos"/>
+                        <x-item-status num="27" message="Carcaça quanto à desgastes e trincas"/>
+                        <x-item-status num="28" message="Trava de gancho"/>
+                        <x-item-status num="29" message="Placa de identificação"/>
+                        <x-item-status num="30" message="Lubrificar caixa de gancho"/>
+
                         <section id="trole" class="element">
                             MEDIÇÕES DA CORRENTE DE CARGA (mm)
                         </section>
@@ -141,38 +169,61 @@
                         <section id="trole" class="element">
                             TALHA
                         </section>
-
-                    
-
+                        <x-item-status num="36" message="Fixação do painel, tampa e limpeza"/>
+                        <x-item-status num="37" message="Chave geral, fusíveis e disjuntores"/>
+                        <x-item-status num="38" message="Motores (medições e aquecimento)"/>
+                        <x-item-status num="39" message="Caixa de ligação"/>
+                        <x-item-status num="40" message="Cabo de alimentação"/>
+                        <x-item-status num="41" message="Prensa cabos"/>
+                        <x-item-status num="42" message="Tomadas de engate rápido"/>
+                        <x-item-status num="43" message="Contatores e contatos"/>
+                        <x-item-status num="44" message="Trafos de potência e comando"/>
+                        <x-item-status num="45" message="Bornes e terminais"/>
+                        
                         <section id="trole" class="element">
                             BOTOEIRA
                         </section>
-
                     
+                        <x-item-status num="48" message="Funcionamento do botões"/>
+                        <x-item-status num="49" message="Cabo elétrico e prensa cabo"/>
+                        <x-item-status num="50" message="Cabo de aço de sustentação e fixação"/>
+                        <x-item-status num="51" message="Caixa de conexão"/>
+                        <x-item-status num="52" message="Carcaça e identificão dos botões"/>
 
                         <section id="trole" class="element">
                             ELETRIFICAÇÃO TRANSVERSAL
                         </section>
-                    
+
+                        <x-item-status num="53" message="Fixação e conservação dos cabos"/>
+                        <x-item-status num="54" message="Estado do perfil, fixações e emendas"/>
+                        <x-item-status num="55" message="Carros porta cabos e arrastador"/>
 
                         <section id="trole" class="element">
                             RÁDIO CONTROLE
                         </section>
 
-                    
+                        <x-item-status num="56" message="Funcionamento e estado do emissor"/>
+                        <x-item-status num="57" message="Reaperto de todas as conexões e ligações"/>
+                        <x-item-status num="58" message="Estado de conservação da carcaça"/>
+                        <x-item-status num="59" message="Estado da bateria / pilhas do emissor"/>
+                        <x-item-status num="60" message="Sinais luminosos do receptor e transmissor"/>
 
                         <section id="trole" class="element">
                             LIMITE DE FIM DE CURSO - Elevação
                         </section>
 
-                    
-
+                        <x-item-status num="61" message="Funcionamento da chave limite"/>
+                        <x-item-status num="62" message="Cabos ou corrente do pino"/>
+                        <x-item-status num="63" message="Contatos, molas e articulação"/>
+                        
                         <section id="trole" class="element">
                             LIMITE DE FIM DE CURSO - Direção
                         </section>
 
-                    
-
+                        <x-item-status num="64" message="Funcionamento da chave limite"/>
+                        <x-item-status num="65" message="Cabos ou corrente do pino"/>
+                        <x-item-status num="66" message="Contatos, molas e articulação"/>
+                        
                         <section id="trole" class="element">
                             MEDIÇÕES DAS GRANDEZAS ELÉTRICAS
                         </section>
@@ -328,17 +379,17 @@
                             </div>
                             <div class="itInfTec">
                                 <label class="horario" for="tec1HI">H. inicial: </label>
-                                <input class="horario" type="time" name="txtTec1HI" id="tec1HI" style="width: 110px;">
+                                <input class="horario" type="time" name="txtTec1HI" id="tec1HI">
                                 <label class="horario" for="tec1HF" style="margin-left: 5px;">H. final: </label>
-                                <input class="horario" type="time" name="txtTec1HF" id="tec1HF" style="width: 110px;">
+                                <input class="horario" type="time" name="txtTec1HF" id="tec1HF">
                             </div>
+                            <p>
+                                <a id="pen1" href="#" class="signature-button"><i class="fa fa-pencil" aria-hidden="true"></i>Assinar </a>
+                                <a id="okSign1" href="#" class="signature-button"><i class="fa fa-check" aria-hidden="true"></i>Ok </a>
+                                <a id="clear1" href="#" class="signature-button"><i class="fa fa-eraser" aria-hidden="true"></i>Apagar </a>
+                            </p>
                             <div class="signature">
-                                <p>
-                                    <a id="pen1" href="#" class="signature-button"><i class="fa fa-pencil" aria-hidden="true"></i>Assinar </a>
-                                    <a id="okSign1" href="#" class="signature-button"><i class="fa fa-check" aria-hidden="true"></i>Ok </a>
-                                    <a id="clear1" href="#" class="signature-button"><i class="fa fa-eraser" aria-hidden="true"></i>Apagar </a>
-                                </p>
-                                <canvas height="200" width="370" class="signature-pad" id="canv1"></canvas>
+                                <canvas height="200" width="300" class="signature-pad" id="canv1"></canvas>
                             
                                 <input type="hidden" name="signTec1" id="idSignTec1">
                             </div>
@@ -360,19 +411,19 @@
                             </div>
                             <div class="itInfTec">
                                 <label class="horario" for="tec2HI">H. inicial: </label>
-                                <input class="horario" type="time" name="txtTec2HI" id="tec2HI" style="width: 110px;"
+                                <input class="horario" type="time" name="txtTec2HI" id="tec2HI"
                                 >
                                 <label class="horario" for="tec2HF" style="margin-left: 5px;">H. final: </label>
-                                <input class="horario" type="time" name="txtTec2HF" id="tec2HF" style="width: 110px;" 
+                                <input class="horario" type="time" name="txtTec2HF" id="tec2HF" 
                                 >
                             </div>
+                            <p>
+                                <a id="pen2" href="#" class="signature-button"><i class="fa fa-pencil" aria-hidden="true"></i>Assinar </a>
+                                <a id="okSign2" href="#" class="signature-button"><i class="fa fa-check" aria-hidden="true"></i>Ok </a>
+                                <a id="clear2" href="#" class="signature-button"><i class="fa fa-eraser" aria-hidden="true"></i>Apagar </a>
+                            </p>
                             <div class="signature">
-                                <p>
-                                    <a id="pen2" href="#" class="signature-button"><i class="fa fa-pencil" aria-hidden="true"></i>Assinar </a>
-                                    <a id="okSign2" href="#" class="signature-button"><i class="fa fa-check" aria-hidden="true"></i>Ok </a>
-                                    <a id="clear2" href="#" class="signature-button"><i class="fa fa-eraser" aria-hidden="true"></i>Apagar </a>
-                                </p>
-                                <canvas height="200" width="400" class="signature-pad" id="canv2" aria-placeholder="assine aqui"></canvas>
+                                <canvas height="200" width="300" class="signature-pad" id="canv2" aria-placeholder="assine aqui"></canvas>
                                 <input type="hidden" name="signTec2" id="idSignTec2">
                             </div>
                         </div>
