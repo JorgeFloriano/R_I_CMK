@@ -50,12 +50,25 @@ class RelatController extends Controller
         };
     }
 
-    public function relat_form() {
+    public function relat_form($id) {
+
+        //get selected equip
+        $equip = Equipamento::find($id);
+
+        ////////////////////////////////////////////////////
+        // SELECIONAR RELATORIO CONFORME ID DO EQUIPAMENTO SE HOUVER RELATORIO ABERTO, SE NÃO, ABRIR UM NOVO
 
         // return relatorio form
         $data = [
-            'title' => 'Relatório de inspeção'
+            'title' => 'Relatório de inspeção',
+            'equip' => $equip
         ];
         return view('relatorio_form', $data);
+    }
+
+    public function relatorio_submit(Request $request) {
+
+        echo '<pre>';
+        print_r($request);
     }
 }

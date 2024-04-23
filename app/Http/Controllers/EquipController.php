@@ -20,7 +20,7 @@ class EquipController extends Controller
                                 'msg' => 'Desativados',
                                 'route' => 'desat_list',
                                 'cond' => 'Des.',
-                                'title' => 'Equipamentos']);
+                                'title' => 'Equipamentos Cadastrados']);
     }
 
     //----------------------------------------------------------
@@ -36,7 +36,7 @@ class EquipController extends Controller
                                 'msg' => 'Voltar',
                                 'route' => 'equip',
                                 'cond' => 'Ativ.',
-                                'title' => 'Desativados']);
+                                'title' => 'Equipamentos Desativados']);
     }
 
     //----------------------------------------------------------

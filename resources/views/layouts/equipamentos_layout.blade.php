@@ -14,7 +14,6 @@
 
     @yield('content')
 
-    <script src="{{asset('assets/boodstrap/jquery.min.js')}}"></script>
     <script src="{{asset('assets/boodstrap/bootstrap.bundle.min.js')}}"></script>
     <script src="{{asset('assets/js/functions.js')}}"></script>
 </body>

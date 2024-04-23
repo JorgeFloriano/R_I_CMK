@@ -6,7 +6,6 @@
 </head>
 
 <body id="body">
-    {{-- <section id="all"> --}}
     <div class="container">
         <div class="row mt-1">
             <div class="col-lg-6 offset-lg-3">
@@ -19,16 +18,16 @@
                         <div>DE CORRENTE</div>
                     </div>
                     <div id="header3">
-                        Nº 000
+                        Nº {{$equip->id}}
                     </div>
                 </div>
                 <main>
                     <section id="info">
                         <table style="width: 100%;">
                             <tr><td style="width: 33%;">Cliente: <strong>CNH</strong></td><td style="width: 33%;">Unidade: <strong>Sorocaba</strong></td><td>Solicitante: <strong>Lucas M.</strong></td></tr>
-                            <tr><td>Nº Série: <strong>0909090</strong></td><td>Nº Cliente: <strong>CNH-171</strong></td><td>Nº CMK: <strong>54</strong></td></tr>
-                            <tr><td>Fabricante: <strong>Demag</strong></td><td>Modelo: <strong>DC-Pro 5</strong></td><td>Capacidade: <strong>500 kg</strong></td></tr>
-                            <tr><td>Prédio: <strong>P-80</strong></td><td>Setor: <strong>Montagem</strong></td><td>Área : <strong>Feeder</strong></td></tr>
+                            <tr><td>Nº Série: <strong>{{$equip->n_serie}}</strong></td><td>Nº Cliente: <strong>CNH-{{$equip->n_cliente}}</strong></td><td>Nº CMK: <strong>{{$equip->id}}</strong></td></tr>
+                            <tr><td>Fabricante: <strong>{{$equip->fabricante}}</strong></td><td>Modelo: <strong>{{$equip->modelo}}</strong></td><td>Capacidade: <strong>{{$equip->capacidade}} kg</strong></td></tr>
+                            <tr><td>Prédio: <strong>{{$equip->predio}}</strong></td><td>Setor: <strong>{{$equip->setor}}</strong></td><td>Área : <strong>{{$equip->area}}</strong></td></tr>
                         </table>
                         <div id="legend">
                                 Legenda: 
@@ -37,20 +36,22 @@
                                 <i class="fa fa-thumbs-down iconl"></i>Trocar
                         </div>
                     </section>
-                    <form id="form" action="relatorio.php" method="post">
+                    <form id="form" action="{{route('relatorio_submit')}}" method="post">
+                        @csrf
+
                         <section id="insp" class="insp">
                             INSPEÇÃO MECÂNICA
                         </section>
 
                         <section id="trole" class="element">
-                            TROLE - Capacidade: 500 kg
+                            TROLE - Capacidade: {{$equip->capacidade}} kg
                         </section>
                         <x-item-status num="1" message="Rodas e rolamentos"/>
                         <x-item-status num="2" message="Fixação da talha e parafusos de fechamento"/>
                         <x-item-status num="3" message="Batentes fim de curso"/>
 
                         <section id="trole" class="element">
-                            TALHA - Capacidade: 500 kg
+                            TALHA - Capacidade: {{$equip->capacidade}} kg
                         </section>
                         <x-item-status num="7" message="Guia da corrente"/>
                         <x-item-status num="8" message="Batedor stop"/>
@@ -88,7 +89,7 @@
                         <x-item-status num="24" message="Pino de fixação (substituir no caso de qualquer imperfeição visível)"/>
 
                         <section id="trole" class="element">
-                            BLOCO INFERIOR - Capacidade: 500 kg
+                            BLOCO INFERIOR - Capacidade: {{$equip->capacidade}} kg
                         </section>
                     
                         <x-item-status num="25" message="Caixa do gancho"/>
@@ -436,7 +437,6 @@
             </div>
         </div>
     </div>
-    {{-- </section> --}}
 </body>
 </html>
 @endsection

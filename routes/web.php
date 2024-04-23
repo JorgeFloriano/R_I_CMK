@@ -13,7 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'EquipController@equip')->name('equip');
+Route::get('/', 'MainController@programacao')->name('programacao');
+Route::get('/equip', 'EquipController@equip')->name('equip');
 Route::get('/desat_list', 'EquipController@desat_list')->name('desat_list');
 
 
@@ -26,7 +27,9 @@ Route::post('/edit_equip_submit', 'EquipController@edit_equip_submit')->name('ed
 Route::get('/desat_equip/{id}', 'EquipController@desat_equip')->name('desat_equip');
 Route::get('/ativ_equip/{id}', 'EquipController@ativ_equip')->name('ativ_equip');
 
-Route::get('/relat_form', 'RelatController@relat_form')->name('r_i');
-
+Route::get('/relat_form/{id}', 'RelatController@relat_form')->name('relat_form');
+Route::post('/relatorio_submit', 'RelatController@relatorio_submit')->name('relatorio_submit');
 //------------------------------------------------------------------
 Route::get('/teste', 'RelatController@teste')->name('teste');
+
+//-------------------------------------------------------------------

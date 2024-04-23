@@ -239,8 +239,4 @@ div.signature {
   margin:auto;
   text-align: center;
 }
-@media (pointer: coarse) {
-  body {
-      overflow: hidden;
-  }
-}
+
