@@ -55,13 +55,24 @@ class RelatController extends Controller
         //get selected equip
         $equip = Equipamento::find($id);
 
-        ////////////////////////////////////////////////////
-        // SELECIONAR RELATORIO CONFORME ID DO EQUIPAMENTO SE HOUVER RELATORIO ABERTO, SE NÃO, ABRIR UM NOVO
+        // Select the open report according to the equipment id
+        $relat = Relatorio::where('finalizado',0)->where('equipamento_id', $equip->id)->get();
 
+        // If not, create a new report
+        if (!isset($relat[0]) || $relat[0] == null) {
+            $relat = new Relatorio();
+            $relat->equipamento_id = $equip->id;
+            $relat->finalizado = 0;
+            $relat->save();
+        } else {
+            $relat = $relat[0];
+        }
+        
         // return relatorio form
         $data = [
             'title' => 'Relatório de inspeção',
-            'equip' => $equip
+            'equip' => $equip,
+            'relat' => $relat
         ];
         return view('relatorio_form', $data);
     }

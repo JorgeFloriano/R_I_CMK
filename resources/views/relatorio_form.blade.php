@@ -18,7 +18,7 @@
                         <div>DE CORRENTE</div>
                     </div>
                     <div id="header3">
-                        Nº {{$equip->id}}
+                        Nº {{$relat->id}}
                     </div>
                 </div>
                 <main>
@@ -431,8 +431,8 @@
 
                         <button onclick="unlockScreen(),limitDate('tec2data','tec2HI','tec2HF'),limitDate('tec1data','tec1HI','tec1HF')" type="submit" class="btn" style="width: 100%;">CONFIRMA</button>
                     </form>
-                    <script src="assets/js/signature.js"></script>
-                    <script src="assets/js/signature2.js"></script>
+                    <script src="{{asset('assets/js/signature.js')}}"></script>
+                    <script src="{{asset('assets/js/signature2.js')}}"></script>
                 </main>
             </div>
         </div>
