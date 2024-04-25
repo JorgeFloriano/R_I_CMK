@@ -80,6 +80,6 @@ class RelatController extends Controller
     public function relatorio_submit(Request $request) {
 
         echo '<pre>';
-        print_r($request);
+        dd($request);
     }
 }

@@ -58,6 +58,51 @@
                         <input type="text" class="form-control" placeholder="Ex.: W-E 08" aria-label="Ex.: W-E 08" aria-describedby="lblSet" id="idSet" name="txtSet" value="{{$equip->setor}}">
                     </div>
 
+                    <div class="input-group mb-3">
+                        <label for="idAlim" class="input-group-text" id="lblAlim">Tensão de rede (V):</label>
+                        <input type="number" class="form-control" placeholder="Ex.: 440" aria-label="Ex.: 440" aria-describedby="lblAlim" id="idAlim" name="txtAlim" value="440">
+                    </div>
+
+                    <div class="input-group mb-3">
+                        <label for="idCom" class="input-group-text" id="lblCom">Tensão de comando (V):</label>
+                        <input type="number" class="form-control" placeholder="Ex.: 24" aria-label="Ex.: 24" aria-describedby="lblCom" id="idCom" name="txtCom" value="24">
+                    </div>
+
+                    <div class="input-group mb-3">
+                        <label for="idRes" class="input-group-text" id="lblRes">Banco de resist. (Ohms):</label>
+                        <input type="number" class="form-control" placeholder="Ex.: 50" aria-label="Ex.: 50" aria-describedby="lblRes" id="idRes" name="txtRes" value="50">
+                    </div>
+
+                    <div class="input-group mb-3">
+                        <label for="idDirAlta" class="input-group-text" id="lblDirAlta">Corr. direção vel. alta (A):</label>
+                        <input type="number" step="1" class="form-control" placeholder="Ex.: 1.1" aria-label="Ex.: 1.1" aria-describedby="lblDirAlta" id="idDirAlta" name="txtDirAlta" value="1.1">
+                    </div>
+
+                    <div class="input-group mb-3">
+                        <label for="idDirBaixa" class="input-group-text" id="lblDirBaixa">Corr. direção vel. baixa (A):</label>
+                        <input type="number" step="1" class="form-control" placeholder="Ex.: 0.8" aria-label="Ex.: 0.8" aria-describedby="lblDirBaixa" id="idDirBaixa" name="txtDirBaixa" value="0.8">
+                    </div>
+
+                    <div class="input-group mb-3">
+                        <label for="idTenFreDir" class="input-group-text" id="lblTenFreDir">Tensão freio da direção (V):</label>
+                        <input type="number" class="form-control" placeholder="Ex.: 220" aria-label="Ex.: 220" aria-describedby="lblTenFreDir" id="idTenFreDir" name="txtTenFreDir" value="220">
+                    </div>
+
+                    <div class="input-group mb-3">
+                        <label for="idElevAlta" class="input-group-text" id="lblElevAlta">Corr. Elevação vel. alta (A):</label>
+                        <input type="number" step="1" class="form-control" placeholder="Ex.: 2.8" aria-label="Ex.: 2.8" aria-describedby="lblElevAlta" id="idElevAlta" name="txtElevAlta" value="2.8">
+                    </div>
+
+                    <div class="input-group mb-3">
+                        <label for="idElevBaixa" class="input-group-text" id="lblElevBaixa">Corr. Elevação vel. baixa (A):</label>
+                        <input type="number" step="1" class="form-control" placeholder="Ex.: 1.8" aria-label="Ex.: 1.8" aria-describedby="lblElevBaixa" id="idElevBaixa" name="txtElevBaixa" value="1.8">
+                    </div>
+
+                    <div class="input-group mb-3">
+                        <label for="idTenFreElev" class="input-group-text" id="lblTenFreElev">Tensão freio da Elevação (V):</label>
+                        <input type="number" class="form-control" placeholder="Ex.: 220" aria-label="Ex.: 220" aria-describedby="lblTenFreElev" id="idTenFreElev" name="txtTenFreElev" value="220">
+                    </div>
+
                     <div style="margin-top: 10px;">
                         <input type="submit" class="btn btn-primary" value="SALVAR">
                         <a href="{{route('equip')}}" class="btn btn-secondary">VOLTAR</a>
