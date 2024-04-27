@@ -6,20 +6,20 @@ use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class ItemStatus extends Component
+class ReportElement extends Component
 {
     
     public $i;
-    public $msg;
+    public $descrs;
 
-    public function __construct($num, $message)
+    public function __construct($num, $descriptions)
     {
         $this->i = $num;
-        $this->msg = $message;
+        $this->descrs = $descriptions;
     }
 
     public function render(): View|Closure|string
     {
-        return view('components.item-status');
+        return view('components.report-element');
     }
 }

@@ -5,8 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{asset('assets/fontawesome/font-awesome.min.css')}}">
     <link rel="stylesheet" href="{{asset('assets/boodstrap/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/form.css')}}">
     
-    <title>Equipamentos</title>
+    <title>Relatório de Inspeção</title>
 </head>
 <body>
     @include('userbar')

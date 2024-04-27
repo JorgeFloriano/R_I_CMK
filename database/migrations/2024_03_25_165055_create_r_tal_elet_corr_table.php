@@ -13,12 +13,14 @@ return new class extends Migration
     {
         Schema::create('t_e_c_relatorios', function (Blueprint $table) {
             $table->id();
-            $table->integer('relatorio_id');
-            $table->float('med_elos');
-            $table->float('med_w1');
-            $table->float('med_y');
-            $table->dateTime('created_at');
-            $table->dateTime('updated_at');
+            
+            $table->integer('relatorio_id')->nullable();
+            $table->float('med_elos')->nullable();
+            $table->float('med_elo')->nullable();
+            $table->float('med_w1')->nullable();
+            $table->float('med_y')->nullable();
+            $table->dateTime('created_at')->nullable();
+            $table->dateTime('updated_at')->nullable();
             $table->dateTime('deleted_at')->nullable();
         });
     }

@@ -25,15 +25,6 @@ return new class extends Migration
             $table->string('predio', 50)->nullable();
             $table->string('area', 50)->nullable();
             $table->string('setor', 50)->nullable();
-            $table->float('v_rede')->nullable();
-            $table->float('v_com')->nullable();
-            $table->float('banc_res')->nullable();
-            $table->float('corr_dir_alta')->nullable();
-            $table->float('corr_dir_baixa')->nullable();
-            $table->float('v_dir_freio')->nullable();
-            $table->float('corr_el_alta')->nullable();
-            $table->float('corr_el_baixa')->nullable();
-            $table->float('v_el_freio')->nullable();
             $table->boolean('ativo');
             $table->dateTime('created_at');
             $table->dateTime('updated_at');

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Equipamento;
+use App\Models\T_e_c_dado;
 use Illuminate\Http\Request;
 
 class EquipController extends Controller
@@ -54,30 +55,33 @@ class EquipController extends Controller
         // die();
 
         // get the new equipment definition
-        $tipo = $request->input('txtTip');
-        $id = $request->input('txtNum');
-        $mod = $request->input('txtMod');
-        $cap = $request->input('txtCap');
-        $fab = $request->input('txtFab');
-        $ser = $request->input('txtSer');
-        $cli = $request->input('txtCli');
-        $pre = $request->input('txtPre');
-        $are = $request->input('txtAre');
-        $set = $request->input('txtSet');
-
         // save equipment in to the database
         $equip = new Equipamento();
-        $equip->tipo = $tipo;
-        $equip->id = $id;
-        $equip->modelo = $mod;
-        $equip->fabricante = $fab;
-        $equip->capacidade = $cap;
-        $equip->n_serie = $ser;
-        $equip->n_cliente = $cli;
-        $equip->predio = $pre;
-        $equip->area = $are;
-        $equip->setor = $set;
+        $equip->tipo = $request->input('txtTip');
+        $equip->modelo = $request->input('txtMod');
+        $equip->fabricante = $request->input('txtFab');
+        $equip->capacidade = $request->input('txtCap');
+        $equip->n_serie = $request->input('txtSet');
+        $equip->n_cliente = $request->input('txtCli');
+        $equip->predio = $request->input('txtPre');
+        $equip->area = $request->input('txtAre');
+        $equip->setor = $request->input('txtSet');
         $equip->save();
+        
+        // Especific data of eletric chain hoist
+        $t_e_c = new T_e_c_dado();
+
+        $t_e_c->equipamento_id = $equip->id;
+        $t_e_c->v_rede = $request->input('txtAlim');
+        $t_e_c->v_com = $request->input('txtCom');
+        $t_e_c->banc_res = $request->input('txtRes');
+        $t_e_c->corr_dir_alta = $request->input('txtDirAlta');
+        $t_e_c->corr_dir_baixa = $request->input('txtDirBaixa');
+        $t_e_c->v_dir_freio = $request->input('txtTenFreDir');
+        $t_e_c->corr_el_alta = $request->input('txtElevAlta');
+        $t_e_c->corr_el_baixa = $request->input('txtElevBaixa');
+        $t_e_c->v_el_freio = $request->input('txtTenFreElev');
+        $t_e_c->save();
         
         // return to the equipment list page
         return redirect()->route('equip');
@@ -88,9 +92,12 @@ class EquipController extends Controller
        
         //get selected equip
         $equip = Equipamento::find($id);
+        $t_e_c = Equipamento::find($equip->id)->talEleCorr;
 
         //display edit equipment from
-        return view('edit_equip_form', ['equip' => $equip]);
+        return view('edit_equip_form', [
+            'equip' => $equip,
+            't_e_c' => $t_e_c]);
 
     }
 
@@ -98,30 +105,33 @@ class EquipController extends Controller
     public function edit_equip_submit(Request $request) {
         
         // get the new equipment definition
-        $tipo = $request->input('txtTip');
-        $id = $request->input('txtNum');
-        $mod = $request->input('txtMod');
-        $cap = $request->input('txtCap');
-        $fab = $request->input('txtFab');
-        $ser = $request->input('txtSer');
-        $cli = $request->input('txtCli');
-        $pre = $request->input('txtPre');
-        $are = $request->input('txtAre');
-        $set = $request->input('txtSet');
-
         // update equipment in to the database
-        $equip = Equipamento::find($id);
-        $equip->tipo = $tipo;
-        $equip->id = $id;
-        $equip->modelo = $mod;
-        $equip->fabricante = $fab;
-        $equip->capacidade = $cap;
-        $equip->n_serie = $ser;
-        $equip->n_cliente = $cli;
-        $equip->predio = $pre;
-        $equip->area = $are;
-        $equip->setor = $set;
+        $equip = Equipamento::find($request->input('txtNum'));
+        $equip->tipo = $request->input('txtTip');
+        $equip->id = $request->input('txtNum');
+        $equip->modelo = $request->input('txtMod');
+        $equip->fabricante = $request->input('txtFab');
+        $equip->capacidade = $request->input('txtCap');
+        $equip->n_serie = $request->input('txtSet');
+        $equip->n_cliente = $request->input('txtCli');
+        $equip->predio = $request->input('txtPre');
+        $equip->area = $request->input('txtAre');
+        $equip->setor = $request->input('txtSet');
         $equip->save();
+        
+        // Especifc data of eletric chain hoist
+        $t_e_c = Equipamento::find($equip->id)->talEleCorr;
+
+        $t_e_c->v_rede = $request->input('txtAlim');
+        $t_e_c->v_com = $request->input('txtCom');
+        $t_e_c->banc_res = $request->input('txtRes');
+        $t_e_c->corr_dir_alta = $request->input('txtDirAlta');
+        $t_e_c->corr_dir_baixa = $request->input('txtDirBaixa');
+        $t_e_c->v_dir_freio = $request->input('txtTenFreDir');
+        $t_e_c->corr_el_alta = $request->input('txtElevAlta');
+        $t_e_c->corr_el_baixa = $request->input('txtElevBaixa');
+        $t_e_c->v_el_freio = $request->input('txtTenFreElev');
+        $t_e_c->save();
         
         // return to the equipment list page
         return redirect()->route('equip');

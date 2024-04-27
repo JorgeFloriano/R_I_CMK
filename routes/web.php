@@ -28,7 +28,9 @@ Route::get('/desat_equip/{id}', 'EquipController@desat_equip')->name('desat_equi
 Route::get('/ativ_equip/{id}', 'EquipController@ativ_equip')->name('ativ_equip');
 
 Route::get('/relat_form/{id}', 'RelatController@relat_form')->name('relat_form');
-Route::post('/relatorio_submit', 'RelatController@relatorio_submit')->name('relatorio_submit');
+Route::post('/relat_form_submit', 'RelatController@relat_form_submit')->name('relat_form_submit');
+
+
 //------------------------------------------------------------------
 Route::get('/teste', 'RelatController@teste')->name('teste');
 

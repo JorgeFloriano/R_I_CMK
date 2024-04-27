@@ -43,7 +43,7 @@ div#header3 {
 
 section#info {
   border:2px solid var(--blue1);
-  font-size: 9px;
+  font-size: 10px !important;
   background-color: white;
   border-radius: 5px;
   margin: 5px 0;
@@ -128,6 +128,10 @@ table.med, table.med > th {
 
 table.med {
   height: 80px;
+}
+
+table {
+  font-size: 12px;
 }
 
 .motor {
