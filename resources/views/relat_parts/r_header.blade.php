@@ -1,7 +1,7 @@
 <div class="header">
     <div id="h">
         <div id="header1">
-            <img src="logo_cmk.jpg" alt="logo cmk" width="80px">
+            <img src="{{asset('assets/img/logo_cmk.jpg')}}" alt="logo cmk" width="80px">
         </div>
         <div id="header2">
             <div>INSTRUÇÃO DE INSPEÇÃO</div>

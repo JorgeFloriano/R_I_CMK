@@ -2,7 +2,8 @@
 
 @section('content')
 <section id="relatorio">
-    @include('r_header')
+    <a href="{{route('programacao')}}" style="color: blue">Voltar</a>
+    @include('relat_parts/r_header')
     <div class="main">
         <section id="mecanica" class="half">
             <table>
@@ -74,7 +75,7 @@
                 <tr>
                     <th rowspan="2">--</th>
                     <td rowspan="5" style="width: 19%;">
-                        <img src="gancho.jpg" alt="figura do gancho" width="60px">
+                        <img src="{{asset('assets/img/gancho.jpg')}}" alt="figura do gancho" width="60px">
                     </td>
                     <th rowspan="2">NORMA TÉCNICA <br> NBR 10070/1987</th>
                     <th colspan="3">Medidas conforme a norma</th>
@@ -166,9 +167,9 @@
     <section id="ressalvas">
         <strong>Ressalvas:</strong>{{$tec1name}}
     </section>
-    <?php require ("r_footer.php")?>
+    @include('relat_parts/r_footer')
     <section id="verso">
-        <?php require ("r_header.php")?>
+        @include('relat_parts/r_header')
         <table id="tabVerso" class="z">
             <tr>
                 <th colspan="4">Relação de pendências do equipamento:</th>
@@ -176,7 +177,7 @@
             <tr>
                 <th>Ítem</th><th style="width: 620px;">Descrição</th><th>R.I.</th><th>Data</th>
             </tr>
-            <?php require ("r_pend.php");?>
+            @include('relat_parts/r_pend')
         <tr>
             <th colspan="4">Observações gerais e serviços executados durante a inspeção:</th>
         </tr>
@@ -186,7 +187,7 @@
                     {{$tec1name}}
                 </p>
         </div>
-        <?php require ("r_footer.php")?>
+        @include('relat_parts/r_footer')
     </section>
 </section>
 @endsection
