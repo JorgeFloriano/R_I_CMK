@@ -19,7 +19,7 @@ class MainController extends Controller
 
         return view('programacao', ['equips' => $equips, 
                                 'Programação de Abril' => 'Equipamentos',
-                                'title' => 'Programação de Abril',
+                                'title' => 'Programação',
                             ]);
     }
 }

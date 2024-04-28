@@ -26,12 +26,12 @@ div#header1 {
 }
 
 div#header2 {
-  width: 60%;
+  width: 55%;
   float: left;
   text-align: center;
   font-weight: bold;
   font-size: 13px;
-  margin-top: 5px;
+  margin-top: 2px;
 }
 
 div#header3 {
@@ -43,7 +43,7 @@ div#header3 {
 
 section#info {
   border:2px solid var(--blue1);
-  font-size: 10px !important;
+  font-size: 12px !important;
   background-color: white;
   border-radius: 5px;
   margin: 5px 0;
@@ -91,7 +91,7 @@ section.element {
 section.item {
   background-color: white;
   border-radius: 5px;
-  font-size: 12px;
+  font-size: 14px;
   height: auto;
   padding: 5px;
   width: 100%;

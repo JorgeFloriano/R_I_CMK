@@ -21,7 +21,7 @@ class EquipController extends Controller
                                 'msg' => 'Desativados',
                                 'route' => 'desat_list',
                                 'cond' => 'Des.',
-                                'title' => 'Equipamentos Cadastrados']);
+                                'title' => 'Equipamentos']);
     }
 
     //----------------------------------------------------------
@@ -37,7 +37,7 @@ class EquipController extends Controller
                                 'msg' => 'Voltar',
                                 'route' => 'equip',
                                 'cond' => 'Ativ.',
-                                'title' => 'Equipamentos Desativados']);
+                                'title' => 'Equipamentos']);
     }
 
     //----------------------------------------------------------
@@ -61,7 +61,7 @@ class EquipController extends Controller
         $equip->modelo = $request->input('txtMod');
         $equip->fabricante = $request->input('txtFab');
         $equip->capacidade = $request->input('txtCap');
-        $equip->n_serie = $request->input('txtSet');
+        $equip->n_serie = $request->input('txtSer');
         $equip->n_cliente = $request->input('txtCli');
         $equip->predio = $request->input('txtPre');
         $equip->area = $request->input('txtAre');
@@ -112,7 +112,7 @@ class EquipController extends Controller
         $equip->modelo = $request->input('txtMod');
         $equip->fabricante = $request->input('txtFab');
         $equip->capacidade = $request->input('txtCap');
-        $equip->n_serie = $request->input('txtSet');
+        $equip->n_serie = $request->input('txtSer');
         $equip->n_cliente = $request->input('txtCli');
         $equip->predio = $request->input('txtPre');
         $equip->area = $request->input('txtAre');

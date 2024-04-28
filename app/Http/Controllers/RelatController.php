@@ -61,9 +61,25 @@ class RelatController extends Controller
         // Especifc data of eletric chain hoist
         $t_e_c = Equipamento::find($equip->id)->talEleCorr;
         
-
         // Select the open report according to the equipment id
         $relat = Relatorio::where('finalizado',0)->where('equipamento_id', $equip->id)->get();
+
+        if (isset($relat[0])) {
+            $r_t_e_c = T_e_c_relatorio::where('relatorio_id', $relat[0]->id)->get();
+
+            if (isset($r_t_e_c[0])) {
+                if (count($r_t_e_c) !== 1 || count($relat) !== count($r_t_e_c)) {
+                    if (isset($relat[0])) {
+                        $relat[0]->delete();
+                    }
+                    if (isset($r_t_e_c[0])) {
+                        $r_t_e_c[0]->delete();
+                    }
+                } 
+            } else {
+                $relat[0]->delete();
+            }
+        }
 
         // If not, create a new report
         if (!isset($relat[0]) || $relat[0] == null) {
@@ -71,6 +87,11 @@ class RelatController extends Controller
             $relat->equipamento_id = $equip->id;
             $relat->finalizado = 0;
             $relat->save();
+
+            $r_t_e_c = new T_e_c_relatorio();
+            $r_t_e_c->relatorio_id = $relat->id;
+            $r_t_e_c->save();
+            
         } else {
             $relat = $relat[0];
         }
@@ -82,7 +103,7 @@ class RelatController extends Controller
             ->orderBy('id', 'DESC')
             ->first('id');
 
-        $r_t_e_c = Relatorio::find($prev_relat->id ?? 0)->talEleCorr ?? 0;
+        $prev_r_t_e_c = Relatorio::find($prev_relat->id ?? 0)->talEleCorr ?? 0;
 
         // return relatorio form eletric chain hoist report
         $data = [
@@ -90,13 +111,17 @@ class RelatController extends Controller
             'equip' => $equip,
             'relat' => $relat,
             't_e_c' => $t_e_c,
-            'r_t_e_c' => $r_t_e_c,
+            'prev_r_t_e_c' => $prev_r_t_e_c,
         ];
         return view('relatorio_form', $data);
     }
 
     public function relat_form_submit(Request $request) {
 
+        $relat = Relatorio::where('finalizado',0)->where('equipamento_id', $request->txtRelatId)->get()[0];
+
+
+        dd($relat);
         $c = new MyClass();
 
         $data = [
@@ -104,6 +129,7 @@ class RelatController extends Controller
             'tec1func' => $request->txtTec1Func,
             'title' => 'R.I.'
         ];
+        dd($request);
         return view('relatorio', $data);
         
     }

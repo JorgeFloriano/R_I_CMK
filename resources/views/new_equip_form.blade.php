@@ -3,7 +3,7 @@
 @section('content')
     
     <div class="container">
-        <div class="row mt-5">
+        <div class="row mt-2">
             <div class="col-lg-6 offset-lg-3">
 
                 <form action="{{route('new_equip_submit')}}" method="post">
