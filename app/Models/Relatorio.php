@@ -18,4 +18,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
     public function talEleCorr() {
         return $this->hasOne('App\Models\T_e_c_relatorio');
     }
+
+    public function justifs() {
+        return $this->hasMany('App\Models\Justificativa');
+    }
 }

@@ -1,14 +1,12 @@
 <?php
     $contpend = 0;
-    for ($i=1;$i<67;$i++) {
-        if (isset($tec2name) && $tec2name !== '') {
-            $contpend++;
-            echo "<tr>
-                <td>".$i."</td>
-                <td>".$tec2name. "</td>
-                <td>000</td>
-                <td>".date("d/m/Y")."</td></tr>";
-        }
+    foreach ($js as $j) {
+        $contpend++;
+        echo "<tr>
+            <td>".$j->num_item."</td>
+            <td>".$j->descricao. "</td>
+            <td>".$j->relatorio_id."</td>
+            <td>".date("d/m/Y")."</td></tr>";
     }
     $linvaz = 21 - $contpend;
     for ($i=1;$i<$linvaz;$i++) {

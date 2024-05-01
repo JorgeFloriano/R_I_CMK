@@ -5,25 +5,29 @@ namespace App\Http\Controllers;
 use App\Class\MyClass;
 use Illuminate\Http\Request;
 use App\Models\Equipamento;
+use App\Models\Justificativa;
 use App\Models\Relatorio;
 use App\Models\T_e_c_relatorio;
 
 class RelatController extends Controller
 {
+
+    //---------------------------------------------------------------------------------
     public function teste() {
 
-        return view('test');
+        //return view('test');
 
-        //------------------------------------------------------
-        $num = 2; // id do relatorio
+        $num =1; // id do relatorio
 
-        $equip = Relatorio::find($num)->equipamento; // dados genericos do equipamento (cabeçalho do relatório)
+        $equip = Relatorio::find($num)->equipamento; // equipment data (header)
 
-        $relat = Relatorio::find($num); // identificação do relatório (classe pai)
+        $relat = Relatorio::find($num); // report data (parent class)
 
-        $talEleCorr = Relatorio::find($num)->talEleCorr; // dados do relatório de talha elétrica de corrente (classe filho)
+        $talEleCorr = Relatorio::find($num)->talEleCorr; // report data (child class)
 
-        $dadosEqup = Equipamento::find($equip->id)->talEleCorr; // dados específicos do equipamento talha elétrica de corrente
+        $dadosEqup = Equipamento::find($equip->id)->talEleCorr; // eletric chain hoist data (nominal and limit)
+
+        $just = Relatorio::find($num)->justifs()->where('num_item', 29)->first(); // Justification for pending issues
 
         echo '<h2>DADOS DO RELATÓRIO NÚMERO '.$num.'</h2>';
         echo "Mês da programação (falta formatar a data para mês): ".$relat->mes.'<br>'.
@@ -40,19 +44,21 @@ class RelatController extends Controller
         Nominal: '.$dadosEqup->nom_y.' / Máximo: '.$dadosEqup->min_y.' / Medido: '.$talEleCorr->med_y.'<br>'
         ;
 
+        echo '<h3>Pendência do ítem 29 (trava de gancho)</h3>'. $just->descricao;
 
         //-------------------------------------------------------
         $num = 1;
         $relats = Equipamento::find($num)->relatorios; // todos os relatorios do equipamento 1
 
         echo '<h2>RELATÓRIOS DO EQUIPAMENTO Nº CMK '.$num.'</h2>';
-        
+
         foreach ($relats as $relat) {
             echo 'Relatório Nº: '.$relat->id.'<br>
             mês: '. $relat->mes.'<br><br>';
         };
     }
 
+    //------------------------------------------------------------------------------------
     public function relat_form($id) {
 
         //get selected equip
@@ -60,7 +66,7 @@ class RelatController extends Controller
 
         // Especifc data of eletric chain hoist
         $t_e_c = Equipamento::find($equip->id)->talEleCorr;
-        
+
         // Select the open report according to the equipment id
         $relat = Relatorio::where('finalizado',0)->where('equipamento_id', $equip->id)->get();
 
@@ -75,7 +81,7 @@ class RelatController extends Controller
                     if (isset($r_t_e_c[0])) {
                         $r_t_e_c[0]->delete();
                     }
-                } 
+                }
             } else {
                 $relat[0]->delete();
             }
@@ -91,19 +97,30 @@ class RelatController extends Controller
             $r_t_e_c = new T_e_c_relatorio();
             $r_t_e_c->relatorio_id = $relat->id;
             $r_t_e_c->save();
-            
+
         } else {
             $relat = $relat[0];
         }
-        
-        // Specific data from the previous eletric chain hoist report
-        
+
+        // PREVIOUS REPORT
         $prev_relat = Relatorio::where('finalizado',1)
             ->where('equipamento_id', $equip->id)
             ->orderBy('id', 'DESC')
             ->first('id');
 
+        // Eletric chain hoist data
         $prev_r_t_e_c = Relatorio::find($prev_relat->id ?? 0)->talEleCorr ?? 0;
+
+        // Pendings
+        $justs = Relatorio::find($prev_relat->id ?? 0)->justifs;
+
+        //dd($justs);
+        $j = [];
+        foreach ($justs as $just) {
+            $j += 
+                [$just->num_item => $just->descricao]
+            ;
+        };
 
         // return relatorio form eletric chain hoist report
         $data = [
@@ -111,26 +128,57 @@ class RelatController extends Controller
             'equip' => $equip,
             'relat' => $relat,
             't_e_c' => $t_e_c,
-            'prev_r_t_e_c' => $prev_r_t_e_c,
+            'prev_r_t_e_c' => $prev_r_t_e_c ?? '', // previous report
+            'j' => $j,
         ];
         return view('relatorio_form', $data);
     }
 
+    //-------------------------------------------------------------------------------------
     public function relat_form_submit(Request $request) {
 
-        $relat = Relatorio::where('finalizado',0)->where('equipamento_id', $request->txtRelatId)->get()[0];
+        $r_id = $request->txtRelatId;
+
+        $equip = Relatorio::find($r_id)->equipamento; // equipment data (header)
+
+        $relat = Relatorio::find($r_id); // report data (parent class)
+
+        $r_t_e_c = Relatorio::find($r_id)->talEleCorr; // report data (child class)
+
+        $d_t_e_c = Equipamento::find($equip->id)->talEleCorr; // eletric chain hoist data (nominal and limit)
+
+        // Saving pending issues in the database
+        for ($i=1; $i < 67; $i++) { 
+            $just = $request->input('txtJust'.$i);
+            if (isset($just) || $just != '') {
+                $j = new Justificativa();
+                $j->relatorio_id = $r_id;
+                $j->num_item = $i;
+                $j->descricao = $just;
+                $j->save();
+            }
+        }
+
+        $justs = Relatorio::find($r_id)->justifs; // Justification for pending issues
+
+        $r_t_e_c->med_elos = $request->input('txt31');
+        $r_t_e_c->med_elo = $request->input('txt32');
+        $r_t_e_c->med_w1 = $request->input('txt33');
+        $r_t_e_c->med_y = $request->input('txt34');
+        $r_t_e_c->save();
 
 
-        dd($relat);
+
         $c = new MyClass();
 
         $data = [
-            'tec1name' => $request->txtTec1Name,
-            'tec1func' => $request->txtTec1Func,
-            'title' => 'R.I.'
+            'e' => $equip,
+            'r' => $r_t_e_c,
+            'title' => 'R.I.',
+            'js' => $justs
         ];
-        dd($request);
+
         return view('relatorio', $data);
-        
+
     }
 }

@@ -7,16 +7,16 @@
         <td rowspan="5" style="width: 150px;"></td>
     </tr>
     <tr>
-        <td>Nome:{{$tec1name}}</td>
+        <td>Nome:{{$e->id}}</td>
         <td style="width: 150px;" rowspan="4">
-            <img src={{$tec1name}} alt="imagem" width="100%">
+            <img src={{$e->id}} alt="imagem" width="100%">
         </td>
-        <td>Nome:{{$tec1name}}</td>
+        <td>Nome:{{$e->id}}</td>
         <td style="width: 150px;" rowspan="4">
-            <img src={{$tec1name}} alt="imagem" width="100%">
+            <img src={{$e->id}} alt="imagem" width="100%">
         </td>
     </tr>
-    <tr><td>Função:{{$tec1name}}</td><td>Função:{{$tec1name}}</td></tr>
-    <tr><td>Data:{{$tec1name}}</td><td>Data:{{$tec1name}}</td></tr>
-    <tr><td>Início:{{$tec1name}}h / Final:{{$tec1name}}h</td><td>Início:{{$tec1name}}h / Final:{{$tec1name}}h</td></tr>
+    <tr><td>Função:{{$e->id}}</td><td>Função:{{$e->id}}</td></tr>
+    <tr><td>Data:{{$e->id}}</td><td>Data:{{$e->id}}</td></tr>
+    <tr><td>Início:{{$e->id}}h / Final:{{$e->id}}h</td><td>Início:{{$e->id}}h / Final:{{$e->id}}h</td></tr>
 </table>

@@ -48,21 +48,21 @@
                         <section id="trole" class="element">
                             TROLE - Capacidade: {{$equip->capacidade}} kg
                         </section>
-                        <x-item-status num="1" message="Rodas e rolamentos"/>
-                        <x-item-status num="2" message="Fixação da talha e parafusos de fechamento"/>
-                        <x-item-status num="3" message="Batentes fim de curso"/>
+                        <x-item-status :justif="$j" num="1" message="Rodas e rolamentos"/>
+                        <x-item-status :justif="$j" num="2" message="Fixação da talha e parafusos de fechamento"/>
+                        <x-item-status :justif="$j" num="3" message="Batentes fim de curso"/>
 
                         <section id="trole" class="element">
                             TALHA - Capacidade: {{$equip->capacidade}} kg
                         </section>
-                        <x-item-status num="7" message="Guia da corrente"/>
-                        <x-item-status num="8" message="Batedor stop"/>
-                        <x-item-status num="9" message="Armazenador de corrente"/>
-                        <x-item-status num="10" message="Fixação superior"/>
-                        <x-item-status num="11" message="Fricção"/>
-                        <x-item-status num="12" message="Freio (regular se necessário)"/>
-                        <x-item-status num="13" message="Lubrificação"/>
-                        <x-item-status num="14" message="Carcaça"/>
+                        <x-item-status :justif="$j" num="7" message="Guia da corrente"/>
+                        <x-item-status :justif="$j" num="8" message="Batedor stop"/>
+                        <x-item-status :justif="$j" num="9" message="Armazenador de corrente"/>
+                        <x-item-status :justif="$j" num="10" message="Fixação superior"/>
+                        <x-item-status :justif="$j" num="11" message="Fricção"/>
+                        <x-item-status :justif="$j" num="12" message="Freio (regular se necessário)"/>
+                        <x-item-status :justif="$j" num="13" message="Lubrificação"/>
+                        <x-item-status :justif="$j" num="14" message="Carcaça"/>
 
                         <section class="item">
                             <section class="ask">
@@ -76,30 +76,30 @@
                         <section id="trole" class="element">
                             REDUTOR
                         </section>
-                        <x-item-status num="16" message="Vazamento ( retentores, juntas e bujões )"/>
-                        <x-item-status num="17" message="Nível de óleo (completar se necessário)"/>
-                        <x-item-status num="18" message="Ruídos e aquecimento anormal"/>
-                        <x-item-status num="19" message="Reapertar parafusos de fixação"/>
+                        <x-item-status :justif="$j" num="16" message="Vazamento ( retentores, juntas e bujões )"/>
+                        <x-item-status :justif="$j" num="17" message="Nível de óleo (completar se necessário)"/>
+                        <x-item-status :justif="$j" num="18" message="Ruídos e aquecimento anormal"/>
+                        <x-item-status :justif="$j" num="19" message="Reapertar parafusos de fixação"/>
 
                         <section id="trole" class="element">
                             CORRENTE
                         </section>
-                        <x-item-status num="20" message="Limpeza e lubrificação da corrente"/>
-                        <x-item-status num="21" message="Corrente prende, salta ou produz ruído"/>
-                        <x-item-status num="22" message="Amassamentos, estrias, fissuras, respingos de solda, corrosão ou deformação elo a elo"/>
-                        <x-item-status num="23" message="Montagem (verificar se a corrente não está torcida ou com a posição da solda invertida)"/>
-                        <x-item-status num="24" message="Pino de fixação (substituir no caso de qualquer imperfeição visível)"/>
+                        <x-item-status :justif="$j" num="20" message="Limpeza e lubrificação da corrente"/>
+                        <x-item-status :justif="$j" num="21" message="Corrente prende, salta ou produz ruído"/>
+                        <x-item-status :justif="$j" num="22" message="Amassamentos, estrias, fissuras, respingos de solda, corrosão ou deformação elo a elo"/>
+                        <x-item-status :justif="$j" num="23" message="Montagem (verificar se a corrente não está torcida ou com a posição da solda invertida)"/>
+                        <x-item-status :justif="$j" num="24" message="Pino de fixação (substituir no caso de qualquer imperfeição visível)"/>
 
                         <section id="trole" class="element">
                             BLOCO INFERIOR - Capacidade: {{$equip->capacidade}} kg
                         </section>
                     
-                        <x-item-status num="25" message="Caixa do gancho"/>
-                        <x-item-status num="26" message="Carretel e rolamentos"/>
-                        <x-item-status num="27" message="Carcaça quanto à desgastes e trincas"/>
-                        <x-item-status num="28" message="Trava de gancho"/>
-                        <x-item-status num="29" message="Placa de identificação"/>
-                        <x-item-status num="30" message="Lubrificar caixa de gancho"/>
+                        <x-item-status :justif="$j" num="25" message="Caixa do gancho"/>
+                        <x-item-status :justif="$j" num="26" message="Carretel e rolamentos"/>
+                        <x-item-status :justif="$j" num="27" message="Carcaça quanto à desgastes e trincas"/>
+                        <x-item-status :justif="$j" num="28" message="Trava de gancho"/>
+                        <x-item-status :justif="$j" num="29" message="Placa de identificação"/>
+                        <x-item-status :justif="$j" num="30" message="Lubrificar caixa de gancho"/>
 
                         <section id="trole" class="element">
                             MEDIÇÕES DA CORRENTE DE CARGA (mm)
@@ -117,13 +117,13 @@
                                     <td>31-Alongam. - Med. 11 elos</td>
                                     <td>248</td>
                                     <td>253</td>
-                                    <td><input class="medido" min="0" step="0.1" type="number" name="txt31" id="id31" value="{{$r_t_e_c->med_elos ?? ''}}"></td>
+                                    <td><input class="medido" min="0" step="0.1" type="number" name="txt31" id="id31" value="{{$prev_r_t_e_c->med_elos ?? ''}}"></td>
                                 </tr>
                                 <tr>
                                     <td>32-Diâmetro médio do elo</td>
                                     <td>7.4</td>
                                     <td>6.7</td>
-                                    <td><input class="medido" step="0.1" min="0" type="number" name="txt32" id="id32" value="{{$r_t_e_c->med_elo ?? ''}}"></td>
+                                    <td><input class="medido" step="0.1" min="0" type="number" name="txt32" id="id32" value="{{$prev_r_t_e_c->med_elo ?? ''}}"></td>
                                 </tr>
                             </table>
                         </section>
@@ -145,13 +145,13 @@
                                     <td>33-Medida W1</td>
                                     <td>41</td>
                                     <td>45.1</td>
-                                    <td><input class="medido" min="0" step="0.1" type="number" name="txt33" id="id33" value="{{$r_t_e_c->med_w1 ?? ''}}"></td>
+                                    <td><input class="medido" min="0" step="0.1" type="number" name="txt33" id="id33" value="{{$prev_r_t_e_c->med_w1 ?? ''}}"></td>
                                 </tr>
                                 <tr>
                                     <td>34-Medida Y</td>
                                     <td>28</td>
                                     <td>23.6</td>
-                                    <td><input class="medido" step="0.1" min="0" type="number" name="txt34" id="id34" value="{{$r_t_e_c->med_y ?? ''}}"></td>
+                                    <td><input class="medido" step="0.1" min="0" type="number" name="txt34" id="id34" value="{{$prev_r_t_e_c->med_y ?? ''}}"></td>
                                 </tr>
                                 <tr>
                                     <td>35-Alinhamento</td>
@@ -172,60 +172,60 @@
                         <section id="trole" class="element">
                             TALHA
                         </section>
-                        <x-item-status num="36" message="Fixação do painel, tampa e limpeza"/>
-                        <x-item-status num="37" message="Chave geral, fusíveis e disjuntores"/>
-                        <x-item-status num="38" message="Motores (medições e aquecimento)"/>
-                        <x-item-status num="39" message="Caixa de ligação"/>
-                        <x-item-status num="40" message="Cabo de alimentação"/>
-                        <x-item-status num="41" message="Prensa cabos"/>
-                        <x-item-status num="42" message="Tomadas de engate rápido"/>
-                        <x-item-status num="43" message="Contatores e contatos"/>
-                        <x-item-status num="44" message="Trafos de potência e comando"/>
-                        <x-item-status num="45" message="Bornes e terminais"/>
+                        <x-item-status :justif="$j" num="36" message="Fixação do painel, tampa e limpeza"/>
+                        <x-item-status :justif="$j" num="37" message="Chave geral, fusíveis e disjuntores"/>
+                        <x-item-status :justif="$j" num="38" message="Motores (medições e aquecimento)"/>
+                        <x-item-status :justif="$j" num="39" message="Caixa de ligação"/>
+                        <x-item-status :justif="$j" num="40" message="Cabo de alimentação"/>
+                        <x-item-status :justif="$j" num="41" message="Prensa cabos"/>
+                        <x-item-status :justif="$j" num="42" message="Tomadas de engate rápido"/>
+                        <x-item-status :justif="$j" num="43" message="Contatores e contatos"/>
+                        <x-item-status :justif="$j" num="44" message="Trafos de potência e comando"/>
+                        <x-item-status :justif="$j" num="45" message="Bornes e terminais"/>
                         
                         <section id="trole" class="element">
                             BOTOEIRA
                         </section>
                     
-                        <x-item-status num="48" message="Funcionamento do botões"/>
-                        <x-item-status num="49" message="Cabo elétrico e prensa cabo"/>
-                        <x-item-status num="50" message="Cabo de aço de sustentação e fixação"/>
-                        <x-item-status num="51" message="Caixa de conexão"/>
-                        <x-item-status num="52" message="Carcaça e identificão dos botões"/>
+                        <x-item-status :justif="$j" num="48" message="Funcionamento do botões"/>
+                        <x-item-status :justif="$j" num="49" message="Cabo elétrico e prensa cabo"/>
+                        <x-item-status :justif="$j" num="50" message="Cabo de aço de sustentação e fixação"/>
+                        <x-item-status :justif="$j" num="51" message="Caixa de conexão"/>
+                        <x-item-status :justif="$j" num="52" message="Carcaça e identificão dos botões"/>
 
                         <section id="trole" class="element">
                             ELETRIFICAÇÃO TRANSVERSAL
                         </section>
 
-                        <x-item-status num="53" message="Fixação e conservação dos cabos"/>
-                        <x-item-status num="54" message="Estado do perfil, fixações e emendas"/>
-                        <x-item-status num="55" message="Carros porta cabos e arrastador"/>
+                        <x-item-status :justif="$j" num="53" message="Fixação e conservação dos cabos"/>
+                        <x-item-status :justif="$j" num="54" message="Estado do perfil, fixações e emendas"/>
+                        <x-item-status :justif="$j" num="55" message="Carros porta cabos e arrastador"/>
 
                         <section id="trole" class="element">
                             RÁDIO CONTROLE
                         </section>
 
-                        <x-item-status num="56" message="Funcionamento e estado do emissor"/>
-                        <x-item-status num="57" message="Reaperto de todas as conexões e ligações"/>
-                        <x-item-status num="58" message="Estado de conservação da carcaça"/>
-                        <x-item-status num="59" message="Estado da bateria / pilhas do emissor"/>
-                        <x-item-status num="60" message="Sinais luminosos do receptor e transmissor"/>
+                        <x-item-status :justif="$j" num="56" message="Funcionamento e estado do emissor"/>
+                        <x-item-status :justif="$j" num="57" message="Reaperto de todas as conexões e ligações"/>
+                        <x-item-status :justif="$j" num="58" message="Estado de conservação da carcaça"/>
+                        <x-item-status :justif="$j" num="59" message="Estado da bateria / pilhas do emissor"/>
+                        <x-item-status :justif="$j" num="60" message="Sinais luminosos do receptor e transmissor"/>
 
                         <section id="trole" class="element">
                             LIMITE DE FIM DE CURSO - Elevação
                         </section>
 
-                        <x-item-status num="61" message="Funcionamento da chave limite"/>
-                        <x-item-status num="62" message="Cabos ou corrente do pino"/>
-                        <x-item-status num="63" message="Contatos, molas e articulação"/>
+                        <x-item-status :justif="$j" num="61" message="Funcionamento da chave limite"/>
+                        <x-item-status :justif="$j" num="62" message="Cabos ou corrente do pino"/>
+                        <x-item-status :justif="$j" num="63" message="Contatos, molas e articulação"/>
                         
                         <section id="trole" class="element">
                             LIMITE DE FIM DE CURSO - Direção
                         </section>
 
-                        <x-item-status num="64" message="Funcionamento da chave limite"/>
-                        <x-item-status num="65" message="Cabos ou corrente do pino"/>
-                        <x-item-status num="66" message="Contatos, molas e articulação"/>
+                        <x-item-status :justif="$j" num="64" message="Funcionamento da chave limite"/>
+                        <x-item-status :justif="$j" num="65" message="Cabos ou corrente do pino"/>
+                        <x-item-status :justif="$j" num="66" message="Contatos, molas e articulação"/>
                         
                         <section id="trole" class="element">
                             MEDIÇÕES DAS GRANDEZAS ELÉTRICAS
@@ -392,7 +392,7 @@
                                 <a id="clear1" href="#" class="signature-button"><i class="fa fa-eraser" aria-hidden="true"></i>Apagar </a>
                             </p>
                             <div class="signature">
-                                <canvas height="200" width="300" class="signature-pad" id="canv1"></canvas>
+                                <canvas height="200" width="320" class="signature-pad" id="canv1"></canvas>
                             
                                 <input type="hidden" name="signTec1" id="idSignTec1">
                             </div>
@@ -426,7 +426,7 @@
                                 <a id="clear2" href="#" class="signature-button"><i class="fa fa-eraser" aria-hidden="true"></i>Apagar </a>
                             </p>
                             <div class="signature">
-                                <canvas height="200" width="300" class="signature-pad" id="canv2" aria-placeholder="assine aqui"></canvas>
+                                <canvas height="200" width="320" class="signature-pad" id="canv2" aria-placeholder="assine aqui"></canvas>
                                 <input type="hidden" name="signTec2" id="idSignTec2">
                             </div>
                         </div>

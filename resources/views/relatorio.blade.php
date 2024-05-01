@@ -67,9 +67,9 @@
         
                 <tr>
                     <td style="width: 5%;">31</td><td colspan="2">Alongamento - Medida de 11 elos</td>
-                    <td>177.8</td><td>180.3</td><td>{{$tec1name}}</td>
+                    <td>177.8</td><td>180.3</td><td>{{$r->med_elos}}</td>
                 </tr>
-                <tr><td>32</td><td colspan="2">Medida DM-Diâmetro médio do elo</td><td>7.4</td><td>6.7</td><td>{{$tec1name}}</td></tr>
+                <tr><td>32</td><td colspan="2">Medida DM-Diâmetro médio do elo</td><td>7.4</td><td>6.7</td><td>{{$r->med_elo}}</td></tr>
         
                 <tr><th colspan="6">MEDIÇÕES DO GANCHO INFERIOR (mm)</th></tr>
                 <tr>
@@ -84,9 +84,9 @@
         
                 <tr>
                     <td>33</td>
-                    <td>Medida W1</td><td>41</td><td>45.1</td><td>{{$tec1name}}</td>
+                    <td>Medida W1</td><td>41</td><td>45.1</td><td>{{$r->med_w1}}</td>
                 </tr>
-                <tr><td>34</td><td>Medida Y</td><td>28</td><td>23.6</td><td>{{$tec1name}}</td></tr>
+                <tr><td>34</td><td>Medida Y</td><td>28</td><td>23.6</td><td>{{$r->med_y}}</td></tr>
                 <tr><td>35</td><td>Alinhamento</td><td colspan="3"><?= $_POST['txt35'] ?? "Não insp."?></td></tr>
             </table>
         </section>
@@ -146,15 +146,15 @@
             <table>
                 <tr><th colspan="5">MEDIÇÕES DAS GRANDEZAS ELÉTRICAS</th></tr>
                 <tr><th colspan="3">VALORES CONSIDERADOS</th><th>Nominal</th><th>Medido</th></tr>
-                <tr><td>67</td><td colspan="2">Tensão de rede (V)</td><td>440</td><td>{{$tec1name}}</td></tr>
-                <tr><td>68</td><td colspan="2">Tensão do transformador de comando (VCA)</td><td>24</td><td>{{$tec1name}}</td></tr>
+                <tr><td>67</td><td colspan="2">Tensão de rede (V)</td><td>440</td><td>{{$e->id}}</td></tr>
+                <tr><td>68</td><td colspan="2">Tensão do transformador de comando (VCA)</td><td>24</td><td>{{$e->id}}</td></tr>
                 <tr><td>69</td><td colspan="2">Medição do banco de resistências (Ohms)</td><td>Ñ aplica</td><td><?= $_POST['txt69'] ?? "Não insp."?></td></tr>
-                <tr><td rowspan="3">70</td><th rowspan="3">MOTOR DE <br> DIREÇÃO</th><td>Corrente da alta (A)</td><td>1.0</td><td>{{$tec1name}}</td></tr>
-                <tr><td>Corrente da baixa (A)</td><td>1.0</td><td>{{$tec1name}}</td></tr>
+                <tr><td rowspan="3">70</td><th rowspan="3">MOTOR DE <br> DIREÇÃO</th><td>Corrente da alta (A)</td><td>1.0</td><td>{{$e->id}}</td></tr>
+                <tr><td>Corrente da baixa (A)</td><td>1.0</td><td>{{$e->id}}</td></tr>
                 <tr><td>Tensão do freio (VCC)</td><td>Ñ Insp.</td><td><?= $_POST['txt70_3'] ?? "Não insp."?></td></tr>
-                <tr><td rowspan="3">71</td><th rowspan="3">MOTOR DE <br> ELEVAÇÃO</th><td>Corrente da alta (A)</td><td>1.8</td><td>{{$tec1name}}</td></tr>
-                <tr><td>Corrente da baixa (A)</td><td>2.8</td><td>{{$tec1name}}</td></tr>
-                <tr><td>Tensão do freio (VCC)</td><td>Ñ Insp.</td><td>{{$tec1name}}</td></tr>
+                <tr><td rowspan="3">71</td><th rowspan="3">MOTOR DE <br> ELEVAÇÃO</th><td>Corrente da alta (A)</td><td>1.8</td><td>{{$e->id}}</td></tr>
+                <tr><td>Corrente da baixa (A)</td><td>2.8</td><td>{{$e->id}}</td></tr>
+                <tr><td>Tensão do freio (VCC)</td><td>Ñ Insp.</td><td>{{$e->id}}</td></tr>
         
             </table>
         </section>
@@ -165,7 +165,7 @@
         <div id="status2">STATUS DO EQUIPAMENTO : <?= $_POST['apto'] ?? "NÃO APTO PARA OPERAR"?>!</div>
     </section>
     <section id="ressalvas">
-        <strong>Ressalvas:</strong>{{$tec1name}}
+        <strong>Ressalvas:</strong>{{$e->id}}
     </section>
     @include('relat_parts/r_footer')
     <section id="verso">
@@ -184,7 +184,7 @@
         </table>
         <div id="versoObs">
                 <p>
-                    {{$tec1name}}
+                    {{$e->id}}
                 </p>
         </div>
         @include('relat_parts/r_footer')

@@ -14,10 +14,10 @@
     <table>
         <thead>
             <tr>
-                <th>Cliente: CNH</th><th>Unidade: Sorocaba</th><th>Solicitante: Lucas Moraes</th><th>Nº Serie: 0909090</th><th>Nº Cliente: CNH-171</th><th>Nº CMK: 54</th>
+                <th>Cliente: CNH</th><th>Unidade: Sorocaba</th><th>Solicitante: Lucas Moraes</th><th>Nº Serie: {{$e->n_serie}}</th><th>Nº Cliente: CNH-{{$e->n_cliente}}</th><th>Nº CMK: {{$e->id}}</th>
             </tr>
             <tr>
-                <th>Fabricante: Demag</th><th>Modelo: DC-Pro 5</th><th>Capacidade: 500 kg</th><th>Prédio: P-80</th><th>Setor: Montagem</th><th>Área : Feeder</th>
+                <th>Fabricante: {{$e->fabricante}}</th><th>Modelo: {{$e->modelo}}</th><th>Capacidade: {{$e->capacidade}} kg</th><th>Prédio: {{$e->predio}}</th><th>Setor: {{$e->setor}}</th><th>Área : {{$e->area}}</th>
             </tr>
         </thead>
     </table>
