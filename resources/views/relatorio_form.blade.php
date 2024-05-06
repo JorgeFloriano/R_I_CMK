@@ -68,7 +68,7 @@
                             <section class="ask">
                                 <div class="lab"><label for="id15">15-Teste de carga (kg)</label></div>
                                 <div class="opt">
-                                    <input style="width: 65px;" min="0" type="number" name="txt15" id="id15">
+                                    <input style="width: 65px;" min="0" type="number" name="txt15" id="id15" value="{{$prev_r_t_e_c->item15 ?? ''}}">
                                 </div>
                             </section>
                         </section>
@@ -117,13 +117,13 @@
                                     <td>31-Alongam. - Med. 11 elos</td>
                                     <td>{{$t_e_c->nom_elos}}</td>
                                     <td>{{$t_e_c->max_elos}}</td>
-                                    <td><input class="medido" min="0" step="0.1" type="number" name="txt31" id="id31" value="{{$prev_r_t_e_c->med_elos ?? ''}}"></td>
+                                    <td><input class="medido" min="0" step="0.1" type="number" name="txt31" id="id31" value="{{$prev_r_t_e_c->item31 ?? ''}}"></td>
                                 </tr>
                                 <tr>
                                     <td>32-Diâmetro médio do elo</td>
                                     <td>{{$t_e_c->nom_elo}}</td>
                                     <td>{{$t_e_c->min_elo}}</td>
-                                    <td><input class="medido" step="0.1" min="0" type="number" name="txt32" id="id32" value="{{$prev_r_t_e_c->med_elo ?? ''}}"></td>
+                                    <td><input class="medido" step="0.1" min="0" type="number" name="txt32" id="id32" value="{{$prev_r_t_e_c->item32 ?? ''}}"></td>
                                 </tr>
                             </table>
                         </section>
@@ -145,21 +145,21 @@
                                     <td>33-Medida W1</td>
                                     <td>{{$t_e_c->nom_w1}}</td>
                                     <td>{{$t_e_c->max_w1}}</td>
-                                    <td><input class="medido" min="0" step="0.1" type="number" name="txt33" id="id33" value="{{$prev_r_t_e_c->med_w1 ?? ''}}"></td>
+                                    <td><input class="medido" min="0" step="0.1" type="number" name="txt33" id="id33" value="{{$prev_r_t_e_c->item33 ?? ''}}"></td>
                                 </tr>
                                 <tr>
                                     <td>34-Medida Y</td>
                                     <td>{{$t_e_c->nom_y}}</td>
                                     <td>{{$t_e_c->min_y}}</td>
-                                    <td><input class="medido" step="0.1" min="0" type="number" name="txt34" id="id34" value="{{$prev_r_t_e_c->med_y ?? ''}}"></td>
+                                    <td><input class="medido" step="0.1" min="0" type="number" name="txt34" id="id34" value="{{$prev_r_t_e_c->item34 ?? ''}}"></td>
                                 </tr>
                                 <tr>
                                     <td>35-Alinhamento</td>
                                     <td>
-                                        <label for="35_Ok">Ok </label><input type="radio" name="txt35" id="35_Ok" value="Alinhamento Ok">
+                                        <label for="35_Ok">Ok </label><input type="radio" name="txt35" id="35_Ok" value="Ok (alinhado)">
                                     </td>
                                     <td colspan="2">
-                                        <label for="35_T">Substituir </label><input type="radio" name="txt35" id="35_T" value="Desalinhado, substituir gancho">
+                                        <label for="35_T">Substituir </label><input type="radio" name="txt35" id="35_T" value="Substituir (desalinhado)">
                                     </td>
                                 </tr>
                             </table>
@@ -235,18 +235,18 @@
                         <table class="med" style="height: 270px;">
                             <thead>
                                 <tr>
-                                    <th style="width: 90%;" colspan="3">VALORES CONSIDERADOS</th>
-                                    <th style="width: 15%;">Nominal</th>
+                                    <th style="width:80%;" colspan="3">VALORES CONSIDERADOS</th>
+                                    <th style="width:18%;">Nominal</th>
                                     <th>Medido</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>67-</td>
+                                    <td style="width:20px;">67-</td>
                                     <td colspan="2">Tensão de rede (V)</td>
                                     <td>{{$t_e_c->v_rede}}</td>
                                     <td>
-                                        <input class="medido" step="0.1" min="0" type="number" name="txt67" id="id67">
+                                        <input class="medido" step="0.1" min="0" type="number" name="txt67" id="id67" value="{{$prev_r_t_e_c->v_rede ?? ''}}">
                                     </td>
                                 </tr>
                                 <tr>
@@ -254,7 +254,7 @@
                                     <td colspan="2">Tensão trafo de comando (VCA)</td>
                                     <td>{{$t_e_c->v_com}}</td>
                                     <td>
-                                        <input class="medido" step="0.1" min="0" type="number" name="txt68" id="id68">
+                                        <input class="medido" step="0.1" min="0" type="number" name="txt68" id="id68" value="{{$prev_r_t_e_c->v_com ?? ''}}">
                                     </td>
                                 </tr>
                                 <tr>
@@ -262,7 +262,7 @@
                                     <td colspan="2">Med. banco de resistências (Ohms)</td>
                                     <td>{{$t_e_c->banc_res}}</td>
                                     <td>
-                                        <input class="medido" step="0.1" min="0" type="number" name="txt69" id="id69">
+                                        <input class="medido" step="0.1" min="0" type="number" name="txt69" id="id69" value="{{$prev_r_t_e_c->banc_res ?? ''}}">
                                     </td>
                                 </tr>
                                 <tr>
@@ -271,21 +271,21 @@
                                     <td>Corr. da alta (A)</td>
                                     <td>{{$t_e_c->corr_dir_alta}}</td>
                                     <td>
-                                        <input class="medido" step="0.1" min="0" type="number" name="txt70" id="id70">
+                                        <input class="medido" step="0.1" min="0" type="number" name="txt70" id="id70" value="{{$prev_r_t_e_c->corr_dir_alta ?? ''}}">
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>Corr. da baixa (A)</td>
                                     <td>{{$t_e_c->corr_dir_baixa}}</td>
                                     <td>
-                                        <input class="medido" step="0.1" min="0" type="number" name="txt70_2" id="id70_2">
+                                        <input class="medido" step="0.1" min="0" type="number" name="txt70_2" id="id70_2" value="{{$prev_r_t_e_c->corr_dir_baixa ?? ''}}">
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>Tensão freio (VCC)</td>
                                     <td>{{$t_e_c->v_dir_freio}}</td>
                                     <td>
-                                        <input class="medido" step="0.1" min="0" type="number" name="txt70_3" id="id70_3">
+                                        <input class="medido" step="0.1" min="0" type="number" name="txt70_3" id="id70_3" value="{{$prev_r_t_e_c->v_dir_freio ?? ''}}">
                                     </td>
                                 </tr>
                                 <tr>
@@ -294,21 +294,21 @@
                                     <td>Corr. da alta (A)</td>
                                     <td>{{$t_e_c->corr_el_alta}}</td>
                                     <td>
-                                        <input class="medido" step="0.1" min="0" type="number" name="txt71" id="id71">
+                                        <input class="medido" step="0.1" min="0" type="number" name="txt71" id="id71" value="{{$prev_r_t_e_c->corr_el_alta ?? ''}}">
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>Corr. da baixa (A)</td>
                                     <td>{{$t_e_c->corr_el_baixa}}</td>
                                     <td>
-                                        <input class="medido" step="0.1" min="0" type="number" name="txt71_2" id="id71_2">
+                                        <input class="medido" step="0.1" min="0" type="number" name="txt71_2" id="id71_2" value="{{$prev_r_t_e_c->corr_el_baixa ?? ''}}">
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>Tensão freio (VCC)</td>
                                     <td>{{$t_e_c->v_el_freio}}</td>
                                     <td>
-                                        <input class="medido" step="0.1" min="0" type="number" name="txt71_3" id="id71_3">
+                                        <input class="medido" step="0.1" min="0" type="number" name="txt71_3" id="id71_3" value="{{$prev_r_t_e_c->v_el_freio ?? ''}}">
                                     </td>
                                 </tr>
                             </tbody>
@@ -362,7 +362,7 @@
                             </div>
                             <section id="secRessalva" class="obs">
                                 <label for="idressalvas"><strong>RESSALVAS:</strong></label>
-                                <textarea name="txtRessalvas" id="idressalvas" class='autoExpand' rows='1' data-min-rows='1' placeholder='Ex.: Elevação apenas com a velocidade baixa.'></textarea>
+                                <textarea name="txtRessalvas" id="idressalvas" class='autoExpand' rows='1' data-min-rows='1' placeholder='Ex.: Elevação apenas com a velocidade baixa.'>{{$prev_r_t_e_c->ressalva ?? ''}}</textarea>
                             </section>
                         </section>
 

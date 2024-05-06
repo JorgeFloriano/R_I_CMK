@@ -16,7 +16,7 @@
             <img src={{$r['sign_tec2']}} alt="imagem" width="100%">
         </td>
     </tr>
-    <tr><td>Função:{{$e->id}}</td><td>Função:{{$e->id}}</td></tr>
-    <tr><td>Data:{{$e->id}}</td><td>Data:{{$e->id}}</td></tr>
-    <tr><td>Início:{{$e->id}}h / Final:{{$e->id}}h</td><td>Início:{{$e->id}}h / Final:{{$e->id}}h</td></tr>
+    <tr><td>Função:{{$r['f_tec1']}}</td><td>Função:{{$r['f_tec2']}}</td></tr>
+    <tr><td>Data:{{$r['d_tec1']}}</td><td>Data:{{$r['d_tec2']}}</td></tr>
+    <tr><td>Início:{{$r['h_i_tec1']}}h / Final:{{$r['h_f_tec1']}}h</td><td>Início:{{$r['h_i_tec2']}}h / Final:{{$r['h_f_tec2']}}h</td></tr>
 </table>

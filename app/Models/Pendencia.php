@@ -5,9 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Justificativa extends Model
+class Pendencia extends Model
 {
-    protected $table = "justificativas";
+    protected $table = "pendencias";
     protected $primaryKey = 'id';
     use SoftDeletes;
     

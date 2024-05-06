@@ -11,8 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('justificativas', function (Blueprint $table) {
+        Schema::create('pendencias', function (Blueprint $table) {
             $table->id();
+            $table->bigInteger('equipamento_id');
             $table->bigInteger('relatorio_id');
             $table->integer('num_item');
             $table->tinyInteger('status_item');
@@ -28,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('justificativas');
+        Schema::dropIfExists('pendencias');
     }
 };

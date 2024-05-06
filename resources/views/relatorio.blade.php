@@ -17,7 +17,7 @@
                     "Freio (não aplica)",
                     "Redutor (não aplica)"
                 ]'/>
-                <tr><th colspan="2">TALHA</th><th>500 kg</th></tr>
+                <tr><th colspan="2">TALHA</th><th>{{$e->capacidade}} kg</th></tr>
                 <x-report-element :relat="$r" num="7" :descriptions='[
                     "Guia da corrente",
                     "Batedor stop",
@@ -45,7 +45,7 @@
                     "Montagem (não está torcida ou com a solda invertida)",
                     "Pino da corrente (se houver fissura, deformação ou desgaste visível, o mesmo deve ser substituido)"
                 ]'/>
-                <tr><th colspan="2" style="padding-top: 1px;">BLOCO INFERIOR</th><th>500 kg</th></tr>
+                <tr><th colspan="2" style="padding-top: 1px;">BLOCO INFERIOR</th><th>{{$e->capacidade}} kg</th></tr>
                 <x-report-element :relat="$r" num="25" :descriptions='[
                     "Caixa do gancho",
                     "Carretel e rolamentos",
@@ -67,9 +67,9 @@
         
                 <tr>
                     <td style="width: 5%;">31</td><td colspan="2">Alongamento - Medida de 11 elos</td>
-                    <td>177.8</td><td>180.3</td><td>{{$r['item31']}}</td>
+                    <td>{{$t->nom_elos}}</td><td>{{$t->max_elos}}</td><td>{{$r['item31']}}</td>
                 </tr>
-                <tr><td>32</td><td colspan="2">Medida DM-Diâmetro médio do elo</td><td>7.4</td><td>6.7</td><td>{{$r['item32']}}</td></tr>
+                <tr><td>32</td><td colspan="2">Medida DM-Diâmetro médio do elo</td><td>{{$t->nom_elo}}</td><td>{{$t->min_elo}}</td><td>{{$r['item32']}}</td></tr>
         
                 <tr><th colspan="6">MEDIÇÕES DO GANCHO INFERIOR (mm)</th></tr>
                 <tr>
@@ -84,9 +84,9 @@
         
                 <tr>
                     <td>33</td>
-                    <td>Medida W1</td><td>41</td><td>45.1</td><td>{{$r['item33']}}</td>
+                    <td>Medida W1</td><td>{{$t->nom_w1}}</td><td>{{$t->max_w1}}</td><td>{{$r['item33']}}</td>
                 </tr>
-                <tr><td>34</td><td>Medida Y</td><td>28</td><td>23.6</td><td>{{$r['item34']}}</td></tr>
+                <tr><td>34</td><td>Medida Y</td><td>{{$t->nom_y}}</td><td>{{$t->min_y}}</td><td>{{$r['item34']}}</td></tr>
                 <tr><td>35</td><td>Alinhamento</td><td colspan="3">{{$r['item35']}}</td></tr>
             </table>
         </section>
@@ -146,26 +146,26 @@
             <table>
                 <tr><th colspan="5">MEDIÇÕES DAS GRANDEZAS ELÉTRICAS</th></tr>
                 <tr><th colspan="3">VALORES CONSIDERADOS</th><th>Nominal</th><th>Medido</th></tr>
-                <tr><td>67</td><td colspan="2">Tensão de rede (V)</td><td>440</td><td>{{$e->id}}</td></tr>
-                <tr><td>68</td><td colspan="2">Tensão do transformador de comando (VCA)</td><td>24</td><td>{{$e->id}}</td></tr>
-                <tr><td>69</td><td colspan="2">Medição do banco de resistências (Ohms)</td><td>Ñ aplica</td><td><?= $_POST['txt69'] ?? "Não insp."?></td></tr>
-                <tr><td rowspan="3">70</td><th rowspan="3">MOTOR DE <br> DIREÇÃO</th><td>Corrente da alta (A)</td><td>1.0</td><td>{{$e->id}}</td></tr>
-                <tr><td>Corrente da baixa (A)</td><td>1.0</td><td>{{$e->id}}</td></tr>
-                <tr><td>Tensão do freio (VCC)</td><td>Ñ Insp.</td><td><?= $_POST['txt70_3'] ?? "Não insp."?></td></tr>
-                <tr><td rowspan="3">71</td><th rowspan="3">MOTOR DE <br> ELEVAÇÃO</th><td>Corrente da alta (A)</td><td>1.8</td><td>{{$e->id}}</td></tr>
-                <tr><td>Corrente da baixa (A)</td><td>2.8</td><td>{{$e->id}}</td></tr>
-                <tr><td>Tensão do freio (VCC)</td><td>Ñ Insp.</td><td>{{$e->id}}</td></tr>
+                <tr><td>67</td><td colspan="2">Tensão de rede (V)</td><td>440</td><td>{{$r['v_rede']}}</td></tr>
+                <tr><td>68</td><td colspan="2">Tensão do transformador de comando (VCA)</td><td>24</td><td>{{$r['v_com']}}</td></tr>
+                <tr><td>69</td><td colspan="2">Medição do banco de resistências (Ohms)</td><td>Ñ aplica</td><td>{{$r['banc_res'] ?? "Não insp."}}</td></tr>
+                <tr><td rowspan="3">70</td><th rowspan="3">MOTOR DE <br> DIREÇÃO</th><td>Corrente da alta (A)</td><td>1.0</td><td>{{$r['corr_dir_alta']}}</td></tr>
+                <tr><td>Corrente da baixa (A)</td><td>1.0</td><td>{{$r['corr_dir_baixa']}}</td></tr>
+                <tr><td>Tensão do freio (VCC)</td><td>Ñ Insp.</td><td>{{$r['v_dir_freio'] ?? "Não insp."}}</td></tr>
+                <tr><td rowspan="3">71</td><th rowspan="3">MOTOR DE <br> ELEVAÇÃO</th><td>Corrente da alta (A)</td><td>1.8</td><td>{{$r['corr_el_alta']}}</td></tr>
+                <tr><td>Corrente da baixa (A)</td><td>2.8</td><td>{{$r['corr_el_baixa']}}</td></tr>
+                <tr><td>Tensão do freio (VCC)</td><td>Ñ Insp.</td><td>{{$r['v_el_freio']}}</td></tr>
         
             </table>
         </section>
     </div>
 
     <section id="status">
-        <div id="status1">STATUS FINAL DA INSPEÇÃO: <?= $_POST['status'] ?? "RESTAM PENDÊNCIAS"?>!</div>
-        <div id="status2">STATUS DO EQUIPAMENTO : <?= $_POST['apto'] ?? "NÃO APTO PARA OPERAR"?>!</div>
+        <div id="status1">STATUS FINAL DA INSPEÇÃO: {{$r['stat_insp'] ?? "RESTAM PENDÊNCIAS"}}!</div>
+        <div id="status2">STATUS DO EQUIPAMENTO : {{ $r['stat_equip'] ?? "NÃO APTO PARA OPERAR"}}!</div>
     </section>
     <section id="ressalvas">
-        <strong>Ressalvas:</strong>{{$e->id}}
+        <strong>Ressalvas: </strong>{{$r['ressalva'] ?? 'Sem ressalvas!'}}
     </section>
     @include('relat_parts/r_footer')
     <section id="verso">
@@ -184,7 +184,7 @@
         </table>
         <div id="versoObs">
                 <p>
-                    {{$e->id}}
+                    {{$r['obs'] ?? 'Sem observações!'}}
                 </p>
         </div>
         @include('relat_parts/r_footer')

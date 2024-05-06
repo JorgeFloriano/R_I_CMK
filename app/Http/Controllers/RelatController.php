@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Class\MyClass;
 use Illuminate\Http\Request;
 use App\Models\Equipamento;
-use App\Models\Justificativa;
+use App\Models\Pendencia;
 use App\Models\Relatorio;
 use App\Models\T_e_c_relatorio;
 use Symfony\Component\VarDumper\VarDumper;
@@ -28,7 +28,7 @@ class RelatController extends Controller
 
         $dadosEqup = Equipamento::find($equip->id)->talEleCorr; // eletric chain hoist data (nominal and limit)
 
-        $just = Relatorio::find($num)->justifs()->where('num_item', 29)->first(); // Justification for pending issues
+        $just = Relatorio::find($num)->pends()->where('num_item', 29)->first(); // Justification for pending issues
 
         echo '<h2>DADOS DO RELATÓRIO NÚMERO '.$num.'</h2>';
         echo "Mês da programação (falta formatar a data para mês): ".$relat->mes.'<br>'.
@@ -112,6 +112,31 @@ class RelatController extends Controller
         // Eletric chain hoist data
         $prev_r_t_e_c = Relatorio::find($prev_relat->id ?? 0)->talEleCorr ?? 0;
 
+        // Preparing list of pendings
+        $pends = Equipamento::find($equip->id)->pends;
+
+        dd($pends);
+
+        echo '<h2>RELATÓRIOS DO EQUIPAMENTO Nº CMK '.$equip->id.'</h2>';
+
+        $id_r_list = [];
+        foreach ($pends as $relat) {
+            echo 'Relatório Nº: '.$relat->id.'<br>
+            finalizado: '. $relat->finalizado.'<br><br>';
+            if ($relat->finalizado == 1) {
+                array_push($id_r_list, $relat->id);
+            }
+        };
+
+        $pend_list = [];
+        foreach ($id_r_list as $id_r) {
+            $pend = Relatorio::find($id_r)->justifs;
+            if (isset($pend)) {
+                $pend_list[$id_r] = $pend;
+            }
+        }
+        dd($pend_list);
+
         // Pendings
         $justs = Relatorio::find($prev_relat->id ?? 0)->justifs ?? null;
 
@@ -153,7 +178,7 @@ class RelatController extends Controller
         for ($i=1; $i < 67; $i++) { 
             $just = $request->input('txtJust'.$i);
             if (isset($just) || $just != '') {
-                $j = new Justificativa();
+                $j = new Pendencia();
                 $j->relatorio_id = $r_id;
                 $j->num_item = $i;
                 $j->descricao = $just;
@@ -180,6 +205,7 @@ class RelatController extends Controller
         $r_t_e_c->stat_insp = $request->status;
         $r_t_e_c->stat_equip = $request->apto;
         $r_t_e_c->ressalva = $request->txtRessalvas;
+        $r_t_e_c->obs = $request->txtObservacoes;
         $r_t_e_c->n_tec1 = $request->txtTec1Name;
         $r_t_e_c->f_tec1 = $request->txtTec1Func;
         $r_t_e_c->d_tec1 = $request->txtTec1Data;
@@ -204,7 +230,8 @@ class RelatController extends Controller
             'e' => $equip,
             'r' => $r_t_e_c,
             'title' => 'R.I.',
-            'js' => $justs
+            'js' => $justs,
+            't' => $d_t_e_c
         ];
 
         return view('relatorio', $data);

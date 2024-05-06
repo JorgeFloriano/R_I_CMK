@@ -22,4 +22,7 @@ class Equipamento extends Model
     public function talEleCorr() {
         return $this->hasOne('App\Models\T_e_c_dado');
     }
+    public function pends() {
+        return $this->hasMany('App\Models\Pendencia');
+    }
 }
