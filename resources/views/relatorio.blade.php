@@ -8,8 +8,8 @@
         <section id="mecanica" class="half">
             <table>
                 <tr><th colspan="3">INSPEÇÃO MECÂNICA</th></tr>
-                <tr><th colspan="2">TROLE</th><th style="width: 20%;">500 kg</th></tr>
-                <x-report-element num="1" :descriptions='[
+                <tr><th colspan="2">TROLE</th><th style="width: 20%;">{{$e->capacidade}} kg</th></tr>
+                <x-report-element :relat="$r" num="1" :descriptions='[
                     "Rodas e rolamentos",
                     "Fixação da talha e parafusos de fechamento",
                     "Batentes fim de curso",
@@ -18,7 +18,7 @@
                     "Redutor (não aplica)"
                 ]'/>
                 <tr><th colspan="2">TALHA</th><th>500 kg</th></tr>
-                <x-report-element num="7" :descriptions='[
+                <x-report-element :relat="$r" num="7" :descriptions='[
                     "Guia da corrente",
                     "Batedor stop",
                     "Armazenador de corrente",
@@ -31,14 +31,14 @@
                 ]'/>
                 
                 <tr><th colspan="2">REDUTOR</th><th></th></tr>
-                <x-report-element num="16" :descriptions='[
+                <x-report-element :relat="$r" num="16" :descriptions='[
                     "Vazamento de óleo ( retentores, juntas e bujões )",
                     "Nível de óleo (completar se necessário)",
                     "Ruídos e aquecimento anormal",
                     "Reapertar parafusos de fixação"
                 ]'/>
                 <tr><th colspan="2">CORRENTE DE CARGA</th><th></th></tr>
-                <x-report-element num="20" :descriptions='[
+                <x-report-element :relat="$r" num="20" :descriptions='[
                     "Limpeza e lubrificação da corrente",
                     "Corrente prende, salta ou produz ruído",
                     "Amassamentos, estrias, fissuras, respingos de solda, corrosão ou deformação",
@@ -46,7 +46,7 @@
                     "Pino da corrente (se houver fissura, deformação ou desgaste visível, o mesmo deve ser substituido)"
                 ]'/>
                 <tr><th colspan="2" style="padding-top: 1px;">BLOCO INFERIOR</th><th>500 kg</th></tr>
-                <x-report-element num="25" :descriptions='[
+                <x-report-element :relat="$r" num="25" :descriptions='[
                     "Caixa do gancho",
                     "Carretel e rolamentos",
                     "Carcaça quanto à desgastes e trincas",
@@ -67,9 +67,9 @@
         
                 <tr>
                     <td style="width: 5%;">31</td><td colspan="2">Alongamento - Medida de 11 elos</td>
-                    <td>177.8</td><td>180.3</td><td>{{$r->med_elos}}</td>
+                    <td>177.8</td><td>180.3</td><td>{{$r['item31']}}</td>
                 </tr>
-                <tr><td>32</td><td colspan="2">Medida DM-Diâmetro médio do elo</td><td>7.4</td><td>6.7</td><td>{{$r->med_elo}}</td></tr>
+                <tr><td>32</td><td colspan="2">Medida DM-Diâmetro médio do elo</td><td>7.4</td><td>6.7</td><td>{{$r['item32']}}</td></tr>
         
                 <tr><th colspan="6">MEDIÇÕES DO GANCHO INFERIOR (mm)</th></tr>
                 <tr>
@@ -84,17 +84,17 @@
         
                 <tr>
                     <td>33</td>
-                    <td>Medida W1</td><td>41</td><td>45.1</td><td>{{$r->med_w1}}</td>
+                    <td>Medida W1</td><td>41</td><td>45.1</td><td>{{$r['item33']}}</td>
                 </tr>
-                <tr><td>34</td><td>Medida Y</td><td>28</td><td>23.6</td><td>{{$r->med_y}}</td></tr>
-                <tr><td>35</td><td>Alinhamento</td><td colspan="3"><?= $_POST['txt35'] ?? "Não insp."?></td></tr>
+                <tr><td>34</td><td>Medida Y</td><td>28</td><td>23.6</td><td>{{$r['item34']}}</td></tr>
+                <tr><td>35</td><td>Alinhamento</td><td colspan="3">{{$r['item35']}}</td></tr>
             </table>
         </section>
         <section id="eletrica" class="half">
             <table>
                 <tr><th colspan="3">INSPEÇÃO ELÉTRICA</th><tr>
                 <tr><th colspan="2">TALHA</th><th style="width: 20%;"></th></tr>
-                <x-report-element num="36" :descriptions='[
+                <x-report-element :relat="$r" num="36" :descriptions='[
                     "Fixação do painel, tampa e limpeza",
                     "Chave geral, fusíveis e disjuntores",
                     "Motores (medições e aquecimento)",
@@ -109,7 +109,7 @@
                     "Célula de carga (não aplica)"
                 ]'/>
                 <tr><th colspan="2">BOTOEIRA</th><th></th></tr>
-                <x-report-element num="48" :descriptions='[
+                <x-report-element :relat="$r" num="48" :descriptions='[
                     "Funcionamento do botões",
                     "Cabo elétrico e prensa cabo",
                     "Cabo de aço de sustentação e fixação",
@@ -117,13 +117,13 @@
                     "Carcaça e identificão dos botões"
                 ]'/>
                 <tr><th colspan="2">ELETRIFICAÇÃO TRANSVERSAL</th><th></th></tr>
-                <x-report-element num="53" :descriptions='[
+                <x-report-element :relat="$r" num="53" :descriptions='[
                     "Fixação e conservação dos cabos",
                     "Fixações e emendas do perfil da eletrificação",
                     "Carros porta cabos e arrastador"
                 ]'/>
                 <tr><th colspan="2">RÁDIO CONTROLE</th><th></th></tr>
-                <x-report-element num="56" :descriptions='[
+                <x-report-element :relat="$r" num="56" :descriptions='[
                     "Funcionamento e estado dos botões do emissor",
                     "Reaperto de todas as conexões e ligações",
                     "Estado de conservação da carcaça do rádio",
@@ -131,13 +131,13 @@
                     "Sinais luminosos do receptor e transmissor"
                 ]'/>
                 <tr><th colspan="2">LIMITE DE FIM DE CURSO - Elevação</th><th></th></tr>
-                <x-report-element num="61" :descriptions='[
+                <x-report-element :relat="$r" num="61" :descriptions='[
                     "Funcionamento da chave limite",
                     "Cabos ou corrente do pino",
                     "Contatos, molas e articulação"
                 ]'/>
                 <tr><th colspan="2">LIMITE DE FIM DE CURSO - Direção</th><th></th></tr>
-                <x-report-element num="64" :descriptions='[
+                <x-report-element :relat="$r" num="64" :descriptions='[
                     "Funcionamento da chave limite",
                     "Cabos ou corrente do pino",
                     "Contatos, molas e articulação"

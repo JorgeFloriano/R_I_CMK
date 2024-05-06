@@ -1,16 +1,16 @@
 <div>
    @php
        foreach ($descrs as $descr) {
-            if (!isset($_POST['txt'.$i])) {
-                $_POST['txt'.$i] = "Não insp.";
+            if (!isset($r['item'.$i])) {
+                $r['item'.$i] = "Não insp.";
             } else {
-                if ($_POST['txt'.$i] == null || $_POST['txt'.$i] == "") {
-                    $_POST['txt'.$i] = "Não insp.";
+                if ($r['item'.$i] == null || $r['item'.$i] == "") {
+                    $r['item'.$i] = "Não insp.";
                 }
             }
             echo 
             "<tr>
-                <td style='width: 4%;'>".$i."</td><td>".$descr."</td><td>".$_POST['txt'.$i]."</td>
+                <td style='width: 4%;'>".$i."</td><td>".$descr."</td><td>".$r['item'.$i]."</td>
             </tr>";
             $i++;
         }

@@ -115,14 +115,14 @@
                                 </tr>
                                 <tr>
                                     <td>31-Alongam. - Med. 11 elos</td>
-                                    <td>248</td>
-                                    <td>253</td>
+                                    <td>{{$t_e_c->nom_elos}}</td>
+                                    <td>{{$t_e_c->max_elos}}</td>
                                     <td><input class="medido" min="0" step="0.1" type="number" name="txt31" id="id31" value="{{$prev_r_t_e_c->med_elos ?? ''}}"></td>
                                 </tr>
                                 <tr>
                                     <td>32-Diâmetro médio do elo</td>
-                                    <td>7.4</td>
-                                    <td>6.7</td>
+                                    <td>{{$t_e_c->nom_elo}}</td>
+                                    <td>{{$t_e_c->min_elo}}</td>
                                     <td><input class="medido" step="0.1" min="0" type="number" name="txt32" id="id32" value="{{$prev_r_t_e_c->med_elo ?? ''}}"></td>
                                 </tr>
                             </table>
@@ -143,14 +143,14 @@
                                 <tr>
                                     <td rowspan="3"><img src="{{asset('assets/img/gancho.jpg')}}" alt="figura do gancho" width="80px"></td>
                                     <td>33-Medida W1</td>
-                                    <td>41</td>
-                                    <td>45.1</td>
+                                    <td>{{$t_e_c->nom_w1}}</td>
+                                    <td>{{$t_e_c->max_w1}}</td>
                                     <td><input class="medido" min="0" step="0.1" type="number" name="txt33" id="id33" value="{{$prev_r_t_e_c->med_w1 ?? ''}}"></td>
                                 </tr>
                                 <tr>
                                     <td>34-Medida Y</td>
-                                    <td>28</td>
-                                    <td>23.6</td>
+                                    <td>{{$t_e_c->nom_y}}</td>
+                                    <td>{{$t_e_c->min_y}}</td>
                                     <td><input class="medido" step="0.1" min="0" type="number" name="txt34" id="id34" value="{{$prev_r_t_e_c->med_y ?? ''}}"></td>
                                 </tr>
                                 <tr>
@@ -262,7 +262,7 @@
                                     <td colspan="2">Med. banco de resistências (Ohms)</td>
                                     <td>{{$t_e_c->banc_res}}</td>
                                     <td>
-                                        <input class="medido" disabled step="0.1" min="0" type="number" name="txt69" id="id69">
+                                        <input class="medido" step="0.1" min="0" type="number" name="txt69" id="id69">
                                     </td>
                                 </tr>
                                 <tr>
@@ -285,7 +285,7 @@
                                     <td>Tensão freio (VCC)</td>
                                     <td>{{$t_e_c->v_dir_freio}}</td>
                                     <td>
-                                        <input class="medido" disabled step="0.1" min="0" type="number" name="txt70_3" id="id70_3">
+                                        <input class="medido" step="0.1" min="0" type="number" name="txt70_3" id="id70_3">
                                     </td>
                                 </tr>
                                 <tr>
@@ -370,11 +370,11 @@
                             <p><b>APONTAMENTO DO TÉCNICO 1</b></p>
                             <div class="itInfTec">
                                 <label class="ltec" for="tec1Name">Nome: </label>
-                                <input class="itec" type="text" name="txtTec1Name" id="tec1Name" required>
+                                <input class="itec" type="text" name="txtTec1Name" id="tec1Name">
                             </div>
                             <div class="itInfTec">
                                 <label class="ltec" for="tec1Func">Função: </label>
-                                <input class="itec" type="text" name="txtTec1Func" id="tec1Func" required>
+                                <input class="itec" type="text" name="txtTec1Func" id="tec1Func">
                             </div>
                             <div class="itInfTec">
                                 <label class="ltec" for="tec1data">Data: </label>

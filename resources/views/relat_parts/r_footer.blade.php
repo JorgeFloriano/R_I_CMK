@@ -7,13 +7,13 @@
         <td rowspan="5" style="width: 150px;"></td>
     </tr>
     <tr>
-        <td>Nome:{{$e->id}}</td>
+        <td>Nome:{{$r['n_tec1']}}</td>
         <td style="width: 150px;" rowspan="4">
-            <img src={{$e->id}} alt="imagem" width="100%">
+            <img src={{$r['sign_tec1']}} alt="imagem" width="100%">
         </td>
-        <td>Nome:{{$e->id}}</td>
+        <td>Nome:{{$r['n_tec2']}}</td>
         <td style="width: 150px;" rowspan="4">
-            <img src={{$e->id}} alt="imagem" width="100%">
+            <img src={{$r['sign_tec2']}} alt="imagem" width="100%">
         </td>
     </tr>
     <tr><td>Função:{{$e->id}}</td><td>Função:{{$e->id}}</td></tr>

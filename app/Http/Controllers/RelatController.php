@@ -8,6 +8,7 @@ use App\Models\Equipamento;
 use App\Models\Justificativa;
 use App\Models\Relatorio;
 use App\Models\T_e_c_relatorio;
+use Symfony\Component\VarDumper\VarDumper;
 
 class RelatController extends Controller
 {
@@ -112,15 +113,16 @@ class RelatController extends Controller
         $prev_r_t_e_c = Relatorio::find($prev_relat->id ?? 0)->talEleCorr ?? 0;
 
         // Pendings
-        $justs = Relatorio::find($prev_relat->id ?? 0)->justifs;
+        $justs = Relatorio::find($prev_relat->id ?? 0)->justifs ?? null;
 
-        //dd($justs);
-        $j = [];
-        foreach ($justs as $just) {
-            $j += 
-                [$just->num_item => $just->descricao]
-            ;
-        };
+        if (isset($justs)) {
+            $j = [];
+            foreach ($justs as $just) {
+                $j += 
+                    [$just->num_item => $just->descricao]
+                ;
+            };
+        }
 
         // return relatorio form eletric chain hoist report
         $data = [
@@ -129,7 +131,7 @@ class RelatController extends Controller
             'relat' => $relat,
             't_e_c' => $t_e_c,
             'prev_r_t_e_c' => $prev_r_t_e_c ?? '', // previous report
-            'j' => $j,
+            'j' => $j ?? null,
         ];
         return view('relatorio_form', $data);
     }
@@ -141,11 +143,11 @@ class RelatController extends Controller
 
         $equip = Relatorio::find($r_id)->equipamento; // equipment data (header)
 
-        $relat = Relatorio::find($r_id); // report data (parent class)
-
-        $r_t_e_c = Relatorio::find($r_id)->talEleCorr; // report data (child class)
+        $relat = Relatorio::where('finalizado', 0)->find($r_id); // report data (parent class)
 
         $d_t_e_c = Equipamento::find($equip->id)->talEleCorr; // eletric chain hoist data (nominal and limit)
+
+        $r_t_e_c = Relatorio::find($r_id)->talEleCorr; // report data (child class)
 
         // Saving pending issues in the database
         for ($i=1; $i < 67; $i++) { 
@@ -161,15 +163,42 @@ class RelatController extends Controller
 
         $justs = Relatorio::find($r_id)->justifs; // Justification for pending issues
 
-        $r_t_e_c->med_elos = $request->input('txt31');
-        $r_t_e_c->med_elo = $request->input('txt32');
-        $r_t_e_c->med_w1 = $request->input('txt33');
-        $r_t_e_c->med_y = $request->input('txt34');
+        // Saving the form data in the database
+        for ($i=1; $i < 67; $i++) { 
+            T_e_c_relatorio::where('relatorio_id', $relat->id)->update(['item'.$i => $request->input('txt'.$i)]);
+        }
+
+        $r_t_e_c->v_rede = $request->txt67;
+        $r_t_e_c->v_com = $request->txt68;
+        $r_t_e_c->banc_res = $request->txt69;
+        $r_t_e_c->corr_dir_alta = $request->txt70;
+        $r_t_e_c->corr_dir_baixa = $request->txt70_2;
+        $r_t_e_c->v_dir_freio = $request->txt70_3;
+        $r_t_e_c->corr_el_alta = $request->txt71;
+        $r_t_e_c->corr_el_baixa = $request->txt71_2;
+        $r_t_e_c->v_el_freio = $request->txt71_3;
+        $r_t_e_c->stat_insp = $request->status;
+        $r_t_e_c->stat_equip = $request->apto;
+        $r_t_e_c->ressalva = $request->txtRessalvas;
+        $r_t_e_c->n_tec1 = $request->txtTec1Name;
+        $r_t_e_c->f_tec1 = $request->txtTec1Func;
+        $r_t_e_c->d_tec1 = $request->txtTec1Data;
+        $r_t_e_c->h_i_tec1 = $request->txtTec1HI;
+        $r_t_e_c->h_f_tec1 = $request->txtTec1HF;
+        $r_t_e_c->sign_tec1 = $request->signTec1;
+        $r_t_e_c->n_tec2 = $request->txtTec2Name;
+        $r_t_e_c->f_tec2 = $request->txtTec2Func;
+        $r_t_e_c->d_tec2 = $request->txtTec2Data;
+        $r_t_e_c->h_i_tec2 = $request->txtTec2HI;
+        $r_t_e_c->h_f_tec2 = $request->txtTec2HF;
+        $r_t_e_c->sign_tec2 = $request->signTec2;
         $r_t_e_c->save();
+        
+        //$c = new MyClass();
 
+        $r_t_e_c = Relatorio::find($relat->id)->talEleCorr; // report data updated (child class)
 
-
-        $c = new MyClass();
+        $r_t_e_c = $r_t_e_c->toArray();
 
         $data = [
             'e' => $equip,
