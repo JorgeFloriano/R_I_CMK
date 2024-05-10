@@ -13,11 +13,10 @@ return new class extends Migration
     {
         Schema::create('pendencias', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('equipamento_id');
-            $table->bigInteger('relatorio_id');
+            $table->bigInteger('created_r_i');
             $table->integer('num_item');
-            $table->tinyInteger('status_item');
             $table->string('descricao');
+            $table->string('solucao');
             $table->dateTime('created_at')->nullable();
             $table->dateTime('updated_at')->nullable();
             $table->dateTime('deleted_at')->nullable();

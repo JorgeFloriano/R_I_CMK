@@ -11,8 +11,8 @@ class Pendencia extends Model
     protected $primaryKey = 'id';
     use SoftDeletes;
     
-    public function relatorio() {
-        return $this->belongsTo('App\Models\Relatorio');
+    public function relatorios() {
+        return $this->belongsToMany('App\Models\Relatorio');
     }
 }
 

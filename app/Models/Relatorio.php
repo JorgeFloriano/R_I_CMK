@@ -19,7 +19,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
         return $this->hasOne('App\Models\T_e_c_relatorio');
     }
 
-    public function pends() {
-        return $this->hasMany('App\Models\Pendencia');
+    public function pendencias() {
+        return $this->belongsToMany('App\Models\Pendencia');
     }
 }

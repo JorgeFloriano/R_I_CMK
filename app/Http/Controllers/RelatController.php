@@ -18,7 +18,7 @@ class RelatController extends Controller
 
         //return view('test');
 
-        $num =1; // id do relatorio
+        $num =2; // id do relatorio
 
         $equip = Relatorio::find($num)->equipamento; // equipment data (header)
 
@@ -28,7 +28,36 @@ class RelatController extends Controller
 
         $dadosEqup = Equipamento::find($equip->id)->talEleCorr; // eletric chain hoist data (nominal and limit)
 
-        $just = Relatorio::find($num)->pends()->where('num_item', 29)->first(); // Justification for pending issues
+
+
+
+
+        $n = 4;
+        $pends = Relatorio::find($n)->pendencias()->orderBy('num_item', 'asc')->get(); // Pending issues from report
+
+        echo '<h2>Pendências do relatorio nº '.$n.'</h2>';
+        
+        if (isset($pends)) {
+            $pend_list = [];
+            foreach ($pends as $pend) {
+                $pend_list += 
+                    [$pend->num_item => $pend->descricao]
+                ;
+            };
+        }
+        echo '<pre>';
+        print_r($pend_list);
+
+        die;
+
+
+
+
+
+
+        $rel = Pendencia::find(10)->relatorios; // Justification for pending issues
+
+        //dd($pends);
 
         echo '<h2>DADOS DO RELATÓRIO NÚMERO '.$num.'</h2>';
         echo "Mês da programação (falta formatar a data para mês): ".$relat->mes.'<br>'.
@@ -45,7 +74,7 @@ class RelatController extends Controller
         Nominal: '.$dadosEqup->nom_y.' / Máximo: '.$dadosEqup->min_y.' / Medido: '.$talEleCorr->med_y.'<br>'
         ;
 
-        echo '<h3>Pendência do ítem 29 (trava de gancho)</h3>'. $just->descricao;
+        //echo '<h3>Pendência do ítem 29 (trava de gancho)</h3>'. $justs->descricao;
 
         //-------------------------------------------------------
         $num = 1;
