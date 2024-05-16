@@ -40,9 +40,9 @@ class RelatController extends Controller
         if (isset($pends)) {
             $pend_list = [];
             foreach ($pends as $pend) {
-                $pend_list += 
-                    [$pend->num_item => $pend->descricao]
-                ;
+                if (!isset($pend->solucao)) {
+                    $pend_list += [$pend->num_item => $pend];
+                }
             };
         }
         echo '<pre>';
