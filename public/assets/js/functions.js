@@ -2,15 +2,17 @@
 function check(c1, ch, c2, u1, c3, u2, opt, obs, txt, just) {
    var col = document.getElementById(c1).style.color;
    var che = document.getElementById(ch).checked;
+   const blue = "rgb(41, 50, 184)";
+   const gray = "rgb(198, 194, 194)";
   
-   document.getElementById(c2).style.color = "rgb(198, 194, 194)";
+   document.getElementById(c2).style.color = gray;
    document.getElementById(u1).checked = false;
-   document.getElementById(c3).style.color = "rgb(198, 194, 194)";
+   document.getElementById(c3).style.color = gray;
    document.getElementById(u2).checked = false;
    if ( opt == 'ok') {
       document.getElementById(txt).required = false;
       document.getElementById(obs).style.display = 'none';
-      document.getElementById(txt).placeholder = "Ítens substituídos ou recuperados devem ser justificados !!";
+      document.getElementById(txt).placeholder = "Desceva como a pendência foi solucionada!";
       //document.getElementById(txt).value = '';
    } if (opt == 'tr') {
       document.getElementById(obs).style.display = 'block';
@@ -24,19 +26,21 @@ function check(c1, ch, c2, u1, c3, u2, opt, obs, txt, just) {
       document.getElementById(txt).required = true;
       document.getElementById(txt).placeholder = "Razão da recomendação para reparação do ítem";
    }
-   if(che == true && col == "rgb(41, 50, 184)") {
-      document.getElementById(c1).style.color = "rgb(198, 194, 194)";
+   if(che == true && col == blue) {
+      document.getElementById(c1).style.color = gray;
       document.getElementById(ch).checked = false;
       document.getElementById(txt).required = false;
       document.getElementById(obs).style.display = 'none';
       //document.getElementById(txt).value = '';
    } else {
-      document.getElementById(c1).style.color = "rgb(41, 50, 184)";
+      document.getElementById(c1).style.color = blue;
       document.getElementById(ch).checked = true;
    }
    if (document.getElementById(txt).value != '' || just != '') {
       document.getElementById(obs).style.display = 'block';
       document.getElementById(txt).required = true;
+      document.getElementById(txt).placeholder = "Descreva a tualização da pendência anterior!";
+      document.getElementById(obs).style.background = 'rgb(243, 243, 134';
    }
 }
 

@@ -29,11 +29,9 @@ class RelatController extends Controller
         $dadosEqup = Equipamento::find($equip->id)->talEleCorr; // eletric chain hoist data (nominal and limit)
 
 
-
-
-
+         // Pending issues from report
         $n = 4;
-        $pends = Relatorio::find($n)->pendencias()->orderBy('num_item', 'asc')->get(); // Pending issues from report
+        $pends = Relatorio::find($n)->pendencias()->orderBy('num_item', 'asc')->get();
 
         echo '<h2>Pendências do relatorio nº '.$n.'</h2>';
         
@@ -49,8 +47,6 @@ class RelatController extends Controller
         print_r($pend_list);
 
         die;
-
-
 
 
 
@@ -142,41 +138,22 @@ class RelatController extends Controller
         $prev_r_t_e_c = Relatorio::find($prev_relat->id ?? 0)->talEleCorr ?? 0;
 
         // Preparing list of pendings
-        $pends = Equipamento::find($equip->id)->pends;
-
-        dd($pends);
-
-        echo '<h2>RELATÓRIOS DO EQUIPAMENTO Nº CMK '.$equip->id.'</h2>';
-
-        $id_r_list = [];
-        foreach ($pends as $relat) {
-            echo 'Relatório Nº: '.$relat->id.'<br>
-            finalizado: '. $relat->finalizado.'<br><br>';
-            if ($relat->finalizado == 1) {
-                array_push($id_r_list, $relat->id);
-            }
-        };
-
-        $pend_list = [];
-        foreach ($id_r_list as $id_r) {
-            $pend = Relatorio::find($id_r)->justifs;
-            if (isset($pend)) {
-                $pend_list[$id_r] = $pend;
-            }
+        $pends = Relatorio::find($prev_relat->id ?? 0)->pendencias ?? null;
+        if (isset($pends)) {
+            $pends = Relatorio::find($prev_relat->id ?? 0)->pendencias()->orderBy('num_item', 'asc')->get();    
         }
-        dd($pend_list);
-
-        // Pendings
-        $justs = Relatorio::find($prev_relat->id ?? 0)->justifs ?? null;
-
-        if (isset($justs)) {
-            $j = [];
-            foreach ($justs as $just) {
-                $j += 
-                    [$just->num_item => $just->descricao]
-                ;
-            };
+        
+        if (isset($pends)) {
+            $pend_list = [];
+            foreach ($pends as $pend) {
+                if (!isset($pend->solucao)) {
+                    $pend_list += [$pend->num_item => $pend];
+                }
+            }
+            $pends = $pend_list;
         }
+
+        //dd($pends);
 
         // return relatorio form eletric chain hoist report
         $data = [
@@ -184,8 +161,8 @@ class RelatController extends Controller
             'equip' => $equip,
             'relat' => $relat,
             't_e_c' => $t_e_c,
-            'prev_r_t_e_c' => $prev_r_t_e_c ?? '', // previous report
-            'j' => $j ?? null,
+            'prev_r_t_e_c' => $prev_r_t_e_c ?? null, // previous report
+            'pends' => $pends ?? null,
         ];
         return view('relatorio_form', $data);
     }
@@ -215,7 +192,7 @@ class RelatController extends Controller
             }
         }
 
-        $justs = Relatorio::find($r_id)->justifs; // Justification for pending issues
+        $justs = Relatorio::find($r_id)->pendencias()->orderBy('num_item')->get(); // Justification for pending issues
 
         // Saving the form data in the database
         for ($i=1; $i < 67; $i++) { 
@@ -267,3 +244,39 @@ class RelatController extends Controller
 
     }
 }
+
+        // $pends = Equipamento::find($equip->id)->pends;
+
+        // dd($pends);
+
+        // echo '<h2>RELATÓRIOS DO EQUIPAMENTO Nº CMK '.$equip->id.'</h2>';
+
+        // $id_r_list = [];
+        // foreach ($pends as $relat) {
+        //     echo 'Relatório Nº: '.$relat->id.'<br>
+        //     finalizado: '. $relat->finalizado.'<br><br>';
+        //     if ($relat->finalizado == 1) {
+        //         array_push($id_r_list, $relat->id);
+        //     }
+        // };
+
+        // $pend_list = [];
+        // foreach ($id_r_list as $id_r) {
+        //     $pend = Relatorio::find($id_r)->justifs;
+        //     if (isset($pend)) {
+        //         $pend_list[$id_r] = $pend;
+        //     }
+        // }
+        // dd($pend_list);
+
+        // // Pendings
+        // $justs = Relatorio::find($prev_relat->id ?? 0)->justifs ?? null;
+
+        // if (isset($justs)) {
+        //     $j = [];
+        //     foreach ($justs as $just) {
+        //         $j += 
+        //             [$just->num_item => $just->descricao]
+        //         ;
+        //     };
+        // }

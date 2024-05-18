@@ -56,49 +56,141 @@
                         <input type="text" class="form-control" placeholder="Ex.: W-E 08" aria-label="Ex.: W-E 08" aria-describedby="lblSet" id="idSet" name="txtSet">
                     </div>
 
-                    <div class="input-group mb-2">
-                        <label for="idAlim" class="input-group-text" id="lblAlim">Tensão de rede (V):</label>
-                        <input type="number" class="form-control" placeholder="Ex.: 440" aria-label="Ex.: 440" aria-describedby="lblAlim" id="idAlim" name="txtAlim">
+                    <hr>
+
+                    <div><strong>VALORES DAS GRANDEZAS ELÉTRICAS</strong></div>
+
+                    <div class="row g-2">
+                        <div class="col-4">
+                            <label for="idAlim" id="lblAlim">Rede (V)</label>
+                        </div>
+                        <div class="col-4">
+                            <label for="idCom" id="lblCom">Comando( V)</label>
+                        </div>
+                        <div class="col-4">
+                            <label for="idRes" id="lblRes">B. Res. (&#8486;)</label>
+                        </div>
                     </div>
 
-                    <div class="input-group mb-2">
-                        <label for="idCom" class="input-group-text" id="lblCom">Tensão de comando (V):</label>
-                        <input type="number" class="form-control" placeholder="Ex.: 24" aria-label="Ex.: 24" aria-describedby="lblCom" id="idCom" name="txtCom">
+                    <div class="row mb-3 g-2">
+                        <div class="col-4">
+                            <input type="number" class="form-control" placeholder="Ex.: 440" aria-label="Ex.: 440" aria-describedby="lblAlim" id="idAlim" name="txtAlim">
+                        </div>
+                        <div class="col-4">
+                            <input type="number" class="form-control" placeholder="Ex.: 24" aria-label="Ex.: 24" aria-describedby="lblCom" id="idCom" name="txtCom">
+                        </div>
+                        <div class="col-4">
+                            <input type="number" class="form-control" placeholder="Ex.: 50" aria-label="Ex.: 50" aria-describedby="lblRes" id="idRes" name="txtRes">
+                        </div>
                     </div>
 
-                    <div class="input-group mb-2">
-                        <label for="idRes" class="input-group-text" id="lblRes">Banco de resist. (Ohms):</label>
-                        <input type="number" class="form-control" placeholder="Ex.: 50" aria-label="Ex.: 50" aria-describedby="lblRes" id="idRes" name="txtRes">
+                    <div>MOTOR DE DIREÇÃO</div>
+
+                    <div class="row g-2">
+                        <div class="col-4">
+                            <label for="idDirAlta" id="lblDirAlta">Cor. Alta (A)</label>
+                        </div>
+                        <div class="col-4">
+                            <label for="idDirBaixa" id="lblDirBaixa">Cor. Baixa (A)</label>
+                        </div>
+                        <div class="col-4">
+                            <label for="idTenFreDir" id="lblTenFreDir">Freio (V)</label>
+                        </div>
                     </div>
 
-                    <div class="input-group mb-2">
-                        <label for="idDirAlta" class="input-group-text" id="lblDirAlta">Corr. direção vel. alta (A):</label>
-                        <input type="number" step="0.1" class="form-control" placeholder="Ex.: 1.1" aria-label="Ex.: 1.1" aria-describedby="lblDirAlta" id="idDirAlta" name="txtDirAlta">
+                    <div class="row mb-3 g-2">
+                        <div class="col-4">
+                            <input type="number" step="0.1" class="form-control" placeholder="Ex.: 1.1" aria-label="Ex.: 1.1" aria-describedby="lblDirAlta" id="idDirAlta" name="txtDirAlta">
+                        </div>
+                        <div class="col-4">
+                            <input type="number" step="0.1" class="form-control" placeholder="Ex.: 0.8" aria-label="Ex.: 0.8" aria-describedby="lblDirBaixa" id="idDirBaixa" name="txtDirBaixa">
+                        </div>
+                        <div class="col-4">
+                            <input type="number" step="0.1" class="form-control" placeholder="Ex.: 220" aria-label="Ex.: 220" aria-describedby="lblTenFreDir" id="idTenFreDir" name="txtTenFreDir">
+                        </div>
                     </div>
 
-                    <div class="input-group mb-2">
-                        <label for="idDirBaixa" class="input-group-text" id="lblDirBaixa">Corr. direção vel. baixa (A):</label>
-                        <input type="number" step="0.1" class="form-control" placeholder="Ex.: 0.8" aria-label="Ex.: 0.8" aria-describedby="lblDirBaixa" id="idDirBaixa" name="txtDirBaixa">
+                    <div>MOTOR DE ELEVAÇÃO</div>
+
+                    <div class="row g-2">
+                        <div class="col-4">
+                            <label for="idElevAlta" id="lblElevAlta">Cor. Alta (A)</label>
+                        </div>
+                        <div class="col-4">
+                            <label for="idElevBaixa" id="lblElevBaixa">Cor. Baixa (A)</label>
+                        </div>
+                        <div class="col-4">
+                            <label for="idTenFreElev" id="lblTenFreElev">Freio (V)</label>
+                        </div>
                     </div>
 
-                    <div class="input-group mb-2">
-                        <label for="idTenFreDir" class="input-group-text" id="lblTenFreDir">Tensão freio da direção (V):</label>
-                        <input type="number" class="form-control" placeholder="Ex.: 220" aria-label="Ex.: 220" aria-describedby="lblTenFreDir" id="idTenFreDir" name="txtTenFreDir">
+                    <div class="row mb-3 g-2">
+                        <div class="col-4">
+                            <input type="number" step="0.1" class="form-control" placeholder="Ex.: 2.8" aria-label="Ex.: 2.8" aria-describedby="lblElevAlta" id="idElevAlta" name="txtElevAlta">
+                        </div>
+                        <div class="col-4">
+                            <input type="number" step="0.1" class="form-control" placeholder="Ex.: 1.8" aria-label="Ex.: 1.8" aria-describedby="lblElevBaixa" id="idElevBaixa" name="txtElevBaixa">
+                        </div>
+                        <div class="col-4">
+                            <input type="number" step="0.1" class="form-control" placeholder="Ex.: 220" aria-label="Ex.: 220" aria-describedby="lblTenFreElev" id="idTenFreElev" name="txtTenFreElev">
+                        </div>
+                    </div>
+                    <hr>
+
+                    <div><strong>REFERÊNCIA PARA MEDIÇÕES MECÂNICAS</strong></div>
+
+                    <div class="row g-2">
+                        <div class="col-4"></div>
+                        <div class="col-4">Nominal</div>
+                        <div class="col-4">Limite</div>
                     </div>
 
-                    <div class="input-group mb-2">
-                        <label for="idElevAlta" class="input-group-text" id="lblElevAlta">Corr. Elevação vel. alta (A):</label>
-                        <input type="number" step="0.1" class="form-control" placeholder="Ex.: 2.8" aria-label="Ex.: 2.8" aria-describedby="lblElevAlta" id="idElevAlta" name="txtElevAlta">
+                    <div class="row mb-2 g-2">
+                        <div class="col-4">
+                            Med. 11 elos
+                        </div>
+                        <div class="col-4">
+                            <input type="number" step="0.1" class="form-control" placeholder="Ex.: 177.8" aria-label="Ex.: 177.8"  id="idNomElos" name="txtNomElos">
+                        </div>
+                        <div class="col-4">
+                            <input type="number" step="0.1" class="form-control" placeholder="Ex.: 178.3" aria-label="Ex.: 178.3"  id="idMaxElos" name="txtMaxElos">
+                        </div>
                     </div>
 
-                    <div class="input-group mb-2">
-                        <label for="idElevBaixa" class="input-group-text" id="lblElevBaixa">Corr. Elevação vel. baixa (A):</label>
-                        <input type="number" step="0.1" class="form-control" placeholder="Ex.: 1.8" aria-label="Ex.: 1.8" aria-describedby="lblElevBaixa" id="idElevBaixa" name="txtElevBaixa">
+                    <div class="row mb-2 g-2">
+                        <div class="col-4">
+                            Diâmetro elo
+                        </div>
+                        <div class="col-4">
+                            <input type="number" step="0.1" class="form-control" placeholder="Ex.: 5.3" aria-label="Ex.: 5.3"  id="idNomElo" name="txtNomElo">
+                        </div>
+                        <div class="col-4">
+                            <input type="number" step="0.1" class="form-control" placeholder="Ex.: 4.8" aria-label="Ex.: 4.8"  id="idMinElo" name="txtMinElo">
+                        </div>
                     </div>
 
-                    <div class="input-group mb-2">
-                        <label for="idTenFreElev" class="input-group-text" id="lblTenFreElev">Tensão freio da Elevação (V):</label>
-                        <input type="number" class="form-control" placeholder="Ex.: 220" aria-label="Ex.: 220" aria-describedby="lblTenFreElev" id="idTenFreElev" name="txtTenFreElev">
+                    <div class="row mb-2 g-2">
+                        <div class="col-4">
+                            Medida W1
+                        </div>
+                        <div class="col-4">
+                            <input type="number" step="0.1" class="form-control" placeholder="Ex.: 36" aria-label="Ex.: 36"  id="idNomW1" name="txtNomW1">
+                        </div>
+                        <div class="col-4">
+                            <input type="number" step="0.1" class="form-control" placeholder="Ex.: 39.6" aria-label="Ex.: 39.6"  id="idMaxW1" name="txtMaxW1">
+                        </div>
+                    </div>
+
+                    <div class="row mb-2 g-2">
+                        <div class="col-4">
+                            Medida Y
+                        </div>
+                        <div class="col-4">
+                            <input type="number" step="0.1" class="form-control" placeholder="Ex.: 24" aria-label="Ex.: 24"  id="idNomY" name="txtNomY">
+                        </div>
+                        <div class="col-4">
+                            <input type="number" step="0.1" class="form-control" placeholder="Ex.: 21.6" aria-label="Ex.: 21.6"  id="idMinY" name="txtMinY">
+                        </div>
                     </div>
 
                     <div style="margin: 10px 0px;">
