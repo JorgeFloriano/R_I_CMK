@@ -40,6 +40,7 @@
                         @csrf
 
                         <input type="hidden" name="txtRelatId" value="{{$relat->id}}">
+                        <input type="hidden" name="txtPrevRelatId" value="{{$prev_relat_id}}">
 
                         <section id="insp" class="insp">
                             INSPEÇÃO MECÂNICA

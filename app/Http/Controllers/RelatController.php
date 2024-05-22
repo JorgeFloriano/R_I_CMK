@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Equipamento;
 use App\Models\Pendencia;
 use App\Models\Relatorio;
+use App\Models\PendenciaRelatorio;
 use App\Models\T_e_c_relatorio;
 use Symfony\Component\VarDumper\VarDumper;
 
@@ -163,6 +164,7 @@ class RelatController extends Controller
             't_e_c' => $t_e_c,
             'prev_r_t_e_c' => $prev_r_t_e_c ?? null, // previous report
             'pends' => $pends ?? null,
+            'prev_relat_id' => $prev_relat->id ?? null
         ];
         return view('relatorio_form', $data);
     }
@@ -172,6 +174,8 @@ class RelatController extends Controller
 
         $r_id = $request->txtRelatId;
 
+        $p_r_id = $request->txtPrevRelatId;
+
         $equip = Relatorio::find($r_id)->equipamento; // equipment data (header)
 
         $relat = Relatorio::where('finalizado', 0)->find($r_id); // report data (parent class)
@@ -180,15 +184,36 @@ class RelatController extends Controller
 
         $r_t_e_c = Relatorio::find($r_id)->talEleCorr; // report data (child class)
 
-        // Saving pending issues in the database
+        // Updated pending issues in the database
         for ($i=1; $i < 67; $i++) { 
+
             $just = $request->input('txtJust'.$i);
-            if (isset($just) || $just != '') {
-                $j = new Pendencia();
-                $j->relatorio_id = $r_id;
-                $j->num_item = $i;
-                $j->descricao = $just;
-                $j->save();
+            $stat = $request->input('txt'.$i);
+
+            // Pending according according to item number
+            $pend = Relatorio::find($p_r_id)->pendencias()->where('num_item', $i)->get();
+
+            $pend_rel = new PendenciaRelatorio();
+
+
+            if ((isset($just) || $just != '') && $stat == 'Ok') {
+
+                $pend[0]->solucao = $just;
+                $pend[0]->save();
+
+                $pend_rel->pendencia_id = $pend[0]->id;
+                $pend_rel->relatorio_id = $r_id;
+                $pend_rel->save();
+
+
+
+                //dd($pend[0]->solucao);
+                
+                // $j = new Pendencia();
+                // $j->relatorio_id = $r_id;
+                // $j->num_item = $i;
+                // $j->descricao = $just;
+                // $j->save();
             }
         }
 
