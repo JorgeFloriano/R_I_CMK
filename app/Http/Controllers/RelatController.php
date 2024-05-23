@@ -172,9 +172,9 @@ class RelatController extends Controller
     //-------------------------------------------------------------------------------------
     public function relat_form_submit(Request $request) {
 
-        $r_id = $request->txtRelatId;
+        $r_id = $request->txtRelatId; // Report id
 
-        $p_r_id = $request->txtPrevRelatId;
+        $p_r_id = $request->txtPrevRelatId; // Previous report id
 
         $equip = Relatorio::find($r_id)->equipamento; // equipment data (header)
 
@@ -190,32 +190,56 @@ class RelatController extends Controller
             $just = $request->input('txtJust'.$i);
             $stat = $request->input('txt'.$i);
 
-            // Pending according according to item number
+            // Previous item pending issues
             $pend = Relatorio::find($p_r_id)->pendencias()->where('num_item', $i)->get();
 
+            // Pivot table
             $pend_rel = new PendenciaRelatorio();
 
+            // If there is previous pending issue
+            if (isset($pend)) {
 
-            if ((isset($just) || $just != '') && $stat == 'Ok') {
+                // If there is justification
+                if (isset($just) && $just != '') {
 
-                $pend[0]->solucao = $just;
-                $pend[0]->save();
+                    // If item status is Ok
+                    if ($stat == 'Ok') {
 
-                $pend_rel->pendencia_id = $pend[0]->id;
-                $pend_rel->relatorio_id = $r_id;
-                $pend_rel->save();
+                        $pend[0]->solucao = $just;
+                        $pend[0]->save();
 
+                        $pend_rel->pendencia_id = $pend[0]->id;
+                        $pend_rel->relatorio_id = $r_id;
+                        $pend_rel->save();
 
+                    // If item status is not ok
+                    } else {
 
-                //dd($pend[0]->solucao);
-                
-                // $j = new Pendencia();
-                // $j->relatorio_id = $r_id;
-                // $j->num_item = $i;
-                // $j->descricao = $just;
-                // $j->save();
+                        // If the justification is not changed
+                        if ($pend[0]->descricao == $just) {
+
+                            $pend_rel->pendencia_id = $pend[0]->id;
+                            $pend_rel->relatorio_id = $r_id;
+                            $pend_rel->save();
+
+                        // If the justification was changed
+                        } else {
+
+                            $pend = new Pendencia();
+                            $pend->created_r_i = $r_id;
+                            $pend->num_item = $i;
+                            $pend->descricao = $just;
+                            $pend->save();
+
+                            $pend_rel->pendencia_id = $pend->id;
+                            $pend_rel->relatorio_id = $r_id;
+                            $pend_rel->save();
+                        }
+                    }
+                }   
             }
-        }
+        }    
+
 
         $justs = Relatorio::find($r_id)->pendencias()->orderBy('num_item')->get(); // Justification for pending issues
 
@@ -304,4 +328,4 @@ class RelatController extends Controller
         //             [$just->num_item => $just->descricao]
         //         ;
         //     };
-        // }
+        
