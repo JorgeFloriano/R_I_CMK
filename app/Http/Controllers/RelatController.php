@@ -197,7 +197,7 @@ class RelatController extends Controller
             $pend_rel = new PendenciaRelatorio();
 
             // If there is previous pending issue
-            if (isset($pend)) {
+            if (isset($pend[0])) {
 
                 // If there is justification
                 if (isset($just) && $just != '') {
@@ -208,35 +208,69 @@ class RelatController extends Controller
                         $pend[0]->solucao = $just;
                         $pend[0]->save();
 
-                        $pend_rel->pendencia_id = $pend[0]->id;
-                        $pend_rel->relatorio_id = $r_id;
-                        $pend_rel->save();
-
+                        $pend_rel_exists = PendenciaRelatorio::where('pendencia_id', $pend[0]->id)->where('relatorio_id', $r_id)->get();
+                        if (!isset($pend_rel_exists[0])) {
+                            $pend_rel->pendencia_id = $pend[0]->id;
+                            $pend_rel->relatorio_id = $r_id;
+                            $pend_rel->save();
+                        }
+                        
                     // If item status is not ok
                     } else {
 
                         // If the justification is not changed
                         if ($pend[0]->descricao == $just) {
 
-                            $pend_rel->pendencia_id = $pend[0]->id;
-                            $pend_rel->relatorio_id = $r_id;
-                            $pend_rel->save();
+                            $pend_rel_exists = PendenciaRelatorio::where('pendencia_id', $pend[0]->id)->where('relatorio_id', $r_id)->get();
+                            if (!isset($pend_rel_exists[0])) {
+                                $pend_rel->pendencia_id = $pend[0]->id;
+                                $pend_rel->relatorio_id = $r_id;
+                                $pend_rel->save();
+                            }
 
                         // If the justification was changed
                         } else {
 
-                            $pend = new Pendencia();
-                            $pend->created_r_i = $r_id;
-                            $pend->num_item = $i;
-                            $pend->descricao = $just;
-                            $pend->save();
+                            $pend_exists = Pendencia::where('created_r_i', $r_id)->where('num_item', $i)->get();
+                            if (!isset($pend_exists[0])) {
+                                $pend = new Pendencia();
+                                $pend->created_r_i = $r_id;
+                                $pend->num_item = $i;
+                                $pend->descricao = $just;
+                                $pend->save();
+                            }
 
-                            $pend_rel->pendencia_id = $pend->id;
-                            $pend_rel->relatorio_id = $r_id;
-                            $pend_rel->save();
+                            $pend_rel_exists = PendenciaRelatorio::where('pendencia_id', $pend->id)->where('relatorio_id', $r_id)->get();
+                            if (!isset($pend_rel_exists[0])) {
+                                $pend_rel->pendencia_id = $pend->id;
+                                $pend_rel->relatorio_id = $r_id;
+                                $pend_rel->save();
+                            }
                         }
                     }
                 }   
+
+            // If there is not previous pending issue
+            } else {
+
+                if (isset($just) && $just != '' && $stat != 'Ok') {
+
+                    $pend_exists = Pendencia::where('created_r_i', $r_id)->where('num_item', $i)->get();
+                    if (!isset($pend_exists[0])) {
+                        $pend = new Pendencia();
+                        $pend->created_r_i = $r_id;
+                        $pend->num_item = $i;
+                        $pend->descricao = $just;
+                        $pend->save();
+                    }
+
+                    // If New pending issue was created
+                    if(isset($pend->id)) {
+                        $pend_rel->pendencia_id = $pend->id;
+                        $pend_rel->relatorio_id = $r_id;
+                        $pend_rel->save();
+                    }
+                }
             }
         }    
 
@@ -293,39 +327,3 @@ class RelatController extends Controller
 
     }
 }
-
-        // $pends = Equipamento::find($equip->id)->pends;
-
-        // dd($pends);
-
-        // echo '<h2>RELATÓRIOS DO EQUIPAMENTO Nº CMK '.$equip->id.'</h2>';
-
-        // $id_r_list = [];
-        // foreach ($pends as $relat) {
-        //     echo 'Relatório Nº: '.$relat->id.'<br>
-        //     finalizado: '. $relat->finalizado.'<br><br>';
-        //     if ($relat->finalizado == 1) {
-        //         array_push($id_r_list, $relat->id);
-        //     }
-        // };
-
-        // $pend_list = [];
-        // foreach ($id_r_list as $id_r) {
-        //     $pend = Relatorio::find($id_r)->justifs;
-        //     if (isset($pend)) {
-        //         $pend_list[$id_r] = $pend;
-        //     }
-        // }
-        // dd($pend_list);
-
-        // // Pendings
-        // $justs = Relatorio::find($prev_relat->id ?? 0)->justifs ?? null;
-
-        // if (isset($justs)) {
-        //     $j = [];
-        //     foreach ($justs as $just) {
-        //         $j += 
-        //             [$just->num_item => $just->descricao]
-        //         ;
-        //     };
-        
