@@ -15,10 +15,10 @@
                 <i onclick="check('i{{$i}}T', '{{$i}}_T', 'i{{$i}}R', '{{$i}}_R', 'i{{$i}}Ok', '{{$i}}_OK', 'tr', 'secJust{{$i}}' ,'idJust{{$i}}', '{{$jus[$i] ?? ''}}')"
                 id="i{{$i}}T" style="font-size: 18px;{{$tr_color}}" class="fa fa-thumbs-down"></i>
             </div>
-            @isset($jus[$i])
-                <div>{{$pend_ant}}{{$jus[$i]->descricao ?? ''}}</div>
-            @endisset
         </section>
+        @isset($jus[$i])
+            <div>{{$pend_ant}}{{$jus[$i]->descricao ?? ''}}</div>
+        @endisset
         <section style="{{$disp}}" class="obs" name="txtSecJust{{$i}}" id="secJust{{$i}}">
             <label style="margin-right: 100px;" for="idJust{{$i}}" id="idLabPend{{$i}}">Justificativa:</label>
             <textarea name="txtJust{{$i}}" {{$req}} id="idJust{{$i}}" class='autoExpand' rows='1' data-min-rows='1' placeholder="Ítens substituídos ou recuperados devem ser justificados!">{{$jus[$i]->descricao ?? ''}}</textarea>

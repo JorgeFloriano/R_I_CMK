@@ -190,8 +190,13 @@ class RelatController extends Controller
             $just = $request->input('txtJust'.$i);
             $stat = $request->input('txt'.$i);
 
-            // Previous item pending issues
-            $pend = Relatorio::find($p_r_id)->pendencias()->where('num_item', $i)->get();
+            // If there is previous report id
+            if (isset($p_r_id)) {
+
+                // Previous item pending issues
+                $pend = Relatorio::find($p_r_id)->pendencias()->where('num_item', $i)->get();
+
+            }
 
             // Pivot table
             $pend_rel = new PendenciaRelatorio();
@@ -308,6 +313,10 @@ class RelatController extends Controller
         $r_t_e_c->h_f_tec2 = $request->txtTec2HF;
         $r_t_e_c->sign_tec2 = $request->signTec2;
         $r_t_e_c->save();
+
+        // var_dump($r_t_e_c->d_tec1);
+        // echo date('d/m/Y',strtotime($r_t_e_c->d_tec1));
+        // die;
         
         //$c = new MyClass();
 
