@@ -14,9 +14,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', 'MainController@programacao')->name('programacao');
+Route::get('/relatorios', 'MainController@relatorios')->name('relatorios');
+
 Route::get('/equip', 'EquipController@equip')->name('equip');
 Route::get('/desat_list', 'EquipController@desat_list')->name('desat_list');
-
 
 Route::get('/new_equip', 'EquipController@new_equip')->name('new_equip');
 Route::post('/new_equip_submit', 'EquipController@new_equip_submit')->name('new_equip_submit');
@@ -28,6 +29,8 @@ Route::get('/desat_equip/{id}', 'EquipController@desat_equip')->name('desat_equi
 Route::get('/ativ_equip/{id}', 'EquipController@ativ_equip')->name('ativ_equip');
 
 Route::get('/relat_form/{id}', 'RelatController@relat_form')->name('relat_form');
+Route::get('/relat_show/{id}', 'RelatController@relat_show')->name('relat_show');
+
 Route::post('/relat_form_submit', 'RelatController@relat_form_submit')->name('relat_form_submit');
 
 

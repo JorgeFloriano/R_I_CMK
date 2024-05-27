@@ -5,7 +5,7 @@
      <div class="container">
         <div class="row">
             <div class="col">
-                <h3 class="mt-2">CNH Sorocaba</h3>
+                <h3 class="mt-2">Equipamentos</h3>
                 <hr>
                 <div>
                     <a href="{{route('new_equip')}}" class="btn btn-primary">Cadastrar</a>
@@ -19,7 +19,7 @@
                     <table class="table table-striped">
                         <thead class="table-dark">
                             <tr>
-                                <th>I.D.</th>
+                                <th>Nº</th>
                                 <th>Modelo</th>
                                 <th>Cap.</th>
                                 <th>Fabr.</th>

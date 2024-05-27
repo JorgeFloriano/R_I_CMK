@@ -158,7 +158,7 @@ class RelatController extends Controller
 
         // return relatorio form eletric chain hoist report
         $data = [
-            'title' => 'Relatório de inspeção',
+            'title' => 'R.I.',
             'equip' => $equip,
             'relat' => $relat,
             't_e_c' => $t_e_c,
@@ -314,6 +314,9 @@ class RelatController extends Controller
         $r_t_e_c->sign_tec2 = $request->signTec2;
         $r_t_e_c->save();
 
+        $relat->finalizado = 1;
+        $relat->save();
+
         // var_dump($r_t_e_c->d_tec1);
         // echo date('d/m/Y',strtotime($r_t_e_c->d_tec1));
         // die;
@@ -329,10 +332,36 @@ class RelatController extends Controller
             'r' => $r_t_e_c,
             'title' => 'R.I.',
             'js' => $justs,
-            't' => $d_t_e_c
+            't' => $d_t_e_c,
+            'back' => 'programacao'
         ];
 
         return view('relatorio', $data);
+    }
 
+    //-----------------------------------------------------------------------------------
+    public function relat_show($id) {
+
+        $equip = Relatorio::find($id)->equipamento; // equipment data (header)
+
+        $d_t_e_c = Equipamento::find($equip->id)->talEleCorr; // eletric chain hoist data (nominal and limit)
+
+        $justs = Relatorio::find($id)->pendencias()->orderBy('num_item')->get(); // Justification for pending issues
+
+        $r_t_e_c = Relatorio::find($id)->talEleCorr; // report data updated (child class)
+
+        $r_t_e_c = $r_t_e_c->toArray();
+
+
+        $data = [
+            'e' => $equip,
+            'r' => $r_t_e_c,
+            'title' => 'R.I.',
+            'js' => $justs,
+            't' => $d_t_e_c,
+            'back' => 'relatorios'
+        ];
+
+        return view('relatorio', $data);
     }
 }

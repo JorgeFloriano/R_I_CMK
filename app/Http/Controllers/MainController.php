@@ -22,4 +22,19 @@ class MainController extends Controller
                                 'title' => 'Programação',
                             ]);
     }
+
+    //----------------------------------------------------------
+    public function relatorios() {
+        //get equipments
+        $relats = Relatorio::where('finalizado', 1)
+                    ->orderBy('id')
+                    ->get();
+
+        //$relats = Equipamento::orderBy('created_at', 'desc')->get();
+
+        return view('relat_list', ['relats' => $relats, 
+                                'Programação de Abril' => 'Equipamentos',
+                                'title' => 'Relatorios',
+                            ]);
+    }
 }

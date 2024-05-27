@@ -2,7 +2,7 @@
 
 @section('content')
 <section id="relatorio">
-    <a href="{{route('programacao')}}" style="color: blue">Voltar</a>
+    <a href="{{route($back)}}" style="color: blue">Voltar</a>
     @include('relat_parts/r_header')
     <div class="main">
         <section id="mecanica" class="half">
