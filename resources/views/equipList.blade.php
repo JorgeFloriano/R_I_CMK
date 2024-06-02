@@ -5,7 +5,7 @@
      <div class="container">
         <div class="row">
             <div class="col">
-                <h3 class="mt-2">Equipamentos</h3>
+                <h3 class="mt-2">Equipamentos {{$title}}</h3>
                 <hr>
                 <div>
                     <a href="{{route('new_equip')}}" class="btn btn-primary">Cadastrar</a>

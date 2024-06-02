@@ -40,7 +40,7 @@ function check(c1, ch, c2, u1, c3, u2, opt, obs, txt, just) {
       document.getElementById(obs).style.display = 'block';
       document.getElementById(txt).required = true;
       document.getElementById(txt).placeholder = "Descreva a tualização da pendência anterior!";
-      document.getElementById(obs).style.background = 'rgb(243, 243, 134';
+      document.getElementById(obs).style.background = 'rgb(239, 239, 174)';
    }
 }
 

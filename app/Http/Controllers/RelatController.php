@@ -49,9 +49,6 @@ class RelatController extends Controller
 
         die;
 
-
-
-
         $rel = Pendencia::find(10)->relatorios; // Justification for pending issues
 
         //dd($pends);
@@ -325,6 +322,40 @@ class RelatController extends Controller
 
         $r_t_e_c = Relatorio::find($relat->id)->talEleCorr; // report data updated (child class)
 
+        if (!isset($r_t_e_c->stat_equip)) {
+            $r_t_e_c->stat_equip = 'NÃO APTO PARA OPERAR';
+        }
+
+        if ($r_t_e_c->stat_equip == 'NÃO APTO PARA OPERAR') {
+            $stat_color = 'red';
+        } else {
+            $stat_color = 'black';
+        }
+
+        if (isset($r_t_e_c->d_tec1)) {
+            $r_t_e_c->d_tec1 = date('d/m/Y',strtotime($r_t_e_c->d_tec1));
+        }
+
+        if (isset($r_t_e_c->d_tec2)) {
+            $r_t_e_c->d_tec2 = date('d/m/Y',strtotime($r_t_e_c->d_tec2));
+        }
+
+        if (isset($r_t_e_c->h_i_tec1)) {
+            $r_t_e_c->h_i_tec1 = date('H:i',strtotime($r_t_e_c->h_i_tec1));
+        }
+
+        if (isset($r_t_e_c->h_f_tec1)) {
+            $r_t_e_c->h_f_tec1 = date('H:i',strtotime($r_t_e_c->h_f_tec1));
+        }
+
+        if (isset($r_t_e_c->h_i_tec2)) {
+            $r_t_e_c->h_i_tec2 = date('H:i',strtotime($r_t_e_c->h_i_tec2));
+        }
+
+        if (isset($r_t_e_c->h_f_tec2)) {
+            $r_t_e_c->h_f_tec2 = date('H:i',strtotime($r_t_e_c->h_f_tec2));
+        }
+
         $r_t_e_c = $r_t_e_c->toArray();
 
         $data = [
@@ -333,7 +364,8 @@ class RelatController extends Controller
             'title' => 'R.I.',
             'js' => $justs,
             't' => $d_t_e_c,
-            'back' => 'programacao'
+            'back' => 'programacao',
+            'stat_color' => $stat_color,
         ];
 
         return view('relatorio', $data);
@@ -350,6 +382,40 @@ class RelatController extends Controller
 
         $r_t_e_c = Relatorio::find($id)->talEleCorr; // report data updated (child class)
 
+        if (!isset($r_t_e_c->stat_equip)) {
+            $r_t_e_c->stat_equip = 'NÃO APTO PARA OPERAR';
+        }
+
+        if ($r_t_e_c->stat_equip == 'NÃO APTO PARA OPERAR') {
+            $stat_color = 'red';
+        } else {
+            $stat_color = 'black';
+        }
+
+        if (isset($r_t_e_c->d_tec1)) {
+            $r_t_e_c->d_tec1 = date('d/m/Y',strtotime($r_t_e_c->d_tec1));
+        }
+
+        if (isset($r_t_e_c->d_tec2)) {
+            $r_t_e_c->d_tec2 = date('d/m/Y',strtotime($r_t_e_c->d_tec2));
+        }
+
+        if (isset($r_t_e_c->h_i_tec1)) {
+            $r_t_e_c->h_i_tec1 = date('H:i',strtotime($r_t_e_c->h_i_tec1));
+        }
+
+        if (isset($r_t_e_c->h_f_tec1)) {
+            $r_t_e_c->h_f_tec1 = date('H:i',strtotime($r_t_e_c->h_f_tec1));
+        }
+
+        if (isset($r_t_e_c->h_i_tec2)) {
+            $r_t_e_c->h_i_tec2 = date('H:i',strtotime($r_t_e_c->h_i_tec2));
+        }
+
+        if (isset($r_t_e_c->h_f_tec2)) {
+            $r_t_e_c->h_f_tec2 = date('H:i',strtotime($r_t_e_c->h_f_tec2));
+        }
+
         $r_t_e_c = $r_t_e_c->toArray();
 
 
@@ -359,7 +425,8 @@ class RelatController extends Controller
             'title' => 'R.I.',
             'js' => $justs,
             't' => $d_t_e_c,
-            'back' => 'relatorios'
+            'back' => 'relatorios',
+            'stat_color' => $stat_color,
         ];
 
         return view('relatorio', $data);

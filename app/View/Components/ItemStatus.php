@@ -54,7 +54,7 @@ class ItemStatus extends Component
         if (isset($this->jus[$num])) {
             $this->req = 'required';
             $this->pend_ant = 'Pendência anterior: ';
-            $this->bgc = 'background-color:rgb(243, 243, 134';
+            $this->bgc = 'background-color:rgb(239, 239, 174);';
 
         }
     }

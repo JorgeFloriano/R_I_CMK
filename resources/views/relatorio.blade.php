@@ -162,7 +162,7 @@
 
     <section id="status">
         <div id="status1">STATUS FINAL DA INSPEÇÃO: {{$r['stat_insp'] ?? "RESTAM PENDÊNCIAS"}}!</div>
-        <div id="status2">STATUS DO EQUIPAMENTO : {{ $r['stat_equip'] ?? "NÃO APTO PARA OPERAR"}}!</div>
+        <div id="status2">STATUS DO EQUIPAMENTO : <span style="color: {{$stat_color}};">{{ $r['stat_equip'] ?? "NÃO APTO PARA OPERAR"}}!</span></div>
     </section>
     <section id="ressalvas">
         <strong>Ressalvas: </strong>{{$r['ressalva'] ?? 'Sem ressalvas!'}}

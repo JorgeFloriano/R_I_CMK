@@ -5,7 +5,7 @@
      <div class="container">
         <div class="row">
             <div class="col">
-                <h3 class="mt-2">Relatórios</h3>
+                <h3 class="mt-2">Relatórios Concluídos</h3>
                 <hr>
                 <table class="table table-striped">
                     <thead class="table-dark">
@@ -22,7 +22,7 @@
                             <tr>
                                 <td>{{$relat->id}}</td>
                                 <td>{{$relat->equipamento_id}}</td>
-                                <td>{{date('d/m/Y',strtotime($relat->created_at))}}</td>
+                                <td>{{date('d/m/Y',strtotime($relat->updated_at))}}</td>
                                 <td>
                                     <a href="{{route('relat_show', ['id' => $relat->id])}}" class="btn btn-primary btn-sm">
                                         <i class="fa fa-file-text"></i>

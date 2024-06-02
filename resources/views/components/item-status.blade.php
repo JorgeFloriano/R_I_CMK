@@ -21,7 +21,7 @@
         @endisset
         <section style="{{$disp}}" class="obs" name="txtSecJust{{$i}}" id="secJust{{$i}}">
             <label style="margin-right: 100px;" for="idJust{{$i}}" id="idLabPend{{$i}}">Justificativa:</label>
-            <textarea name="txtJust{{$i}}" {{$req}} id="idJust{{$i}}" class='autoExpand' rows='1' data-min-rows='1' placeholder="Ítens substituídos ou recuperados devem ser justificados!">{{$jus[$i]->descricao ?? ''}}</textarea>
+            <textarea style="{{$bgc}}" name="txtJust{{$i}}" {{$req}} id="idJust{{$i}}" class='autoExpand' rows='1' data-min-rows='1' placeholder="Ítens substituídos ou recuperados devem ser justificados!">{{$jus[$i]->descricao ?? ''}}</textarea>
         </section>
     </section>
 </div>
