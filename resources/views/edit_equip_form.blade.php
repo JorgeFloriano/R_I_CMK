@@ -9,7 +9,7 @@
                 <form action="{{route('edit_equip_submit')}}" method="post">
                     @csrf
 
-                    <h2>Equipamento I.D. {{$equip->id}}</h2>
+                    <h2>Equipamento Nº {{$equip->id}}</h2>
                     <hr>
                     <h3>Editar cadastro </h3>
 

@@ -1,8 +1,19 @@
 @extends('layouts.relat_layout')
 
 @section('content')
+
+<style media="print">
+    #back {
+        display: none;
+    }
+</style>
+
 <section id="relatorio">
-    <a href="{{route($back)}}" style="color: blue">Voltar</a>
+    <div class="my-2" id="back">
+        <a style="color:rgb(41, 50, 184)" href="{{route('relatorios')}}">
+            <i class="fa fa-chevron-left" ></i>
+        </a>
+    </div>
     @include('relat_parts/r_header')
     <div class="main">
         <section id="mecanica" class="half">

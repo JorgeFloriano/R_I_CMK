@@ -9,9 +9,8 @@
                 <form action="{{route('new_equip_submit')}}" method="post">
                     @csrf
 
-                    <h2>Equipamentos CNH</h2>
+                    <h2>Novo Cadastro</h2>
                     <hr>
-                    <h3>Novo cadastro</h3>
 
                     <div class="input-group mb-2">
                         <label for="idSer" class="input-group-text" id="lblSer">Nº Série: </label>

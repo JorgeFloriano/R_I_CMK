@@ -6,6 +6,11 @@
     <link rel="stylesheet" href="{{asset('assets/fontawesome/font-awesome.min.css')}}">
     <link rel="stylesheet" href="{{asset('assets/boodstrap/bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{asset('assets/css/relatorio.css')}}">
+    <style media="print">
+        #userbar {
+            display: none;
+        }
+    </style>
     
     <title>Relatório de Inspeção</title>
 </head>

@@ -7,6 +7,11 @@
 
 <body id="body">
     <div class="container">
+        <div class="mt-2">
+            <a style="color:rgb(41, 50, 184)" href="{{route('programacao')}}">
+                <i class="fa fa-chevron-left" ></i>
+            </a>
+        </div>
         <div class="row mt-1">
             <div class="col-lg-6 offset-lg-3">
                 <div id="hForm">
@@ -32,8 +37,8 @@
                         <div id="legend">
                                 Legenda: 
                                 <i class="fa fa-thumbs-up iconl" style="margin-left: 0px;"></i>Ok 
-                                <i class="fa fa-wrench iconl"></i>Recuperar
-                                <i class="fa fa-thumbs-down iconl"></i>Trocar
+                                <i class="fa fa-wrench iconl" style="color: rgb(100, 100, 100)"></i>Recuperar
+                                <i class="fa fa-thumbs-down iconl" style="color: red"></i>Trocar
                         </div>
                     </section>
                     <form id="form" action="{{route('relat_form_submit')}}" method="post">

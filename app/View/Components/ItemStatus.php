@@ -40,13 +40,13 @@ class ItemStatus extends Component
         $this->tr_checked = '';
 
         if ($stat == 'Trocar') {
-            $this->tr_color = 'color:rgb(41, 50, 184)';
+            $this->tr_color = 'color:red';
             $this->tr_checked = 'checked';
         } elseif ($stat == 'Ok') {
             $this->ok_color = 'color:rgb(41, 50, 184)';
             $this->ok_checked = 'checked';
         } elseif ($stat == 'Recuperar') {
-            $this->re_color = 'color:rgb(41, 50, 184)';
+            $this->re_color = 'color:rgb(100, 100, 100)';
             $this->re_checked = 'checked';
         }
 
@@ -54,7 +54,7 @@ class ItemStatus extends Component
         if (isset($this->jus[$num])) {
             $this->req = 'required';
             $this->pend_ant = 'Pendência anterior: ';
-            $this->bgc = 'background-color:rgb(239, 239, 174);';
+            //$this->bgc = 'background-color:rgb(239, 239, 174);';
 
         }
     }

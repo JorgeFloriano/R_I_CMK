@@ -4,6 +4,7 @@ function check(c1, ch, c2, u1, c3, u2, opt, obs, txt, just) {
    var che = document.getElementById(ch).checked;
    const blue = "rgb(41, 50, 184)";
    const gray = "rgb(198, 194, 194)";
+   var checked_color = blue;
   
    document.getElementById(c2).style.color = gray;
    document.getElementById(u1).checked = false;
@@ -18,6 +19,7 @@ function check(c1, ch, c2, u1, c3, u2, opt, obs, txt, just) {
       document.getElementById(obs).style.display = 'block';
       document.getElementById(txt).required = true;
       document.getElementById(txt).placeholder = "Razão da recomendação para substituição o ítem";
+      checked_color = 'red';
       if (c1 == "i52T") {
          document.getElementById(txt).value = "Substituir reparos da botoeira.";
       }
@@ -25,22 +27,23 @@ function check(c1, ch, c2, u1, c3, u2, opt, obs, txt, just) {
       document.getElementById(obs).style.display = 'block';
       document.getElementById(txt).required = true;
       document.getElementById(txt).placeholder = "Razão da recomendação para reparação do ítem";
+      checked_color = 'rgb(100, 100, 100)';
    }
-   if(che == true && col == blue) {
+   if(che == true && col != gray ) {
       document.getElementById(c1).style.color = gray;
       document.getElementById(ch).checked = false;
       document.getElementById(txt).required = false;
       document.getElementById(obs).style.display = 'none';
       //document.getElementById(txt).value = '';
    } else {
-      document.getElementById(c1).style.color = blue;
+      document.getElementById(c1).style.color = checked_color;
       document.getElementById(ch).checked = true;
    }
    if (document.getElementById(txt).value != '' || just != '') {
       document.getElementById(obs).style.display = 'block';
       document.getElementById(txt).required = true;
       document.getElementById(txt).placeholder = "Descreva a tualização da pendência anterior!";
-      document.getElementById(obs).style.background = 'rgb(239, 239, 174)';
+      //document.getElementById(obs).style.background = 'rgb(239, 239, 174)';
    }
 }
 
