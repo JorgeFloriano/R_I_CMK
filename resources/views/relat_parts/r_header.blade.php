@@ -8,7 +8,7 @@
             <div>TALHA ELÉTRICA DE CORRENTE</div>
         </div>
         <div id="header3">
-            RI Nº {{$r['relatorio_id']}}
+            RI Nº {{$r->id}}
         </div>
     </div>
     <table>

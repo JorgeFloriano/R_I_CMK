@@ -11,7 +11,7 @@
                     <table class="table table-striped">
                         <thead class="table-dark">
                             <tr>
-                                <th>I.D.</th>
+                                <th>ID</th>
                                 <th>Modelo</th>
                                 <th>Cap.</th>
                                 <th>Fabr.</th>

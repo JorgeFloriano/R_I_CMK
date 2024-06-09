@@ -37,7 +37,7 @@
                         <div id="legend">
                                 Legenda: 
                                 <i class="fa fa-thumbs-up iconl" style="margin-left: 0px;"></i>Ok 
-                                <i class="fa fa-wrench iconl" style="color: rgb(100, 100, 100)"></i>Recuperar
+                                <i class="fa fa-wrench iconl" style="color: rgb(100, 100, 100)"></i>Recuperar / Regular
                                 <i class="fa fa-thumbs-down iconl" style="color: red"></i>Trocar
                         </div>
                     </section>
@@ -46,6 +46,7 @@
 
                         <input type="hidden" name="txtRelatId" value="{{$relat->id}}">
                         <input type="hidden" name="txtPrevRelatId" value="{{$prev_relat_id}}">
+                        
 
                         <section id="insp" class="insp">
                             INSPEÇÃO MECÂNICA
@@ -324,7 +325,7 @@
                         <section class="item" style="flex-direction: column;">
                             <div>
                                 <strong>OBSERVAÇÕES GERAIS E SERVIÇOS EXECUTADOS: </strong>
-                                <textarea name="txtObservacoes" id="observacoes" class='autoExpand' rows='1' data-min-rows='1'></textarea>
+                                <textarea name="txtObservacoes" id="observacoes" class='autoExpand' rows='1' data-min-rows='1'>{{$prev_relat_obs ?? ''}}</textarea>
                             </div>
                         </section>
 
@@ -368,7 +369,7 @@
                             </div>
                             <section id="secRessalva" class="obs">
                                 <label for="idressalvas"><strong>RESSALVAS:</strong></label>
-                                <textarea name="txtRessalvas" id="idressalvas" class='autoExpand' rows='1' data-min-rows='1' placeholder='Ex.: Elevação apenas com a velocidade baixa.'>{{$prev_r_t_e_c->ressalva ?? ''}}</textarea>
+                                <textarea name="txtRessalvas" id="idressalvas" class='autoExpand' rows='1' data-min-rows='1' placeholder='Ex.: Elevação apenas com a velocidade baixa.'>{{$prev_relat_ressalva ?? ''}}</textarea>
                             </section>
                         </section>
 

@@ -130,15 +130,16 @@ class RelatController extends Controller
         $prev_relat = Relatorio::where('finalizado',1)
             ->where('equipamento_id', $equip->id)
             ->orderBy('id', 'DESC')
-            ->first('id');
+            ->select('id', 'obs', 'ressalva')
+            ->get();
 
         // Eletric chain hoist data
-        $prev_r_t_e_c = Relatorio::find($prev_relat->id ?? 0)->talEleCorr ?? 0;
+        $prev_r_t_e_c = Relatorio::find($prev_relat[0]->id ?? 0)->talEleCorr ?? 0;
 
         // Preparing list of pendings
-        $pends = Relatorio::find($prev_relat->id ?? 0)->pendencias ?? null;
+        $pends = Relatorio::find($prev_relat[0]->id ?? 0)->pendencias ?? null;
         if (isset($pends)) {
-            $pends = Relatorio::find($prev_relat->id ?? 0)->pendencias()->orderBy('num_item', 'asc')->get();    
+            $pends = Relatorio::find($prev_relat[0]->id ?? 0)->pendencias()->orderBy('num_item', 'asc')->get();    
         }
         
         if (isset($pends)) {
@@ -161,7 +162,9 @@ class RelatController extends Controller
             't_e_c' => $t_e_c,
             'prev_r_t_e_c' => $prev_r_t_e_c ?? null, // previous report
             'pends' => $pends ?? null,
-            'prev_relat_id' => $prev_relat->id ?? null
+            'prev_relat_id' => $prev_relat[0]->id ?? null,
+            'prev_relat_obs' => $prev_relat[0]->obs ?? null,
+            'prev_relat_ressalva' => $prev_relat[0]->ressalva ?? null
         ];
         return view('relatorio_form', $data);
     }
@@ -207,12 +210,16 @@ class RelatController extends Controller
                     // If item status is Ok
                     if ($stat == 'Ok') {
 
-                        $pend[0]->solucao = $just;
-                        $pend[0]->save();
+                        $pend_soluc = new Pendencia();
+                        $pend_soluc->created_r_i = $pend[0]->created_r_i;
+                        $pend_soluc->num_item = $pend[0]->num_item;
+                        $pend_soluc->descricao = $pend[0]->descricao;
+                        $pend_soluc->solucao = $just;
+                        $pend_soluc->save();
 
-                        $pend_rel_exists = PendenciaRelatorio::where('pendencia_id', $pend[0]->id)->where('relatorio_id', $r_id)->get();
+                        $pend_rel_exists = PendenciaRelatorio::where('pendencia_id', $pend_soluc->id)->where('relatorio_id', $r_id)->get();
                         if (!isset($pend_rel_exists[0])) {
-                            $pend_rel->pendencia_id = $pend[0]->id;
+                            $pend_rel->pendencia_id = $pend_soluc->id;
                             $pend_rel->relatorio_id = $r_id;
                             $pend_rel->save();
                         }
@@ -293,24 +300,24 @@ class RelatController extends Controller
         $r_t_e_c->corr_el_alta = $request->txt71;
         $r_t_e_c->corr_el_baixa = $request->txt71_2;
         $r_t_e_c->v_el_freio = $request->txt71_3;
-        $r_t_e_c->stat_insp = $request->status;
-        $r_t_e_c->stat_equip = $request->apto;
-        $r_t_e_c->ressalva = $request->txtRessalvas;
-        $r_t_e_c->obs = $request->txtObservacoes;
-        $r_t_e_c->n_tec1 = $request->txtTec1Name;
-        $r_t_e_c->f_tec1 = $request->txtTec1Func;
-        $r_t_e_c->d_tec1 = $request->txtTec1Data;
-        $r_t_e_c->h_i_tec1 = $request->txtTec1HI;
-        $r_t_e_c->h_f_tec1 = $request->txtTec1HF;
-        $r_t_e_c->sign_tec1 = $request->signTec1;
-        $r_t_e_c->n_tec2 = $request->txtTec2Name;
-        $r_t_e_c->f_tec2 = $request->txtTec2Func;
-        $r_t_e_c->d_tec2 = $request->txtTec2Data;
-        $r_t_e_c->h_i_tec2 = $request->txtTec2HI;
-        $r_t_e_c->h_f_tec2 = $request->txtTec2HF;
-        $r_t_e_c->sign_tec2 = $request->signTec2;
         $r_t_e_c->save();
 
+        $relat->stat_insp = $request->status;
+        $relat->stat_equip = $request->apto;
+        $relat->ressalva = $request->txtRessalvas;
+        $relat->obs = $request->txtObservacoes;
+        $relat->n_tec1 = $request->txtTec1Name;
+        $relat->f_tec1 = $request->txtTec1Func;
+        $relat->d_tec1 = $request->txtTec1Data;
+        $relat->h_i_tec1 = $request->txtTec1HI;
+        $relat->h_f_tec1 = $request->txtTec1HF;
+        $relat->sign_tec1 = $request->signTec1;
+        $relat->n_tec2 = $request->txtTec2Name;
+        $relat->f_tec2 = $request->txtTec2Func;
+        $relat->d_tec2 = $request->txtTec2Data;
+        $relat->h_i_tec2 = $request->txtTec2HI;
+        $relat->h_f_tec2 = $request->txtTec2HF;
+        $relat->sign_tec2 = $request->signTec2;
         $relat->finalizado = 1;
         $relat->save();
 
@@ -322,45 +329,46 @@ class RelatController extends Controller
 
         $r_t_e_c = Relatorio::find($relat->id)->talEleCorr; // report data updated (child class)
 
-        if (!isset($r_t_e_c->stat_equip)) {
-            $r_t_e_c->stat_equip = 'NÃO APTO PARA OPERAR';
+        if (!isset($relat->stat_equip)) {
+            $relat->stat_equip = 'NÃO APTO PARA OPERAR';
         }
 
-        if ($r_t_e_c->stat_equip == 'NÃO APTO PARA OPERAR') {
+        if ($relat->stat_equip == 'NÃO APTO PARA OPERAR') {
             $stat_color = 'red';
         } else {
             $stat_color = 'black';
         }
 
-        if (isset($r_t_e_c->d_tec1)) {
-            $r_t_e_c->d_tec1 = date('d/m/Y',strtotime($r_t_e_c->d_tec1));
+        if (isset($relat->d_tec1)) {
+            $relat->d_tec1 = date('d/m/Y',strtotime($relat->d_tec1));
         }
 
-        if (isset($r_t_e_c->d_tec2)) {
-            $r_t_e_c->d_tec2 = date('d/m/Y',strtotime($r_t_e_c->d_tec2));
+        if (isset($relat->d_tec2)) {
+            $relat->d_tec2 = date('d/m/Y',strtotime($relat->d_tec2));
         }
 
-        if (isset($r_t_e_c->h_i_tec1)) {
-            $r_t_e_c->h_i_tec1 = date('H:i',strtotime($r_t_e_c->h_i_tec1));
+        if (isset($relat->h_i_tec1)) {
+            $relat->h_i_tec1 = date('H:i',strtotime($relat->h_i_tec1));
         }
 
-        if (isset($r_t_e_c->h_f_tec1)) {
-            $r_t_e_c->h_f_tec1 = date('H:i',strtotime($r_t_e_c->h_f_tec1));
+        if (isset($relat->h_f_tec1)) {
+            $relat->h_f_tec1 = date('H:i',strtotime($relat->h_f_tec1));
         }
 
-        if (isset($r_t_e_c->h_i_tec2)) {
-            $r_t_e_c->h_i_tec2 = date('H:i',strtotime($r_t_e_c->h_i_tec2));
+        if (isset($relat->h_i_tec2)) {
+            $relat->h_i_tec2 = date('H:i',strtotime($relat->h_i_tec2));
         }
 
-        if (isset($r_t_e_c->h_f_tec2)) {
-            $r_t_e_c->h_f_tec2 = date('H:i',strtotime($r_t_e_c->h_f_tec2));
+        if (isset($relat->h_f_tec2)) {
+            $relat->h_f_tec2 = date('H:i',strtotime($relat->h_f_tec2));
         }
 
         $r_t_e_c = $r_t_e_c->toArray();
 
         $data = [
             'e' => $equip,
-            'r' => $r_t_e_c,
+            'r' => $relat,
+            'rt' => $r_t_e_c,
             'title' => 'R.I.',
             'js' => $justs,
             't' => $d_t_e_c,
@@ -376,44 +384,46 @@ class RelatController extends Controller
 
         $equip = Relatorio::find($id)->equipamento; // equipment data (header)
 
+        $relat = Relatorio::where('finalizado', 1)->find($id); // report data (parent class)
+
         $d_t_e_c = Equipamento::find($equip->id)->talEleCorr; // eletric chain hoist data (nominal and limit)
 
         $justs = Relatorio::find($id)->pendencias()->orderBy('num_item')->get(); // Justification for pending issues
 
         $r_t_e_c = Relatorio::find($id)->talEleCorr; // report data updated (child class)
 
-        if (!isset($r_t_e_c->stat_equip)) {
-            $r_t_e_c->stat_equip = 'NÃO APTO PARA OPERAR';
+        if (!isset($relat->stat_equip)) {
+            $relat->stat_equip = 'NÃO APTO PARA OPERAR';
         }
 
-        if ($r_t_e_c->stat_equip == 'NÃO APTO PARA OPERAR') {
+        if ($relat->stat_equip == 'NÃO APTO PARA OPERAR') {
             $stat_color = 'red';
         } else {
             $stat_color = 'black';
         }
 
-        if (isset($r_t_e_c->d_tec1)) {
-            $r_t_e_c->d_tec1 = date('d/m/Y',strtotime($r_t_e_c->d_tec1));
+        if (isset($relat->d_tec1)) {
+            $relat->d_tec1 = date('d/m/Y',strtotime($relat->d_tec1));
         }
 
-        if (isset($r_t_e_c->d_tec2)) {
-            $r_t_e_c->d_tec2 = date('d/m/Y',strtotime($r_t_e_c->d_tec2));
+        if (isset($relat->d_tec2)) {
+            $relat->d_tec2 = date('d/m/Y',strtotime($relat->d_tec2));
         }
 
-        if (isset($r_t_e_c->h_i_tec1)) {
-            $r_t_e_c->h_i_tec1 = date('H:i',strtotime($r_t_e_c->h_i_tec1));
+        if (isset($relat->h_i_tec1)) {
+            $relat->h_i_tec1 = date('H:i',strtotime($relat->h_i_tec1));
         }
 
-        if (isset($r_t_e_c->h_f_tec1)) {
-            $r_t_e_c->h_f_tec1 = date('H:i',strtotime($r_t_e_c->h_f_tec1));
+        if (isset($relat->h_f_tec1)) {
+            $relat->h_f_tec1 = date('H:i',strtotime($relat->h_f_tec1));
         }
 
-        if (isset($r_t_e_c->h_i_tec2)) {
-            $r_t_e_c->h_i_tec2 = date('H:i',strtotime($r_t_e_c->h_i_tec2));
+        if (isset($relat->h_i_tec2)) {
+            $relat->h_i_tec2 = date('H:i',strtotime($relat->h_i_tec2));
         }
 
-        if (isset($r_t_e_c->h_f_tec2)) {
-            $r_t_e_c->h_f_tec2 = date('H:i',strtotime($r_t_e_c->h_f_tec2));
+        if (isset($relat->h_f_tec2)) {
+            $relat->h_f_tec2 = date('H:i',strtotime($relat->h_f_tec2));
         }
 
         $r_t_e_c = $r_t_e_c->toArray();
@@ -421,7 +431,8 @@ class RelatController extends Controller
 
         $data = [
             'e' => $equip,
-            'r' => $r_t_e_c,
+            'r' => $relat,
+            'rt' => $r_t_e_c,
             'title' => 'R.I.',
             'js' => $justs,
             't' => $d_t_e_c,
