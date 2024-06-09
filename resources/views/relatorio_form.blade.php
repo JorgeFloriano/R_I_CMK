@@ -56,7 +56,7 @@
                             TROLE - Capacidade: {{$equip->capacidade}} kg
                         </section>
                         <x-item-status :stat="$prev_r_t_e_c->item1 ?? null" :justif="$pends" num="1" message="Rodas e rolamentos"/>
-                        <x-item-status :stat="$prev_r_t_e_c->item2 ?? null" :justif="$pends" num="2" message="Fixação da talha e parafusos de fechamento"/>
+                        <x-item-status important="True" :stat="$prev_r_t_e_c->item2 ?? null" :justif="$pends" num="2" message="Fixação da talha e parafusos de fechamento"/>
                         <x-item-status :stat="$prev_r_t_e_c->item3 ?? null" :justif="$pends" num="3" message="Batentes fim de curso"/>
 
                         <section id="trole" class="element">
@@ -64,10 +64,10 @@
                         </section>
                         <x-item-status :stat="$prev_r_t_e_c->item7 ?? null" :justif="$pends" num="7" message="Guia da corrente"/>
                         <x-item-status :stat="$prev_r_t_e_c->item8 ?? null" :justif="$pends" num="8" message="Batedor stop"/>
-                        <x-item-status :stat="$prev_r_t_e_c->item9 ?? null" :justif="$pends" num="9" message="Armazenador de corrente"/>
-                        <x-item-status :stat="$prev_r_t_e_c->item10 ?? null" :justif="$pends" num="10" message="Fixação superior"/>
+                        <x-item-status important="True" :stat="$prev_r_t_e_c->item9 ?? null" :justif="$pends" num="9" message="Armazenador de corrente"/>
+                        <x-item-status important="True" :stat="$prev_r_t_e_c->item10 ?? null" :justif="$pends" num="10" message="Fixação superior"/>
                         <x-item-status :stat="$prev_r_t_e_c->item11 ?? null" :justif="$pends" num="11" message="Fricção"/>
-                        <x-item-status :stat="$prev_r_t_e_c->item12 ?? null" :justif="$pends" num="12" message="Freio (regular se necessário)"/>
+                        <x-item-status important="True" :stat="$prev_r_t_e_c->item12 ?? null" :justif="$pends" num="12" message="Freio (regular se necessário)"/>
                         <x-item-status :stat="$prev_r_t_e_c->item13 ?? null" :justif="$pends" num="13" message="Lubrificação"/>
                         <x-item-status :stat="$prev_r_t_e_c->item14 ?? null" :justif="$pends" num="14" message="Carcaça"/>
 
@@ -93,9 +93,9 @@
                         </section>
                         <x-item-status :stat="$prev_r_t_e_c->item20 ?? null" :justif="$pends" num="20" message="Limpeza e lubrificação da corrente"/>
                         <x-item-status :stat="$prev_r_t_e_c->item21 ?? null" :justif="$pends" num="21" message="Corrente prende, salta ou produz ruído"/>
-                        <x-item-status :stat="$prev_r_t_e_c->item22 ?? null" :justif="$pends" num="22" message="Amassamentos, estrias, fissuras, respingos de solda, corrosão ou deformação elo a elo"/>
-                        <x-item-status :stat="$prev_r_t_e_c->item ?? null" :justif="$pends" num="23" message="Montagem (verificar se a corrente não está torcida ou com a posição da solda invertida)"/>
-                        <x-item-status :stat="$prev_r_t_e_c->item ?? null" :justif="$pends" num="24" message="Pino de fixação (substituir no caso de qualquer imperfeição visível)"/>
+                        <x-item-status important="True" :stat="$prev_r_t_e_c->item22 ?? null" :justif="$pends" num="22" message="Amassamentos, estrias, fissuras, respingos de solda, corrosão ou deformação elo a elo"/>
+                        <x-item-status important="True" :stat="$prev_r_t_e_c->item ?? null" :justif="$pends" num="23" message="Montagem (verificar se a corrente não está torcida ou com a posição da solda invertida)"/>
+                        <x-item-status important="True" :stat="$prev_r_t_e_c->item ?? null" :justif="$pends" num="24" message="Pino de fixação (substituir no caso de qualquer imperfeição visível)"/>
 
                         <section id="trole" class="element">
                             BLOCO INFERIOR - Capacidade: {{$equip->capacidade}} kg
@@ -103,8 +103,8 @@
                     
                         <x-item-status :stat="$prev_r_t_e_c->item25 ?? null" :justif="$pends" num="25" message="Caixa do gancho"/>
                         <x-item-status :stat="$prev_r_t_e_c->item26 ?? null" :justif="$pends" num="26" message="Carretel e rolamentos"/>
-                        <x-item-status :stat="$prev_r_t_e_c->item27 ?? null" :justif="$pends" num="27" message="Carcaça quanto à desgastes e trincas"/>
-                        <x-item-status :stat="$prev_r_t_e_c->item28 ?? null" :justif="$pends" num="28" message="Trava de gancho"/>
+                        <x-item-status important="True" :stat="$prev_r_t_e_c->item27 ?? null" :justif="$pends" num="27" message="Carcaça quanto à desgastes e trincas"/>
+                        <x-item-status important="True" :stat="$prev_r_t_e_c->item28 ?? null" :justif="$pends" num="28" message="Trava de gancho"/>
                         <x-item-status :stat="$prev_r_t_e_c->item29 ?? null" :justif="$pends" num="29" message="Placa de identificação"/>
                         <x-item-status :stat="$prev_r_t_e_c->item30 ?? null" :justif="$pends" num="30" message="Lubrificar caixa de gancho"/>
 
@@ -205,7 +205,7 @@
                         </section>
 
                         <x-item-status :stat="$prev_r_t_e_c->item53 ?? null" :justif="$pends" num="53" message="Fixação e conservação dos cabos"/>
-                        <x-item-status :stat="$prev_r_t_e_c->item54 ?? null" :justif="$pends" num="54" message="Estado do perfil, fixações e emendas"/>
+                        <x-item-status important="True" :stat="$prev_r_t_e_c->item54 ?? null" :justif="$pends" num="54" message="Estado do perfil, fixações e emendas"/>
                         <x-item-status :stat="$prev_r_t_e_c->item55 ?? null" :justif="$pends" num="55" message="Carros porta cabos e arrastador"/>
 
                         <section id="trole" class="element">
@@ -222,7 +222,7 @@
                             LIMITE DE FIM DE CURSO - Elevação
                         </section>
 
-                        <x-item-status :stat="$prev_r_t_e_c->item61 ?? null" :justif="$pends" num="61" message="Funcionamento da chave limite"/>
+                        <x-item-status important="True" :stat="$prev_r_t_e_c->item61 ?? null" :justif="$pends" num="61" message="Funcionamento da chave limite"/>
                         <x-item-status :stat="$prev_r_t_e_c->item62 ?? null" :justif="$pends" num="62" message="Cabos ou corrente do pino"/>
                         <x-item-status :stat="$prev_r_t_e_c->item63 ?? null" :justif="$pends" num="63" message="Contatos, molas e articulação"/>
                         
@@ -438,7 +438,7 @@
                             </div>
                         </div>
 
-                        <button onclick="unlockScreen(),limitDate('tec2data','tec2HI','tec2HF'),limitDate('tec1data','tec1HI','tec1HF')" type="submit" class="btn" style="width: 100%;">CONFIRMA</button>
+                        <button onclick="unlockScreen(),limitDate('tec2data','tec2HI','tec2HF'),limitDate('tec1data','tec1HI','tec1HF'),requiredItem()" id="submit_button" type="submit" class="btn" style="width: 100%;">CONFIRMA</button>
                     </form>
                     <script src="{{asset('assets/js/signature.js')}}"></script>
                     <script src="{{asset('assets/js/signature2.js')}}"></script>

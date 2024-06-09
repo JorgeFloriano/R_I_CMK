@@ -21,9 +21,10 @@ class ItemStatus extends Component
     public $disp;
     public $req;
     public $pend_ant;
-    public $bgc;
+    public $important_icon;
+    public $border;
 
-    public function __construct($num, $message, $justif, $stat = null)
+    public function __construct($num, $message, $justif, $stat = null, $important = false)
     {
         $this->i = $num;
         $this->msg = $message;
@@ -31,14 +32,19 @@ class ItemStatus extends Component
         $this->disp = "display: none;";
         $this->req = '';
         $this->pend_ant = '';
-        $this->bgc = '';
         $this->ok_color = '';
         $this->re_color = '';
         $this->tr_color = '';
         $this->ok_checked = '';
         $this->re_checked = '';
         $this->tr_checked = '';
+        $this->important_icon = '';
+        $this->border = 'border:2px solid white';
 
+        if ($important == true) {
+            $this->important_icon = "fa fa-exclamation-triangle";
+            $this->border = "border:1px solid #ffc107";
+        }
         if ($stat == 'Trocar') {
             $this->tr_color = 'color:red';
             $this->tr_checked = 'checked';
@@ -54,8 +60,6 @@ class ItemStatus extends Component
         if (isset($this->jus[$num])) {
             $this->req = 'required';
             $this->pend_ant = 'Pendência anterior: ';
-            //$this->bgc = 'background-color:rgb(239, 239, 174);';
-
         }
     }
 

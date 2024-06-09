@@ -148,3 +148,35 @@ function getScrollHeight(elm){
       hfin.max = '';
    }
  }
+
+ function requiredItem() {
+   let show_message = false;
+   for (let index = 1; index < 67; index++) {
+      if (document.getElementById(index) !== null ) {
+         let border_item = document.getElementById(index).style.borderColor;
+         if (border_item !== null && border_item !== 'white') {
+            var bom_cor = document.getElementById(index + "_OK").checked;
+            var reg_cor = document.getElementById(index + "_R").checked;
+            var tro_cor = document.getElementById(index + "_T").checked;
+            if (bom_cor == reg_cor && bom_cor == tro_cor) {
+               show_message = true;
+            }
+         }
+      }
+   }
+   if (show_message == true) {
+      document.getElementById('submit_button').type = "button"
+      window.alert("Os ítens com contorno em amarelo são críticos e de inspeção obrigatória, pois estão relacionados à segurança!! No caso de estarem em condições ruins, recomendar o bloqueio do equipamento!")
+   } else {
+      window.document.getElementById('submit_button').type = "submit"
+   }
+ }
+
+ function naoApto(i) {
+   if (document.getElementById(i) !== null ) {
+      let border_item = document.getElementById(i).style.borderColor;
+      if (border_item !== null && border_item !== 'white') {
+         document.getElementById('nApto').checked = true;
+      }
+   }
+ }
