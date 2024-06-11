@@ -5,6 +5,8 @@
   --blue2: rgb(105, 111, 196);
   --gray1: rgb(198, 194, 194);
   --gray2: rgb(241, 234, 234);
+  --inputBorder:1px solid #86b7fe;
+  --focusBoxShadow: 0 0 0 .25rem rgba(13,110,253,.25);
 }
 
 
@@ -72,10 +74,9 @@ section.insp {
 }
 
 input {
-  border: 1px solid var(--blue2);
+  border: var(--inputBorder);
   border-radius: 2px;
   padding: 0px 3px;
-  
 }
 
 section.element {
@@ -172,7 +173,7 @@ section.obs {
 }
 
 textarea {  
-  border-color: var(--blue2);
+  border-color: #86b7fe;
   box-sizing: padding-box;
   border-radius: 2px;
   overflow: hidden;
@@ -180,13 +181,15 @@ textarea {
   padding: 2px;
   width: 100%;
 }
+
 textarea:focus, input:focus {
-  border-color: var(--blue2);
-  outline: 1px solid var(--blue2);
+  border: var(--inputBorder);
+  outline:0;
+  box-shadow: var(--focusBoxShadow)
 }
 
 .signature-pad {
-  border: 1px solid var(--blue2);
+  border: 1px solid #86b7fe;
   cursor:pointer;
   border-radius: 4px;
   margin: auto;

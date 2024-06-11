@@ -123,8 +123,8 @@
                                 <tr>
                                     <td>31-Alongam. - Med. 11 elos</td>
                                     <td>{{$t_e_c->nom_elos}}</td>
-                                    <td>{{$t_e_c->max_elos}}</td>
-                                    <td><input class="medido" min="0" step="0.1" type="number" name="txt31" id="id31" value="{{$prev_r_t_e_c->item31 ?? ''}}"></td>
+                                    <td id="max11elos">{{$t_e_c->max_elos}}</td>
+                                    <td><input onchange="limitMax()" class="medido" min="0" step="0.1" type="number" name="txt31" id="med11elos" value="{{$prev_r_t_e_c->item31 ?? ''}}"></td>
                                 </tr>
                                 <tr>
                                     <td>32-Diâmetro médio do elo</td>
@@ -152,7 +152,7 @@
                                     <td>33-Medida W1</td>
                                     <td>{{$t_e_c->nom_w1}}</td>
                                     <td>{{$t_e_c->max_w1}}</td>
-                                    <td><input class="medido" min="0" step="0.1" type="number" name="txt33" id="id33" value="{{$prev_r_t_e_c->item33 ?? ''}}"></td>
+                                    <td><input class="medido" min="0" step="0.1" type="number" name="txt33" value="{{$prev_r_t_e_c->item33 ?? ''}}"></td>
                                 </tr>
                                 <tr>
                                     <td>34-Medida Y</td>

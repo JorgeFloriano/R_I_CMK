@@ -96,27 +96,6 @@ function getScrollHeight(elm){
    elm.rows = minRows + rows
  }
  
- 
- // global delegated event listener
- document.addEventListener('input', onExpandableTextareaInput)
- 
- // OLD SOLUTION USING JQUERY:
- // // Applied globally on all textareas with the "autoExpand" class
- 
- // $(document)
- //     .one('focus.autoExpand', 'textarea.autoExpand', function(){
- //         var savedValue = this.value;
- //         this.value = '';
- //         this._baseScrollHeight = this.scrollHeight;
- //         this.value = savedValue;
- //     })
- //     .on('input.autoExpand', 'textarea.autoExpand', function(){
- //         var minRows = this.getAttribute('data-min-rows')|0, rows;
- //         this.rows = minRows;
- //         rows = Math.ceil((this.scrollHeight - this.baseScrollHeight) / 16);
- //         this.rows = minRows + rows;
- //     });
-
  function blockScreen() {
    document.querySelector('html').style.overflow = "hidden";
  }
@@ -180,3 +159,49 @@ function getScrollHeight(elm){
       }
    }
  }
+
+function limitMax() {
+   var tmed = document.getElementById('med11elos')
+   var tmax = document.getElementById('max11elos')
+   var med = Number(tmed.value)
+   var max = Number(tmax.innerHTML)
+   if (med > max) {
+      // Border turns red
+      tmed.style.setProperty('--inputBorder', '1px solid red');
+      tmed.style.setProperty('--focusBoxShadow', '0 0 0 .25rem rgba(253, 13, 13, 0.25)');
+      window.alert("A medida ultrapassou o valor limite, o equipamento não está apto para operar com segurança!!")
+      document.getElementById('nApto').checked = true;
+        
+      // Border turns blue again
+   } else {
+      tmed.style.setProperty('--inputBorder', '1px solid #86b7fe');
+      tmed.style.setProperty('--focusBoxShadow', '0 0 0 .25rem rgba(13,110,253,.25)');
+      document.getElementById('nApto').checked = false;
+   }
+}
+
+
+//border-color:#fe8686;outline:0;box-shadow:0 0 0 .25rem rgba(253, 13, 13, 0.25)
+function limitMin() {
+
+}
+ 
+ // global delegated event listener
+ document.addEventListener('input', onExpandableTextareaInput)
+ 
+ // OLD SOLUTION USING JQUERY:
+ // // Applied globally on all textareas with the "autoExpand" class
+ 
+ // $(document)
+ //     .one('focus.autoExpand', 'textarea.autoExpand', function(){
+ //         var savedValue = this.value;
+ //         this.value = '';
+ //         this._baseScrollHeight = this.scrollHeight;
+ //         this.value = savedValue;
+ //     })
+ //     .on('input.autoExpand', 'textarea.autoExpand', function(){
+ //         var minRows = this.getAttribute('data-min-rows')|0, rows;
+ //         this.rows = minRows;
+ //         rows = Math.ceil((this.scrollHeight - this.baseScrollHeight) / 16);
+ //         this.rows = minRows + rows;
+ //     });
