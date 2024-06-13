@@ -21,7 +21,6 @@ class ItemStatus extends Component
     public $disp;
     public $req;
     public $pend_ant;
-    public $important_icon;
     public $border;
 
     public function __construct($num, $message, $justif, $stat = null, $important = false)
@@ -38,11 +37,9 @@ class ItemStatus extends Component
         $this->ok_checked = '';
         $this->re_checked = '';
         $this->tr_checked = '';
-        $this->important_icon = '';
         $this->border = 'border:2px solid white';
 
         if ($important == true) {
-            $this->important_icon = "fa fa-exclamation-triangle";
             $this->border = "border:1px solid #ffc107";
         }
         if ($stat == 'Trocar') {

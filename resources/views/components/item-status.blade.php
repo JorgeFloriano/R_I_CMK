@@ -2,7 +2,7 @@
     <section style="{{$border}};" class="item" id="{{$i}}" name="txt{{$i}}">
         <section class="ask">
             <div class="lab">
-                {{$i}}- <i style="color:#ffc107" class="{{$important_icon}}" aria-hidden="true"> </i> {{$msg}}. 
+                {{$i}}-{{$msg}}. 
             </div>
             <div class="opt">
                 <input type="radio" hidden {{$ok_checked}} name="txt{{$i}}" id="{{$i}}_OK" value="Ok">
@@ -17,7 +17,8 @@
             </div>
         </section>
         @isset($jus[$i])
-            <div>{{$pend_ant}}{{$jus[$i]->descricao ?? ''}}</div>
+            <div> <i style="color:#ffc107" class="fa fa-exclamation-triangle" aria-hidden="true"></i> {{$pend_ant}}<br>
+                {{$jus[$i]->descricao ?? ''}}</div>
         @endisset
         <section style="{{$disp}}" class="obs" name="txtSecJust{{$i}}" id="secJust{{$i}}">
             <label style="margin-right: 100px;" for="idJust{{$i}}" id="idLabPend{{$i}}">Justificativa:</label>

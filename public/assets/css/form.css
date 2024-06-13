@@ -40,13 +40,12 @@ div#header2 {
 div#header3 {
   float: right;
   text-align: right;
-  font-size: 10px;
+  font-size: 11px;
   font-weight: bold;
 }
 
 section#info {
   border:2px solid var(--blue1);
-  font-size: 12px !important;
   background-color: white;
   border-radius: 5px;
   margin: 5px 0;
@@ -83,7 +82,7 @@ section.element {
   background-color: var(--blue2);
   text-align: center;
   font-weight: bold;
-  font-size: 14px;
+  font-size: 15px;
   border-radius: 5px;
   color: white;
   margin: 3px 0px 5px 0px;
@@ -93,7 +92,7 @@ section.element {
 section.item {
   background-color: white;
   border-radius: 5px;
-  font-size: 14px;
+  font-size: 15px;
   height: auto;
   padding: 5px;
   width: 100%;
@@ -108,7 +107,7 @@ section.ask {
 }
 
   div.lab {
-  width: 77%;
+  width: 75%;
   float: left;
 }
 
@@ -120,7 +119,7 @@ div.opt {
 
 input.medido {
   width: 48px;
-  height: 20px;
+  height: 23px;
   padding: 3px;
 }
 
@@ -133,13 +132,7 @@ table.med {
 }
 
 table {
-  font-size: 12px;
-}
-
-.motor {
-  text-align: center;
-  border:2px solid var(--blue2);
-  border-radius: 5px;
+  font-size: 15px;
 }
 
 .btn {
@@ -166,7 +159,7 @@ table {
 section.obs {
   background-color: white;
   border-radius: 0px 0px 5px 5px;
-  font-size: 14px;
+  font-size: 15px;
   height: auto;
   width: 100%;
   margin-top: 5px;
@@ -182,7 +175,7 @@ textarea {
   width: 100%;
 }
 
-textarea:focus, input:focus {
+textarea:focus, input:focus, .signature-pad:focus {
   border: var(--inputBorder);
   outline:0;
   box-shadow: var(--focusBoxShadow)
@@ -204,7 +197,7 @@ textarea:focus, input:focus {
 div.infoTec {
   background-color: white;
   border-radius: 5px;
-  font-size: 14px;
+  font-size: 15px;
   padding: 8px;
   width: 100%;
   margin: 5px 0px;
@@ -213,33 +206,33 @@ div.infoTec {
 input.itec {
   width: 75%;
   float: right;
-  height: 20px;
+  height: 23px;
   margin: 2px 0px;
 }
 
 label.ltec {
   float: left;
   width: 24.5%;
-  height: 20px;
+  height: 23px;
   margin: 2px 0px;
 }
 
 label.equip {
   float: left;
   width: 100px;
-  height: 20px;
+  height: 23px;
   margin: 2px 0px;
 }
 
 .horario {
   float: left;
   width: 24.5%;
-  height: 20px;
+  height: 23px;
   margin: 2px 0px;
 }
 div.itInfTec {
   margin: 8px 0px;
-  height: 20px;
+  height: 23px;
 }
 
 div.signature {

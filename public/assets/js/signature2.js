@@ -33,14 +33,15 @@ signButton2.addEventListener('click', (event) => {
     event.preventDefault();
     sc2.style.overflow = "hidden";
     writingModeBtn2 = true;
-    canvas2.style.border = "3px solid rgb(105, 111, 196)";
+    canvas2.style.boxShadow = " 0 0 0 .25rem rgba(13,110,253,.25)";
 })
 
 okButton2.addEventListener('click', (event) => {
     event.preventDefault();
     sc2.style.overflow = "";
     writingModeBtn2 = false;
-    canvas2.style.border = "1px solid rgb(105, 111, 196)";
+    canvas2.style.border = "1px solid #86b7fe";
+    canvas2.style.boxShadow = "none";
 })
 
 

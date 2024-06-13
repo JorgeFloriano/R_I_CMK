@@ -33,14 +33,15 @@ signButton.addEventListener('click', (event) => {
     event.preventDefault();
     sc.style.overflow = "hidden";
     writingModeBtn = true;
-    canvas.style.border = "3px solid rgb(105, 111, 196)";
+    canvas.style.boxShadow = " 0 0 0 .25rem rgba(13,110,253,.25)";
 })
 
 okButton.addEventListener('click', (event) => {
     event.preventDefault();
     sc.style.overflow = "";
     writingModeBtn = false;
-    canvas.style.border = "1px solid rgb(105, 111, 196)";
+    canvas.style.border = "1px solid #86b7fe";
+    canvas.style.boxShadow = "none";
 })
 
 const getTargetPositionMobile = (event) => {

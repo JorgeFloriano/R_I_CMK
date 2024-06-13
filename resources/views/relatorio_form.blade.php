@@ -23,7 +23,7 @@
                         <div>DE CORRENTE</div>
                     </div>
                     <div id="header3">
-                        Nº {{$relat->id}}
+                        RI Nº {{$relat->id}}
                     </div>
                 </div>
                 <main>
@@ -113,21 +113,21 @@
                         </section>
 
                         <section class="item">
-                            <table class="med">
+                            <table class="med" style="height: 100px;">
                                 <tr>
                                     <th style="width: 60%;">NORMA NBR 1292/1990</th>
-                                    <th style="width: 15%;">Nominal</th>
-                                    <th style="width: 15%">Limite</th>
-                                    <th>Medido</th>
+                                    <th style="width: 15%;">Nom.</th>
+                                    <th style="width: 15%">Lim.</th>
+                                    <th>Med.</th>
                                 </tr>
                                 <tr>
-                                    <td>31-Alongam. - Med. 11 elos</td>
+                                    <td>31-Along. - Med. 11 elos</td>
                                     <td>{{$t_e_c->nom_elos}}</td>
                                     <td id="max11elos">{{$t_e_c->max_elos}}</td>
                                     <td><input onchange="limitMax()" class="medido" min="0" step="0.1" type="number" name="txt31" id="med11elos" value="{{$prev_r_t_e_c->item31 ?? ''}}"></td>
                                 </tr>
                                 <tr>
-                                    <td>32-Diâmetro médio do elo</td>
+                                    <td>32-Diâmetro médio elo</td>
                                     <td>{{$t_e_c->nom_elo}}</td>
                                     <td>{{$t_e_c->min_elo}}</td>
                                     <td><input class="medido" step="0.1" min="0" type="number" name="txt32" id="id32" value="{{$prev_r_t_e_c->item32 ?? ''}}"></td>
@@ -143,30 +143,30 @@
                             <table class="med" style="height: 105px;">
                                 <tr>
                                     <th style="width: 60%;" colspan="2">NORMA NBR 10070/1987</th>
-                                    <th style="width: 15%;">Nominal</th>
-                                    <th style="width: 15%;">Limite</th>
-                                    <th>Medido</th>
+                                    <th style="width: 15%;">Nom.</th>
+                                    <th style="width: 15%;">Lim.</th>
+                                    <th>Med.</th>
                                 </tr>
                                 <tr>
                                     <td rowspan="3"><img src="{{asset('assets/img/gancho.jpg')}}" alt="figura do gancho" width="80px"></td>
-                                    <td>33-Medida W1</td>
+                                    <td>33-Med. W1</td>
                                     <td>{{$t_e_c->nom_w1}}</td>
                                     <td>{{$t_e_c->max_w1}}</td>
                                     <td><input class="medido" min="0" step="0.1" type="number" name="txt33" value="{{$prev_r_t_e_c->item33 ?? ''}}"></td>
                                 </tr>
                                 <tr>
-                                    <td>34-Medida Y</td>
+                                    <td>34-Med. Y</td>
                                     <td>{{$t_e_c->nom_y}}</td>
                                     <td>{{$t_e_c->min_y}}</td>
                                     <td><input class="medido" step="0.1" min="0" type="number" name="txt34" id="id34" value="{{$prev_r_t_e_c->item34 ?? ''}}"></td>
                                 </tr>
                                 <tr>
-                                    <td>35-Alinhamento</td>
+                                    <td>35-Alinham.</td>
                                     <td>
                                         <label for="35_Ok">Ok </label><input type="radio" name="txt35" id="35_Ok" value="Ok (alinhado)">
                                     </td>
                                     <td colspan="2">
-                                        <label for="35_T">Substituir </label><input type="radio" name="txt35" id="35_T" value="Substituir (desalinhado)">
+                                        <label for="35_T">Trocar</label><input type="radio" name="txt35" id="35_T" value="Substituir (desalinhado)">
                                     </td>
                                 </tr>
                             </table>
@@ -239,18 +239,18 @@
                         </section>
 
                         <section class="item">
-                        <table class="med" style="height: 270px;">
+                        <table class="med" style="height: 390px;">
                             <thead>
                                 <tr>
-                                    <th style="width:80%;" colspan="3">VALORES CONSIDERADOS</th>
-                                    <th style="width:18%;">Nominal</th>
-                                    <th>Medido</th>
+                                    <th style="width:80%;" colspan="2">VALORES CONSIDERADOS</th>
+                                    <th style="width:18%;">Nom.</th>
+                                    <th>Med.</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td style="width:20px;">67-</td>
-                                    <td colspan="2">Tensão de rede (V)</td>
+                                    <td>Tensão de rede (V)</td>
                                     <td>{{$t_e_c->v_rede}}</td>
                                     <td>
                                         <input class="medido" step="0.1" min="0" type="number" name="txt67" id="id67" value="{{$prev_r_t_e_c->v_rede ?? ''}}">
@@ -258,7 +258,7 @@
                                 </tr>
                                 <tr>
                                     <td>68-</td>
-                                    <td colspan="2">Tensão trafo de comando (VCA)</td>
+                                    <td>Tensão de comando (VCA)</td>
                                     <td>{{$t_e_c->v_com}}</td>
                                     <td>
                                         <input class="medido" step="0.1" min="0" type="number" name="txt68" id="id68" value="{{$prev_r_t_e_c->v_com ?? ''}}">
@@ -266,52 +266,60 @@
                                 </tr>
                                 <tr>
                                     <td>69-</td>
-                                    <td colspan="2">Med. banco de resistências (Ohms)</td>
+                                    <td>Banco de resistências (&#8486;)</td>
                                     <td>{{$t_e_c->banc_res}}</td>
                                     <td>
                                         <input class="medido" step="0.1" min="0" type="number" name="txt69" id="id69" value="{{$prev_r_t_e_c->banc_res ?? ''}}">
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td rowspan="3">70-</td>
-                                    <th rowspan="3" class="motor" >MOTOR DE <br> DIREÇÃO</th>
-                                    <td>Corr. da alta (A)</td>
+                                    <th colspan="5">MOTOR DE DIREÇÃO:</th>
+                                </tr>
+                                <tr>
+                                    <td>70-</td>
+                                    <td>Corrente da alta (A)</td>
                                     <td>{{$t_e_c->corr_dir_alta}}</td>
                                     <td>
                                         <input class="medido" step="0.1" min="0" type="number" name="txt70" id="id70" value="{{$prev_r_t_e_c->corr_dir_alta ?? ''}}">
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>Corr. da baixa (A)</td>
+                                    <td>70-</td>
+                                    <td>Corrente da baixa (A)</td>
                                     <td>{{$t_e_c->corr_dir_baixa}}</td>
                                     <td>
                                         <input class="medido" step="0.1" min="0" type="number" name="txt70_2" id="id70_2" value="{{$prev_r_t_e_c->corr_dir_baixa ?? ''}}">
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>Tensão freio (VCC)</td>
+                                    <td>70-</td>
+                                    <td>Tensão do freio (VCC)</td>
                                     <td>{{$t_e_c->v_dir_freio}}</td>
                                     <td>
                                         <input class="medido" step="0.1" min="0" type="number" name="txt70_3" id="id70_3" value="{{$prev_r_t_e_c->v_dir_freio ?? ''}}">
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td rowspan="3">71-</td>
-                                    <th rowspan="3" class="motor" >MOTOR DE <br> ELEVAÇÃO</th>
-                                    <td>Corr. da alta (A)</td>
+                                    <th colspan="5" >MOTOR DE ELEVAÇÃO:</th>
+                                </tr>
+                                <tr>
+                                    <td>71-</td>
+                                    <td>Corrente da alta (A)</td>
                                     <td>{{$t_e_c->corr_el_alta}}</td>
                                     <td>
                                         <input class="medido" step="0.1" min="0" type="number" name="txt71" id="id71" value="{{$prev_r_t_e_c->corr_el_alta ?? ''}}">
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>Corr. da baixa (A)</td>
+                                    <td>71-</td>
+                                    <td>Corrente da baixa (A)</td>
                                     <td>{{$t_e_c->corr_el_baixa}}</td>
                                     <td>
                                         <input class="medido" step="0.1" min="0" type="number" name="txt71_2" id="id71_2" value="{{$prev_r_t_e_c->corr_el_baixa ?? ''}}">
                                     </td>
                                 </tr>
                                 <tr>
+                                    <td>71-</td>
                                     <td>Tensão freio (VCC)</td>
                                     <td>{{$t_e_c->v_el_freio}}</td>
                                     <td>
