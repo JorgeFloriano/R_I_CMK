@@ -151,34 +151,90 @@ function getScrollHeight(elm){
    }
  }
 
- function naoApto(i) {
+ // Important item, if bad txtContadorApto++, if good or more or less txtContadorApto--
+ function naoApto(clicked, i) {
+
+   // If element exists
    if (document.getElementById(i) !== null ) {
       let border_item = document.getElementById(i).style.borderColor;
+
+      // If important item (border yellow)
       if (border_item !== null && border_item !== 'white') {
-         document.getElementById('nApto').checked = true;
+
+         var ok_id = 'i'+i+'Ok'
+         var r_id = 'i'+i+'R'
+         var t_id = 'i'+i+'T'
+
+         var ok_checked = document.getElementById(i+'_OK').checked
+         var r_checked = document.getElementById(i+'_R').checked
+         var t_checked = document.getElementById(i+'_T').checked
+
+         var color_ok = window.getComputedStyle(document.getElementById('i'+i+'Ok'),null).getPropertyValue('color')
+         var color_r = window.getComputedStyle(document.getElementById('i'+i+'R'),null).getPropertyValue('color')
+         var color_t = window.getComputedStyle(document.getElementById('i'+i+'T'),null).getPropertyValue('color')
+         var tcont = document.getElementById("contApto")
+         var cont = Number(tcont.value)
+
+         if (clicked.id == t_id && color_t != 'rgb(255, 0, 0)' && t_checked == false) { 
+
+            cont++
+            document.getElementById("contApto").value = cont
+            //window.alert(clicked.id)
+         }
+         if (clicked.id != t_id && color_t == 'rgb(255, 0, 0)' && t_checked == true ||
+            clicked.id == t_id && color_t == 'rgb(255, 0, 0)' && t_checked == true) {
+
+            cont--
+            document.getElementById("contApto").value = cont
+         }
+         if (cont > 0) {
+            document.getElementById('nApto').checked = true;
+         } else {
+            document.getElementById('nApto').checked = false;
+         }
       }
    }
  }
 
-function limitMax() {
-   var tmed = document.getElementById('med11elos')
-   var tmax = document.getElementById('max11elos')
+function limitMed(id_nom, id_lim, id_med) {
+   var tmed = document.getElementById(id_med)
+   var tlim = document.getElementById(id_lim)
+   var tnom = document.getElementById(id_nom)
+   var tcont = document.getElementById("contApto")
+   
+
    var med = Number(tmed.value)
-   var max = Number(tmax.innerHTML)
-   if (med > max) {
-      // Border turns red
-      tmed.style.setProperty('--inputBorder', '1px solid red');
-      tmed.style.setProperty('--focusBoxShadow', '0 0 0 .25rem rgba(253, 13, 13, 0.25)');
-      window.alert("A medida ultrapassou o valor limite, o equipamento não está apto para operar com segurança!!")
-      document.getElementById('nApto').checked = true;
+   var lim = Number(tlim.innerHTML)
+   var nom = Number(tnom.innerHTML)
+   var cont = Number(tcont.value)
+   var bord_color = window.getComputedStyle(document.getElementById(id_med),null).getPropertyValue('border-color')
+
+   if ((nom < lim && lim < med) || ( nom > lim && lim > med)) {
+      // If border isn't red, turns red
+      if (bord_color != 'rgb(255, 0, 0)') {
+         cont++
+         tmed.style.setProperty('--inputBorder', '1px solid red');
+         tmed.style.setProperty('--focusBoxShadow', '0 0 0 .25rem rgba(253, 13, 13, 0.25)');
+         window.alert("Medida fora dos valores aceitáveis pela norma, equipamento não está apto para operar com segurança!!")
+         document.getElementById("contApto").value = cont
+      }
         
-      // Border turns blue again
+      // If border is red ,turns blue again
    } else {
-      tmed.style.setProperty('--inputBorder', '1px solid #86b7fe');
-      tmed.style.setProperty('--focusBoxShadow', '0 0 0 .25rem rgba(13,110,253,.25)');
+      if (bord_color == 'rgb(255, 0, 0)') {
+         cont--
+         tmed.style.setProperty('--inputBorder', '1px solid #86b7fe');
+         tmed.style.setProperty('--focusBoxShadow', '0 0 0 .25rem rgba(13,110,253,.25)');
+         document.getElementById("contApto").value = cont
+      } 
+   }
+   if (cont > 0) {
+      document.getElementById('nApto').checked = true;
+   } else {
       document.getElementById('nApto').checked = false;
    }
 }
+
 
 
 //border-color:#fe8686;outline:0;box-shadow:0 0 0 .25rem rgba(253, 13, 13, 0.25)

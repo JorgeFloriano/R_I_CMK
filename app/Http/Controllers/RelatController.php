@@ -136,6 +136,36 @@ class RelatController extends Controller
         // Eletric chain hoist data
         $prev_r_t_e_c = Relatorio::find($prev_relat[0]->id ?? 0)->talEleCorr ?? 0;
 
+        //dd($prev_r_t_e_c);
+        
+        //
+
+        //Important items
+
+        $important = [2,9,10,12,21,22,23,24,25,27,28,29,36,54,55];
+        $num_imp = 0;
+        $imp = [];
+
+        if ($prev_r_t_e_c !== 0) {
+            $array_prev_r_t_e_c = $prev_r_t_e_c->toArray();
+        }   
+
+        //dd($array_prev_r_t_e_c);
+
+        for ($i=1; $i < 67; $i++) { 
+            if (in_array($i, $important, $imp[$i] = false)) {
+                $imp[$i] = True;
+                if (isset($array_prev_r_t_e_c['item'.$i])) {
+                    if ($array_prev_r_t_e_c['item'.$i] == "Trocar") {
+                        $num_imp++;
+                    }
+                }
+            }
+        }
+        
+        //dd($imp);
+
+
         // Preparing list of pendings
         $pends = Relatorio::find($prev_relat[0]->id ?? 0)->pendencias ?? null;
         if (isset($pends)) {
@@ -164,7 +194,9 @@ class RelatController extends Controller
             'pends' => $pends ?? null,
             'prev_relat_id' => $prev_relat[0]->id ?? null,
             'prev_relat_obs' => $prev_relat[0]->obs ?? null,
-            'prev_relat_ressalva' => $prev_relat[0]->ressalva ?? null
+            'prev_relat_ressalva' => $prev_relat[0]->ressalva ?? null,
+            'imp' => $imp ?? null,
+            'num_imp' => $num_imp ?? null
         ];
         return view('relatorio_form', $data);
     }

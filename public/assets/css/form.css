@@ -107,14 +107,13 @@ section.ask {
 }
 
   div.lab {
-  width: 75%;
+  width: 76%;
   float: left;
 }
 
 div.opt {
   color: var(--gray1);
   float: right;
-  margin-left: 5px;
 }
 
 input.medido {

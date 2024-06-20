@@ -6,13 +6,13 @@
             </div>
             <div class="opt">
                 <input type="radio" hidden {{$ok_checked}} name="txt{{$i}}" id="{{$i}}_OK" value="Ok">
-                <i onclick="check('i{{$i}}Ok', '{{$i}}_OK', 'i{{$i}}R', '{{$i}}_R', 'i{{$i}}T', '{{$i}}_T', 'ok', 'secJust{{$i}}' ,'idJust{{$i}}', '{{$jus[$i] ?? ''}}')"
+                <i onclick="naoApto(this,{{$i}}), check('i{{$i}}Ok', '{{$i}}_OK', 'i{{$i}}R', '{{$i}}_R', 'i{{$i}}T', '{{$i}}_T', 'ok', 'secJust{{$i}}' ,'idJust{{$i}}', '{{$jus[$i] ?? ''}}')"
                 id="i{{$i}}Ok" style="font-size: 18px;{{$ok_color}}" class="fa fa-thumbs-up" ></i>
                 <input type="radio" hidden {{$re_checked}} name="txt{{$i}}" id="{{$i}}_R" value="Recuperar">
-                <i onclick="check('i{{$i}}R', '{{$i}}_R', 'i{{$i}}Ok', '{{$i}}_OK', 'i{{$i}}T', '{{$i}}_T', 're', 'secJust{{$i}}' ,'idJust{{$i}}', '{{$jus[$i] ?? ''}}')"
+                <i onclick="naoApto(this,{{$i}}), check('i{{$i}}R', '{{$i}}_R', 'i{{$i}}Ok', '{{$i}}_OK', 'i{{$i}}T', '{{$i}}_T', 're', 'secJust{{$i}}' ,'idJust{{$i}}', '{{$jus[$i] ?? ''}}')"
                 id="i{{$i}}R" style="font-size: 18px;{{$re_color}}" class="fa fa-wrench"></i>
                 <input type="radio" hidden {{$tr_checked}} name="txt{{$i}}" id="{{$i}}_T" value="Trocar">
-                <i onclick="check('i{{$i}}T', '{{$i}}_T', 'i{{$i}}R', '{{$i}}_R', 'i{{$i}}Ok', '{{$i}}_OK', 'tr', 'secJust{{$i}}' ,'idJust{{$i}}', '{{$jus[$i] ?? ''}}'), naoApto({{$i}})"
+                <i onclick="naoApto(this,{{$i}}), check('i{{$i}}T', '{{$i}}_T', 'i{{$i}}R', '{{$i}}_R', 'i{{$i}}Ok', '{{$i}}_OK', 'tr', 'secJust{{$i}}' ,'idJust{{$i}}', '{{$jus[$i] ?? ''}}')"
                 id="i{{$i}}T" style="font-size: 18px;{{$tr_color}}" class="fa fa-thumbs-down"></i>
             </div>
         </section>

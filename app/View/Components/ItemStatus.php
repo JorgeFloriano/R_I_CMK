@@ -40,7 +40,7 @@ class ItemStatus extends Component
         $this->border = 'border:2px solid white';
 
         if ($important == true) {
-            $this->border = "border:1px solid #ffc107";
+            $this->border = "border:2px solid #ffc107";
         }
         if ($stat == 'Trocar') {
             $this->tr_color = 'color:red';

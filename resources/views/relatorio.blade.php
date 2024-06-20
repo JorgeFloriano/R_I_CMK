@@ -24,9 +24,9 @@
                     "Rodas e rolamentos",
                     "Fixação da talha e parafusos de fechamento",
                     "Batentes fim de curso",
-                    "Motor (não aplica)",
-                    "Freio (não aplica)",
-                    "Redutor (não aplica)"
+                    "Motor",
+                    "Freio",
+                    "Redutor"
                 ]'/>
                 <tr><th colspan="2">TALHA</th><th>{{$e->capacidade}} kg</th></tr>
                 <x-report-element :relat="$rt" num="7" :descriptions='[
@@ -116,8 +116,8 @@
                     "Contatores e contatos",
                     "Trafos de potência e comando",
                     "Bornes e terminais",
-                    "Banco de resistência (não aplica)",
-                    "Célula de carga (não aplica)"
+                    "Banco de resistência",
+                    "Célula de carga"
                 ]'/>
                 <tr><th colspan="2">BOTOEIRA</th><th></th></tr>
                 <x-report-element :relat="$rt" num="48" :descriptions='[
