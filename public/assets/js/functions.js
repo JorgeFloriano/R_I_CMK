@@ -132,8 +132,8 @@ function getScrollHeight(elm){
    let show_message = false;
    for (let index = 1; index < 67; index++) {
       if (document.getElementById(index) !== null ) {
-         let border_item = document.getElementById(index).style.borderColor;
-         if (border_item !== null && border_item !== 'white') {
+         let imp_item = document.getElementById("exclRed"+index).hidden;
+         if (imp_item !== null && imp_item == false) {
             var bom_cor = document.getElementById(index + "_OK").checked;
             var reg_cor = document.getElementById(index + "_R").checked;
             var tro_cor = document.getElementById(index + "_T").checked;
@@ -145,7 +145,7 @@ function getScrollHeight(elm){
    }
    if (show_message == true) {
       document.getElementById('submit_button').type = "button"
-      window.alert("Os ítens com contorno em amarelo são críticos e de inspeção obrigatória, pois estão relacionados à segurança!! No caso de estarem em condições ruins, recomendar o bloqueio do equipamento!")
+      window.alert("OS ÍTENS COM EXCLAMAÇÃO EM VERMELHO SÃO CRÍTICOS E DE INSPEÇÃO OBRIGATÓRIA, POIS ESTÃO RELACIONADOS À SEGURANÇA!! NO CASO DE ESTAREM EM CONDIÇÕES RUINS, RECOMENDAR O BLOQUEIO DO EQUIPAMENTO!")
    } else {
       window.document.getElementById('submit_button').type = "submit"
    }
@@ -189,8 +189,11 @@ function getScrollHeight(elm){
          }
          if (cont > 0) {
             document.getElementById('nApto').checked = true;
+            document.getElementById("nAptoAlert").innerHTML = "EQUIPAMENTO ESTÁ COM " + String(cont) + " ÍTENS CRÍTICOS EM CONDIÇÕES RUÍNS, RECOMENDA-SE O BLOQUEIO DO MESMO!!"
+            document.getElementById("nAptoAlert").hidden = false;
          } else {
             document.getElementById('nApto').checked = false;
+            document.getElementById("nAptoAlert").hidden = true;
          }
       }
    }
@@ -209,29 +212,33 @@ function limitMed(id_nom, id_lim, id_med) {
    var cont = Number(tcont.value)
    var bord_color = window.getComputedStyle(document.getElementById(id_med),null).getPropertyValue('border-color')
 
-   if ((nom < lim && lim < med) || ( nom > lim && lim > med)) {
-      // If border isn't red, turns red
-      if (bord_color != 'rgb(255, 0, 0)') {
-         cont++
-         tmed.style.setProperty('--inputBorder', '1px solid red');
-         tmed.style.setProperty('--focusBoxShadow', '0 0 0 .25rem rgba(253, 13, 13, 0.25)');
-         window.alert("Medida fora dos valores aceitáveis pela norma, equipamento não está apto para operar com segurança!!")
-         document.getElementById("contApto").value = cont
+   if (med != 0) {
+      if ((nom < lim && lim < med) || ( nom > lim && lim > med)) {
+         // If border isn't red, turns red
+         if (bord_color != 'rgb(255, 0, 0)') {
+            cont++
+            tmed.style.setProperty('--inputBorder', '1px solid red');
+            tmed.style.setProperty('--focusBoxShadow', '0 0 0 .25rem rgba(253, 13, 13, 0.25)');
+            document.getElementById("contApto").value = cont;
+         }
+           
+         // If border is red ,turns blue again
+      } else {
+         if (bord_color == 'rgb(255, 0, 0)') {
+            cont--
+            tmed.style.setProperty('--inputBorder', '1px solid #86b7fe');
+            tmed.style.setProperty('--focusBoxShadow', '0 0 0 .25rem rgba(13,110,253,.25)');
+            document.getElementById("contApto").value = cont
+         } 
       }
-        
-      // If border is red ,turns blue again
-   } else {
-      if (bord_color == 'rgb(255, 0, 0)') {
-         cont--
-         tmed.style.setProperty('--inputBorder', '1px solid #86b7fe');
-         tmed.style.setProperty('--focusBoxShadow', '0 0 0 .25rem rgba(13,110,253,.25)');
-         document.getElementById("contApto").value = cont
-      } 
-   }
-   if (cont > 0) {
-      document.getElementById('nApto').checked = true;
-   } else {
-      document.getElementById('nApto').checked = false;
+      if (cont > 0) {
+         document.getElementById('nApto').checked = true;
+         document.getElementById("nAptoAlert").innerHTML = "EQUIPAMENTO ESTÁ COM " + String(cont) + " ÍTENS CRÍTICOS EM CONDIÇÕES RUÍNS, RECOMENDA-SE O BLOQUEIO DO MESMO!!"
+         document.getElementById("nAptoAlert").hidden = false;
+      } else {
+         document.getElementById('nApto').checked = false;
+         document.getElementById("nAptoAlert").hidden = true;
+      }
    }
 }
 

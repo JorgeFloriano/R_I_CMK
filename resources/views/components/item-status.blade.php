@@ -1,8 +1,8 @@
 <div>
-    <section style="{{$border}};" class="item" id="{{$i}}" name="txt{{$i}}">
+    <section class="item" id="{{$i}}" name="txt{{$i}}">
         <section class="ask">
             <div class="lab">
-                {{$i}}-{{$msg}}. 
+                {{$i}}-{{$msg}}<i id="exclRed{{$i}}" {{$c_important}} class="fa fa-exclamation" style="color: red" aria-hidden="true"></i> 
             </div>
             <div class="opt">
                 <input type="radio" hidden {{$ok_checked}} name="txt{{$i}}" id="{{$i}}_OK" value="Ok">

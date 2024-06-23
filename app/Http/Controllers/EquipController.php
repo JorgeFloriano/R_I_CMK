@@ -57,6 +57,7 @@ class EquipController extends Controller
         // get the new equipment definition
         // save equipment in to the database
         $equip = new Equipamento();
+        $equip->id = $request->input('txtId');
         $equip->tipo = $request->input('txtTip');
         $equip->modelo = $request->input('txtMod');
         $equip->fabricante = $request->input('txtFab');
@@ -71,7 +72,8 @@ class EquipController extends Controller
         // Especific data of eletric chain hoist
         $t_e_c = new T_e_c_dado();
 
-        $t_e_c->equipamento_id = $equip->id;
+        $t_e_c->id = $request->input('txtId');
+        $t_e_c->equipamento_id = $request->input('txtId');
         $t_e_c->v_rede = $request->input('txtAlim');
         $t_e_c->v_com = $request->input('txtCom');
         $t_e_c->banc_res = $request->input('txtRes');
@@ -115,6 +117,7 @@ class EquipController extends Controller
         // get the new equipment definition
         // update equipment in to the database
         $equip = Equipamento::find($request->input('txtNum'));
+        $equip->id = $request->input('txtId');
         $equip->tipo = $request->input('txtTip');
         $equip->id = $request->input('txtNum');
         $equip->modelo = $request->input('txtMod');

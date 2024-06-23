@@ -5,7 +5,11 @@
 <title>Relatório de Inspeção</title>
 </head>
 
-<body id="body">
+<body onload="limitMed('nom11elos', 'max11elos', 'med11elos'),
+              limitMed('nomElo', 'minElo', 'medElo'),
+              limitMed('nomW1', 'maxW1', 'medW1'),
+              limitMed('nomY', 'minY', 'medY')
+              " id="body">
     <div class="container">
         <div class="mt-2">
             <a style="color:rgb(41, 50, 184)" href="{{route('programacao')}}">
@@ -173,7 +177,7 @@
                                     </td>
                                 </tr>
                             </table>
-                            <input type="text" name="txtContadorApto" id="contApto" value="{{$num_imp ?? 0}}">
+                            <input type="hidden" name="txtContadorApto" id="contApto" value="{{$num_imp ?? 0}}">
                         </section>
 
                         <section id="insp" class="insp">
@@ -364,9 +368,9 @@
                         </section>
 
                         <section id="secApto" class="item" style="flex-direction: column;">
+                            <div {{$n_apto_hidden ?? "hidden"}} id="nAptoAlert" class="alert alert-danger text-center">EQUIPAMENTO ESTÁ COM {{$num_imp ?? ''}} ÍTENS CRÍTICOS EM CONDIÇÕES RUÍNS, RECOMENDA-SE O BLOQUEIO DO MESMO!!</div>
                             <div>
                                 <strong>EQUIPAMENTO APTO PARA OPERAR: </strong>
-                                
                             </div>
                             <div >
                                 <div onclick="displayoff('secRessalva', 'secApto', 'idressalvas')">
@@ -374,7 +378,7 @@
                                     <label for="apto">SIM</label>
                                 </div>
                                 <div onclick="displayoff('secRessalva', 'secApto', 'idressalvas')">
-                                    <input type="radio" name="apto" id="nApto" value="NÃO APTO PARA OPERAR">
+                                    <input {{$n_apto_checked ?? ""}} type="radio" name="apto" id="nApto" value="NÃO APTO PARA OPERAR">
                                     <label for="nApto">NÃO</label>
                                 </div>
                                 <div onclick="displayon('secRessalva', 'secApto')">

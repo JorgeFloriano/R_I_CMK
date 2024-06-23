@@ -16,6 +16,11 @@
                     <input type="hidden" name="txtNum" id="idNum" value="{{$equip->id}}">
 
                     <div class="input-group mb-2">
+                        <label for="idId" class="input-group-text" id="lblId">Nº CMK: </label>
+                        <input type="text" class="form-control" placeholder="Ex.: 15993" aria-label="Ex.: 15993" aria-describedby="lblId" id="idId" name="txtId" value="{{$equip->id}}">
+                    </div>
+
+                    <div class="input-group mb-2">
                         <label for="idSer" class="input-group-text" id="lblSer">Nº Série: </label>
                         <input type="text" class="form-control" placeholder="Ex.: 22993" aria-label="Ex.: 22993" aria-describedby="lblSer" id="idSer" name="txtSer" value="{{$equip->n_serie}}">
                     </div>

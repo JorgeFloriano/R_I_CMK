@@ -21,7 +21,7 @@ class ItemStatus extends Component
     public $disp;
     public $req;
     public $pend_ant;
-    public $border;
+    public $c_important;
 
     public function __construct($num, $message, $justif, $stat = null, $important = false)
     {
@@ -37,10 +37,10 @@ class ItemStatus extends Component
         $this->ok_checked = '';
         $this->re_checked = '';
         $this->tr_checked = '';
-        $this->border = 'border:2px solid white';
+        $this->c_important = 'hidden';
 
         if ($important == true) {
-            $this->border = "border:2px solid #ffc107";
+            $this->c_important = "";
         }
         if ($stat == 'Trocar') {
             $this->tr_color = 'color:red';
