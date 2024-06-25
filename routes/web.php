@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\TecModelController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -38,3 +39,5 @@ Route::post('/relat_form_submit', 'RelatController@relat_form_submit')->name('re
 Route::get('/teste', 'RelatController@teste')->name('teste');
 
 //-------------------------------------------------------------------
+
+Route::resource('tec_models', TecModelController::class);

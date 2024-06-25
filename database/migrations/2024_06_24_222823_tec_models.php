@@ -11,9 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('t_e_c_dados', function (Blueprint $table) {
+        Schema::create('tec_models', function (Blueprint $table) {
             $table->id();
-            $table->integer('equipamento_id');
+            $table->string('descricao');
+            $table->string('fabricante')->nullable();
             $table->float('nom_elos')->nullable();
             $table->float('max_elos')->nullable();
             $table->float('nom_elo')->nullable();
@@ -22,18 +23,11 @@ return new class extends Migration
             $table->float('max_w1')->nullable();
             $table->float('nom_y')->nullable();
             $table->float('min_y')->nullable();
-            $table->float('v_rede')->nullable();
             $table->float('v_com')->nullable();
-            $table->float('banc_res')->nullable();
-            $table->float('corr_dir_alta')->nullable();
-            $table->float('corr_dir_baixa')->nullable();
-            $table->float('v_dir_freio')->nullable();
-            $table->float('corr_el_alta')->nullable();
-            $table->float('corr_el_baixa')->nullable();
-            $table->float('v_el_freio')->nullable();
-            $table->dateTime('created_at')->nullable();
-            $table->dateTime('updated_at')->nullable();
-            $table->dateTime('deleted_at')->nullable();
+            $table->float('corr_alta')->nullable();
+            $table->float('corr_baixa')->nullable();
+            $table->float('v_freio')->nullable();
+            $table->timestamps();
         });
     }
 
@@ -42,6 +36,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('t_e_c_dados');
+        Schema::dropIfExists('tec_models');
     }
 };

@@ -12,7 +12,7 @@
 </style>
 <div class="container-fluid ico" id="userbar">
     <div class="row pe-1">
-        <div class="col-6 p-2">
+        <div class="col-4 p-2">
             <img src="{{asset('assets/img/logo_cmk_white.png')}}" alt="logo cmk" width="75px">
         </div>
         <div class="col-2 p-2 ico text-center">
@@ -36,6 +36,14 @@
                 <i style="font-size: x-large" class="fa fa-file-text ico"></i>
                 <div style="font-size: xx-small">
                     Relatórios
+                </div>
+            </a>
+        </div>
+        <div class="col-2 p-2 ico text-center">
+            <a href="{{route('tec_models.index')}}">
+                <i style="font-size: x-large" class="fa fa-chain"></i>
+                <div style="font-size: xx-small">
+                    Modelos
                 </div>
             </a>
         </div>
