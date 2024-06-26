@@ -50,7 +50,6 @@
                                                 <i class="fa fa-cogs"></i>
                                             </a>
                                         @endif
-                                        
                                     </td>
                                 </tr>
                             @endforeach

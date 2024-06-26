@@ -23,7 +23,7 @@ class TecModelController extends Controller
 
     public function create()
     {
-        
+        return "create";
     }
 
     public function store(Request $request)
@@ -42,9 +42,9 @@ class TecModelController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Tec_model $tec_model)
     {
-        //
+        return view('tec_edit', ['tec_model' => $tec_model]);
     }
 
     /**
@@ -52,7 +52,7 @@ class TecModelController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        return "update";
     }
 
     /**
@@ -60,6 +60,7 @@ class TecModelController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        return "destroy $id";
+
     }
 }

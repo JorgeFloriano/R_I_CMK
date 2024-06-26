@@ -7,12 +7,18 @@
             <div class="col">
                 <h3 class="mt-2">Talhas elétricas de corrente</h3>
                 <hr>
+                <div>
+                    <a href="{{route('tec_models.create')}}" class="btn btn-primary">Cadastrar</a>
+                </div>
+                <hr>
                 <table class="table table-striped">
                     <thead class="table-dark">
                         <tr>
                             <th>Nº</th>
                             <th>Modelo</th>
                             <th>Fabricante</th>
+                            <th>Edit</th>
+                            <th>Del.</th>
                         </tr>
                     </thead>
 
@@ -22,6 +28,16 @@
                                 <td>{{$tecm->id}}</td>
                                 <td>{{$tecm->descricao}}</td>
                                 <td>{{$tecm->fabricante}}</td>
+                                <td>
+                                    <a href="{{route('tec_models.edit', ['tec_model' => $tecm->id])}}" class="btn btn-primary btn-sm">
+                                        <i class="fa fa-edit"></i>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="{{route('tec_models.destroy', ['tec_model' => $tecm->id])}}" class="btn btn-primary btn-sm">
+                                        <i class="fa fa-trash"></i>
+                                    </a>
+                                </td>
                             </tr>
                         @endforeach
                     </tbody> 

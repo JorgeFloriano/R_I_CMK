@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('descricao');
             $table->string('fabricante')->nullable();
+            $table->integer('capacidade')->nullable();
             $table->float('nom_elos')->nullable();
             $table->float('max_elos')->nullable();
             $table->float('nom_elo')->nullable();
