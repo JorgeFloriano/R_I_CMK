@@ -37,7 +37,11 @@
 
                     <div class="input-group mb-2">
                         <label for="idMod" class="input-group-text" id="lblTip">Modelo: </label>
-                        <input id="idMod" name="txtMod" type="text" class="form-control" placeholder="Ex.: Dc-pro 5" aria-label="Ex.: Dc-pro 5" aria-describedby="lblMod" value="{{$equip->modelo}}">
+                        <select id="idMod" name="txtMod" class="form-control" placeholder="Ex.: Dc-pro 5" aria-label="Ex.: Dc-pro 5" aria-describedby="lblMod" value="{{$equip->modelo}}">
+                            @for ( $i= 0; $i < count($models); $i++)
+                                <option {{$select[$i]}} value="{{$models[$i]}}">{{$models[$i]}}</option>
+                            @endfor
+                        </select>
                     </div>
                    
                     <div class="input-group mb-2">
@@ -142,62 +146,6 @@
                         </div>
                     </div>
                     <hr>
-
-                    <div><strong>REFERÊNCIA PARA MEDIÇÕES MECÂNICAS</strong></div>
-
-                    <div class="row g-2">
-                        <div class="col-4"></div>
-                        <div class="col-4">Nominal</div>
-                        <div class="col-4">Limite</div>
-                    </div>
-
-                    <div class="row mb-2 g-2">
-                        <div class="col-4">
-                            Med. 11 elos
-                        </div>
-                        <div class="col-4">
-                            <input type="number" step="0.1" class="form-control" placeholder="Ex.: 177.8" aria-label="Ex.: 177.8"  id="idNomElos" name="txtNomElos" value="{{$t_e_c->nom_elos}}">
-                        </div>
-                        <div class="col-4">
-                            <input type="number" step="0.1" class="form-control" placeholder="Ex.: 178.3" aria-label="Ex.: 178.3"  id="idMaxElos" name="txtMaxElos" value="{{$t_e_c->max_elos}}">
-                        </div>
-                    </div>
-
-                    <div class="row mb-2 g-2">
-                        <div class="col-4">
-                            Diâmetro elo
-                        </div>
-                        <div class="col-4">
-                            <input type="number" step="0.1" class="form-control" placeholder="Ex.: 5.3" aria-label="Ex.: 5.3"  id="idNomElo" name="txtNomElo" value="{{$t_e_c->nom_elo}}">
-                        </div>
-                        <div class="col-4">
-                            <input type="number" step="0.1" class="form-control" placeholder="Ex.: 4.8" aria-label="Ex.: 4.8"  id="idMinElo" name="txtMinElo" value="{{$t_e_c->min_elo}}">
-                        </div>
-                    </div>
-
-                    <div class="row mb-2 g-2">
-                        <div class="col-4">
-                            Medida W1
-                        </div>
-                        <div class="col-4">
-                            <input type="number" step="0.1" class="form-control" placeholder="Ex.: 36" aria-label="Ex.: 36"  id="idNomW1" name="txtNomW1" value="{{$t_e_c->nom_w1}}">
-                        </div>
-                        <div class="col-4">
-                            <input type="number" step="0.1" class="form-control" placeholder="Ex.: 39.6" aria-label="Ex.: 39.6"  id="idMaxW1" name="txtMaxW1" value="{{$t_e_c->max_w1}}">
-                        </div>
-                    </div>
-
-                    <div class="row mb-2 g-2">
-                        <div class="col-4">
-                            Medida Y
-                        </div>
-                        <div class="col-4">
-                            <input type="number" step="0.1" class="form-control" placeholder="Ex.: 24" aria-label="Ex.: 24"  id="idNomY" name="txtNomY" value="{{$t_e_c->nom_y}}">
-                        </div>
-                        <div class="col-4">
-                            <input type="number" step="0.1" class="form-control" placeholder="Ex.: 21.6" aria-label="Ex.: 21.6"  id="idMinY" name="txtMinY" value="{{$t_e_c->min_y}}">
-                        </div>
-                    </div>
 
                     <div style="margin:10px 0;">
                         <input type="submit" class="btn btn-primary" value="SALVAR">

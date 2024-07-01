@@ -5,6 +5,9 @@
      <div class="container">
         <div class="row">
             <div class="col">
+                @if (session()->has('message'))
+                    {{session()->get('message')}}
+                @endif
                 <h3 class="mt-2">Talhas elétricas de corrente</h3>
                 <hr>
                 <div>
@@ -19,6 +22,7 @@
                             <th>Fabricante</th>
                             <th>Edit</th>
                             <th>Del.</th>
+                            {{-- <th>Show</th> --}}
                         </tr>
                     </thead>
 
@@ -34,10 +38,15 @@
                                     </a>
                                 </td>
                                 <td>
-                                    <a href="{{route('tec_models.destroy', ['tec_model' => $tecm->id])}}" class="btn btn-primary btn-sm">
+                                    <a href="{{route('tec_models.show', ['tec_model' => $tecm->id])}}" class="btn btn-primary btn-sm">
                                         <i class="fa fa-trash"></i>
                                     </a>
                                 </td>
+                                {{-- <td>
+                                    <a href="{{route('tec_models.show', ['tec_model' => $tecm->id])}}" class="btn btn-primary btn-sm">
+                                        <i class="fa fa-eye"></i>
+                                    </a>
+                                </td> --}}
                             </tr>
                         @endforeach
                     </tbody> 

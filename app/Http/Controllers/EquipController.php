@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Equipamento;
 use App\Models\T_e_c_dado;
+use App\Models\Tec_model;
 use Illuminate\Http\Request;
 
 class EquipController extends Controller
@@ -42,17 +43,24 @@ class EquipController extends Controller
 
     //----------------------------------------------------------
     public function new_equip() {
+
+        $models = Tec_model::select('descricao')->get();
+        $models_list = [];
+        
+        foreach ($models as $model) {
+            array_push($models_list, $model->descricao);
+        }
+
         //display new equipment from
-        return view('new_equip_form');
+        return view('new_equip_form', [
+            'models' => $models_list
+        ]);
     }
 
     //----------------------------------------------------------
     public function new_equip_submit(Request $request) {
 
-        //echo '<pre>';
-        //print_r($request->input());
-        // print_r($request->all());
-        // die();
+        
 
         // get the new equipment definition
         // save equipment in to the database
@@ -103,12 +111,25 @@ class EquipController extends Controller
         //get selected equip
         $equip = Equipamento::find($id);
         $t_e_c = Equipamento::find($equip->id)->talEleCorr;
+        $models = Tec_model::select('descricao')->get();
+        $models_list = [];
+        $select = [];
+        foreach ($models as $model) {
+            array_push($models_list, $model->descricao);
+            if ($equip->modelo == $model->descricao) {
+                array_push($select, 'selected');
+            } else {
+                array_push($select, '');
+            }
+        }
 
         //display edit equipment from
         return view('edit_equip_form', [
             'equip' => $equip,
-            't_e_c' => $t_e_c]);
-
+            't_e_c' => $t_e_c,
+            'models' => $models_list,
+            'select' => $select,
+        ]);
     }
 
     //---------------------------------------------------------

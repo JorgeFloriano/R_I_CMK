@@ -34,7 +34,12 @@
 
                     <div class="input-group mb-2">
                         <label for="idMod" class="input-group-text" id="lblTip">Modelo: </label>
-                        <input id="idMod" name="txtMod" type="text" class="form-control" placeholder="Ex.: Dc-pro 5" aria-label="Ex.: Dc-pro 5" aria-describedby="lblMod">
+                        <select id="idMod" name="txtMod" class="form-control" placeholder="Ex.: Dc-pro 5" aria-label="Ex.: Dc-pro 5" aria-describedby="lblMod">
+                            <option>Selecione o modelo</option>
+                            @for ( $i= 0; $i < count($models); $i++)
+                                <option value="{{$models[$i]}}">{{$models[$i]}}</option>
+                            @endfor
+                        </select>
                     </div>
                    
                     <div class="input-group mb-2">
@@ -140,62 +145,6 @@
                         </div>
                     </div>
                     <hr>
-
-                    <div><strong>REFERÊNCIA PARA MEDIÇÕES MECÂNICAS</strong></div>
-
-                    <div class="row g-2">
-                        <div class="col-4"></div>
-                        <div class="col-4">Nominal</div>
-                        <div class="col-4">Limite</div>
-                    </div>
-
-                    <div class="row mb-2 g-2">
-                        <div class="col-4">
-                            Med. 11 elos
-                        </div>
-                        <div class="col-4">
-                            <input type="number" step="0.1" class="form-control" placeholder="Ex.: 177.8" aria-label="Ex.: 177.8"  id="idNomElos" name="txtNomElos">
-                        </div>
-                        <div class="col-4">
-                            <input type="number" step="0.1" class="form-control" placeholder="Ex.: 178.3" aria-label="Ex.: 178.3"  id="idMaxElos" name="txtMaxElos">
-                        </div>
-                    </div>
-
-                    <div class="row mb-2 g-2">
-                        <div class="col-4">
-                            Diâmetro elo
-                        </div>
-                        <div class="col-4">
-                            <input type="number" step="0.1" class="form-control" placeholder="Ex.: 5.3" aria-label="Ex.: 5.3"  id="idNomElo" name="txtNomElo">
-                        </div>
-                        <div class="col-4">
-                            <input type="number" step="0.1" class="form-control" placeholder="Ex.: 4.8" aria-label="Ex.: 4.8"  id="idMinElo" name="txtMinElo">
-                        </div>
-                    </div>
-
-                    <div class="row mb-2 g-2">
-                        <div class="col-4">
-                            Medida W1
-                        </div>
-                        <div class="col-4">
-                            <input type="number" step="0.1" class="form-control" placeholder="Ex.: 36" aria-label="Ex.: 36"  id="idNomW1" name="txtNomW1">
-                        </div>
-                        <div class="col-4">
-                            <input type="number" step="0.1" class="form-control" placeholder="Ex.: 39.6" aria-label="Ex.: 39.6"  id="idMaxW1" name="txtMaxW1">
-                        </div>
-                    </div>
-
-                    <div class="row mb-2 g-2">
-                        <div class="col-4">
-                            Medida Y
-                        </div>
-                        <div class="col-4">
-                            <input type="number" step="0.1" class="form-control" placeholder="Ex.: 24" aria-label="Ex.: 24"  id="idNomY" name="txtNomY">
-                        </div>
-                        <div class="col-4">
-                            <input type="number" step="0.1" class="form-control" placeholder="Ex.: 21.6" aria-label="Ex.: 21.6"  id="idMinY" name="txtMinY">
-                        </div>
-                    </div>
 
                     <div style="margin: 10px 0px;">
                         <input type="submit" class="btn btn-primary" value="SALVAR">

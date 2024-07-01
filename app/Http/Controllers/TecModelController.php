@@ -23,20 +23,40 @@ class TecModelController extends Controller
 
     public function create()
     {
-        return "create";
+        return view('tec_create');
     }
 
     public function store(Request $request)
     {
-        //
+        $created = $this->tecm->create([
+            'descricao' => $request->input('descricao'),
+            'fabricante' => $request->input('fabricante'),
+            'capacidade' => $request->input('capacidade'),
+            'nom_elos' => $request->input('nom_elos'),
+            'max_elos' => $request->input('max_elos'),
+            'nom_elo' => $request->input('nom_elo'),
+            'min_elo' => $request->input('min_elo'),
+            'nom_w1' => $request->input('nom_w1'),
+            'max_w1' => $request->input('max_w1'),
+            'nom_y' => $request->input('nom_y'),
+            'min_y' => $request->input('min_y'),
+            'v_com' => $request->input('v_com'),
+            'corr_alta' => $request->input('corr_alta'),
+            'corr_baixa' => $request->input('corr_baixa'),
+            'v_freio' => $request->input('v_freio'),
+        ]);
+        if ($created) {
+            return redirect()->route('tec_models.index')->with('message', 'Cadastro realizado com sucesso.');
+        }
+        return redirect()->route('tec_models.index')->with('message', 'Erro no cadastro.');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Tec_model $tec_model)
     {
-        //
+        return view('tec_show_delete', ['tec_model' => $tec_model]);
     }
 
     /**
@@ -52,7 +72,12 @@ class TecModelController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        return "update";
+        $updated = $this->tecm->where('id', $id)->update($request->except(['_token', '_method', 'v_rede', 'banc_res']));
+
+        if ($updated) {
+            return redirect()->back()->with('message', 'Cadastro atualizado com sucesso.');
+        }
+        return redirect()->back()->with('message', 'Erro no cadastro.');
     }
 
     /**
@@ -60,7 +85,12 @@ class TecModelController extends Controller
      */
     public function destroy(string $id)
     {
-        return "destroy $id";
+        $deleted = $this->tecm->where('id', $id)->delete();
+
+        if ($deleted) {
+            return redirect()->route('tec_models.index')->with('message', 'Cadastro deletado com sucesso.');
+        }
+        return redirect()->route('tec_models.index')->with('message', 'Erro ao deletar cadastro.');
 
     }
 }
