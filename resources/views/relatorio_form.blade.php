@@ -129,14 +129,14 @@
                                 </tr>
                                 <tr>
                                     <td>31-Along. - Med. 11 elos</td>
-                                    <td id="nom11elos">{{$t_e_c->nom_elos}}</td>
-                                    <td id="max11elos">{{$t_e_c->max_elos}}</td>
+                                    <td id="nom11elos">{{$model->nom_elos ?? ''}}</td>
+                                    <td id="max11elos">{{$model->max_elos ?? ''}}</td>
                                     <td><input onchange="limitMed('nom11elos', 'max11elos', 'med11elos')" class="medido" min="0" step="0.1" type="number" name="txt31" id="med11elos" value="{{$prev_r_t_e_c->item31 ?? ''}}"></td>
                                 </tr>
                                 <tr>
                                     <td>32-Diâmetro médio elo</td>
-                                    <td id="nomElo">{{$t_e_c->nom_elo}}</td>
-                                    <td id="minElo">{{$t_e_c->min_elo}}</td>
+                                    <td id="nomElo">{{$model->nom_elo ?? ''}}</td>
+                                    <td id="minElo">{{$model->min_elo ?? ''}}</td>
                                     <td><input onchange="limitMed('nomElo', 'minElo', 'medElo')" class="medido" step="0.1" min="0" type="number" name="txt32" id="medElo" value="{{$prev_r_t_e_c->item32 ?? ''}}"></td>
                                 </tr>
                             </table>
@@ -157,14 +157,14 @@
                                 <tr>
                                     <td rowspan="3"><img src="{{asset('assets/img/gancho.jpg')}}" alt="figura do gancho" width="80px"></td>
                                     <td>33-Med. W1</td>
-                                    <td id="nomW1">{{$t_e_c->nom_w1}}</td>
-                                    <td id="maxW1">{{$t_e_c->max_w1}}</td>
+                                    <td id="nomW1">{{$model->nom_w1 ?? ''}}</td>
+                                    <td id="maxW1">{{$model->max_w1 ?? ''}}</td>
                                     <td><input onchange="limitMed('nomW1', 'maxW1', 'medW1')" class="medido" min="0" step="0.1" type="number" name="txt33" id="medW1" value="{{$prev_r_t_e_c->item33 ?? ''}}"></td>
                                 </tr>
                                 <tr>
                                     <td>34-Med. Y</td>
-                                    <td id="nomY">{{$t_e_c->nom_y}}</td>
-                                    <td id="minY">{{$t_e_c->min_y}}</td>
+                                    <td id="nomY">{{$model->nom_y ?? ''}}</td>
+                                    <td id="minY">{{$model->min_y ?? ''}}</td>
                                     <td><input onchange="limitMed('nomY', 'minY', 'medY')" class="medido" step="0.1" min="0" type="number" name="txt34" id="medY" value="{{$prev_r_t_e_c->item34 ?? ''}}"></td>
                                 </tr>
                                 <tr>

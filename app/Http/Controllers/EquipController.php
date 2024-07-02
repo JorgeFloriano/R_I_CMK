@@ -91,14 +91,6 @@ class EquipController extends Controller
         $t_e_c->corr_el_alta = $request->input('txtElevAlta');
         $t_e_c->corr_el_baixa = $request->input('txtElevBaixa');
         $t_e_c->v_el_freio = $request->input('txtTenFreElev');
-        $t_e_c->nom_elos = $request->input('txtNomElos');
-        $t_e_c->max_elos = $request->input('txtMaxElos');
-        $t_e_c->nom_elo = $request->input('txtNomElo');
-        $t_e_c->min_elo = $request->input('txtMinElo');
-        $t_e_c->nom_w1 = $request->input('txtNomW1');
-        $t_e_c->max_w1 = $request->input('txtMaxW1');
-        $t_e_c->nom_y = $request->input('txtNomY');
-        $t_e_c->min_y = $request->input('txtMinY');
         $t_e_c->save();
         
         // return to the equipment list page
@@ -163,14 +155,6 @@ class EquipController extends Controller
         $t_e_c->corr_el_alta = $request->input('txtElevAlta');
         $t_e_c->corr_el_baixa = $request->input('txtElevBaixa');
         $t_e_c->v_el_freio = $request->input('txtTenFreElev');
-        $t_e_c->nom_elos = $request->input('txtNomElos');
-        $t_e_c->max_elos = $request->input('txtMaxElos');
-        $t_e_c->nom_elo = $request->input('txtNomElo');
-        $t_e_c->min_elo = $request->input('txtMinElo');
-        $t_e_c->nom_w1 = $request->input('txtNomW1');
-        $t_e_c->max_w1 = $request->input('txtMaxW1');
-        $t_e_c->nom_y = $request->input('txtNomY');
-        $t_e_c->min_y = $request->input('txtMinY');
         $t_e_c->save();
         
         // return to the equipment list page

@@ -9,6 +9,7 @@ use App\Models\Pendencia;
 use App\Models\Relatorio;
 use App\Models\PendenciaRelatorio;
 use App\Models\T_e_c_relatorio;
+use App\Models\Tec_model;
 use Symfony\Component\VarDumper\VarDumper;
 
 class RelatController extends Controller
@@ -93,6 +94,9 @@ class RelatController extends Controller
 
         // Select the open report according to the equipment id
         $relat = Relatorio::where('finalizado',0)->where('equipamento_id', $equip->id)->get();
+
+        // Especifc model of eletric chain hoist
+        $model = Tec_model::where('descricao', $equip->modelo)->get();
 
         if (isset($relat[0])) {
             $r_t_e_c = T_e_c_relatorio::where('relatorio_id', $relat[0]->id)->get();
@@ -194,6 +198,7 @@ class RelatController extends Controller
             'num_imp' => $num_imp ?? null,
             'n_apto_hidden' => $hidden ?? 'hidden',
             'n_apto_checked' => $checked ?? '',
+            'model' => $model[0] ?? null
         ];
         return view('relatorio_form', $data);
     }

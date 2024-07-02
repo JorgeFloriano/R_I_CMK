@@ -6,7 +6,7 @@
         <div class="row mt-2">
             <div class="col-lg-6 offset-lg-3">
                 @if (session()->has('message'))
-                    {{session()->get('message')}}
+                    <div class="alert alert-warning">{{session()->get('message')}}</div>
                 @endif
 
                 <form action="{{route('tec_models.store')}}" method="post">

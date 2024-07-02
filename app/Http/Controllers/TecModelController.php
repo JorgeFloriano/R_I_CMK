@@ -16,7 +16,7 @@ class TecModelController extends Controller
 
     public function index()
     {
-        $tecms = $this->tecm->all();
+        $tecms = $this->tecm->orderBy('descricao')->get();
 
         return view('tec_model_list', ['tecms' => $tecms]);
     }
@@ -28,6 +28,20 @@ class TecModelController extends Controller
 
     public function store(Request $request)
     {
+        $descrs = $this->tecm->get(['descricao']);
+        foreach ($descrs as $key => $descr) {
+            if ($descr->descricao == $request->input('descricao')) {
+                $exist = true;
+            }
+        }
+        
+        if (isset($exist)) {
+            return redirect()->route('tec_models.create')
+            ->with(
+                'message', 'Não é possível cadastrar mais de um equipamento com a mesma descrição de modelo!'
+            );
+        }
+
         $created = $this->tecm->create([
             'descricao' => $request->input('descricao'),
             'fabricante' => $request->input('fabricante'),
