@@ -242,7 +242,54 @@ function limitMed(id_nom, id_lim, id_med) {
    }
 }
 
+// Tec_create / Tec_edit
+function autoFillMax (clicked, nom, max) {
+   var t_nom = document.getElementById(nom).value;
+   var t_max = document.getElementById(max).value;
+   var n_nom = Number(t_nom);
+   var n_max = Number(t_max);
 
+   if ((t_nom != '' && t_max != '') && (n_nom > n_max)) {
+      document.getElementById(clicked.id).type = "button"
+      window.alert("Alguns valores dos campos NOMINAL e LIMITE estão errados ou invertidos, verifique e tente novamente!")
+   } else {
+      window.document.getElementById(clicked.id).type = "submit"
+   }
+
+   if (t_nom != '' && t_max == '') {
+      t_max = t_nom * 1.111;
+      document.getElementById(max).value = t_max.toFixed(2);
+   }
+
+   if (t_nom == '' && t_max != '') {
+      t_nom = t_max * 0.9;
+      document.getElementById(nom).value = t_nom.toFixed(2);
+   }
+}
+
+function autoFillMin (clicked, nom, min) {
+   var t_nom = document.getElementById(nom).value;
+   var t_min = document.getElementById(min).value;
+   var n_nom = Number(t_nom);
+   var n_min = Number(t_min);
+
+   if ((t_nom != '' && t_min != '') && (n_nom < n_min)) {
+      document.getElementById(clicked.id).type = "button"
+      window.alert("Alguns valores dos campos NOMINAL e LIMITE estão errados ou invertidos, verifique e tente novamente!")
+   } else {
+      window.document.getElementById(clicked.id).type = "submit"
+   }
+
+   if (t_nom != '' && t_min == '') {
+      t_min = t_nom * 0.9;
+      document.getElementById(min).value = t_min.toFixed(2);
+   }
+
+   if (t_nom == '' && t_min != '') {
+      t_nom = t_min * 1.111;
+      document.getElementById(nom).value = t_nom.toFixed(2);
+   }
+}
 
 //border-color:#fe8686;outline:0;box-shadow:0 0 0 .25rem rgba(253, 13, 13, 0.25)
 function limitMin() {

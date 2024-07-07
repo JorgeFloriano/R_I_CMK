@@ -49,13 +49,13 @@
 
                     <div class="row mb-3 g-2">
                         <div class="col-4">
-                            <input type="number" step="0.1" class="form-control" placeholder="Ex.: 440" aria-label="Ex.: 440" aria-describedby="lblAlim" id="idAlim" name="v_rede">
+                            <input type="number" step="0.01" class="form-control" placeholder="Ex.: 440" aria-label="Ex.: 440" aria-describedby="lblAlim" id="idAlim" name="v_rede">
                         </div>
                         <div class="col-4">
-                            <input type="number" step="0.1" class="form-control" placeholder="Ex.: 24" aria-label="Ex.: 24" aria-describedby="lblCom" id="idCom" name="v_com">
+                            <input type="number" step="0.01" class="form-control" placeholder="Ex.: 24" aria-label="Ex.: 24" aria-describedby="lblCom" id="idCom" name="v_com">
                         </div>
                         <div class="col-4">
-                            <input type="number" step="0.1" class="form-control" placeholder="Ex.: 50" aria-label="Ex.: 50" aria-describedby="lblRes" id="idRes" name="banc_res">
+                            <input type="number" step="0.01" class="form-control" placeholder="Ex.: 50" aria-label="Ex.: 50" aria-describedby="lblRes" id="idRes" name="banc_res">
                         </div>
                     </div>
 
@@ -73,13 +73,13 @@
 
                     <div class="row mb-3 g-2">
                         <div class="col-4">
-                            <input type="number" step="0.1" class="form-control" placeholder="Ex.: 2.8" aria-label="Ex.: 2.8" aria-describedby="lblElevAlta" id="idElevAlta" name="corr_alta">
+                            <input type="number" step="0.01" class="form-control" placeholder="Ex.: 2.8" aria-label="Ex.: 2.8" aria-describedby="lblElevAlta" id="idElevAlta" name="corr_alta">
                         </div>
                         <div class="col-4">
-                            <input type="number" step="0.1" class="form-control" placeholder="Ex.: 1.8" aria-label="Ex.: 1.8" aria-describedby="lblElevBaixa" id="idElevBaixa" name="corr_baixa">
+                            <input type="number" step="0.01" class="form-control" placeholder="Ex.: 1.8" aria-label="Ex.: 1.8" aria-describedby="lblElevBaixa" id="idElevBaixa" name="corr_baixa">
                         </div>
                         <div class="col-4">
-                            <input type="number" step="0.1" class="form-control" placeholder="Ex.: 220" aria-label="Ex.: 220" aria-describedby="lblTenFreElev" id="idTenFreElev" name="v_freio">
+                            <input type="number" step="0.01" class="form-control" placeholder="Ex.: 220" aria-label="Ex.: 220" aria-describedby="lblTenFreElev" id="idTenFreElev" name="v_freio">
                         </div>
                     </div>
                     <hr>
@@ -97,10 +97,10 @@
                             Med. 11 elos
                         </div>
                         <div class="col-4">
-                            <input type="number" step="0.1" class="form-control" placeholder="Ex.: 177.8" aria-label="Ex.: 177.8"  id="idNomElos" name="nom_elos">
+                            <input type="number" step="0.01" class="form-control" placeholder="Ex.: 177.8" aria-label="Ex.: 177.8"  id="idNomElos" name="nom_elos">
                         </div>
                         <div class="col-4">
-                            <input type="number" step="0.1" class="form-control" placeholder="Ex.: 178.3" aria-label="Ex.: 178.3"  id="idMaxElos" name="max_elos">
+                            <input type="number" step="0.01" class="form-control" placeholder="Ex.: 178.3" aria-label="Ex.: 178.3"  id="idMaxElos" name="max_elos">
                         </div>
                     </div>
 
@@ -109,10 +109,10 @@
                             Diâmetro elo
                         </div>
                         <div class="col-4">
-                            <input type="number" step="0.1" class="form-control" placeholder="Ex.: 5.3" aria-label="Ex.: 5.3"  id="idNomElo" name="nom_elo">
+                            <input type="number" step="0.01" class="form-control" placeholder="Ex.: 5.3" aria-label="Ex.: 5.3"  id="idNomElo" name="nom_elo">
                         </div>
                         <div class="col-4">
-                            <input type="number" step="0.1" class="form-control" placeholder="Ex.: 4.8" aria-label="Ex.: 4.8"  id="idMinElo" name="min_elo">
+                            <input type="number" step="0.01" class="form-control" placeholder="Ex.: 4.8" aria-label="Ex.: 4.8"  id="idMinElo" name="min_elo">
                         </div>
                     </div>
 
@@ -121,10 +121,10 @@
                             Medida W1
                         </div>
                         <div class="col-4">
-                            <input type="number" step="0.1" class="form-control" placeholder="Ex.: 36" aria-label="Ex.: 36"  id="idNomW1" name="nom_w1">
+                            <input type="number" step="0.01" class="form-control" placeholder="Ex.: 36" aria-label="Ex.: 36"  id="idNomW1" name="nom_w1">
                         </div>
                         <div class="col-4">
-                            <input type="number" step="0.1" class="form-control" placeholder="Ex.: 39.6" aria-label="Ex.: 39.6"  id="idMaxW1" name="max_w1">
+                            <input type="number" step="0.01" class="form-control" placeholder="Ex.: 39.6" aria-label="Ex.: 39.6"  id="idMaxW1" name="max_w1">
                         </div>
                     </div>
 
@@ -133,18 +133,21 @@
                             Medida Y
                         </div>
                         <div class="col-4">
-                            <input type="number" step="0.1" class="form-control" placeholder="Ex.: 24" aria-label="Ex.: 24"  id="idNomY" name="nom_y">
+                            <input type="number" step="0.01" class="form-control" placeholder="Ex.: 24" aria-label="Ex.: 24"  id="idNomY" name="nom_y">
                         </div>
                         <div class="col-4">
-                            <input type="number" step="0.1" class="form-control" placeholder="Ex.: 21.6" aria-label="Ex.: 21.6"  id="idMinY" name="min_y">
+                            <input type="number" step="0.01" class="form-control" placeholder="Ex.: 21.6" aria-label="Ex.: 21.6"  id="idMinY" name="min_y">
                         </div>
                     </div>
 
                     <div style="margin:10px 0;">
-                        <button type="submit" class="btn btn-primary">SALVAR</button>
+                        <button id="idBtnSave" type="submit" class="btn btn-primary" onclick="autoFillMax(this, 'idNomElos', 'idMaxElos'),
+                                                                                              autoFillMin(this, 'idNomElo', 'idMinElo'),
+                                                                                              autoFillMax(this, 'idNomW1', 'idMaxW1'),
+                                                                                              autoFillMin(this, 'idNomY', 'idMinY')
+                                                                                              ">SALVAR</button>
                         <a href="{{route('tec_models.index')}}" class="btn btn-secondary">VOLTAR</a>
                     </div>
-                    
                 </form>
             </div>
         </div>

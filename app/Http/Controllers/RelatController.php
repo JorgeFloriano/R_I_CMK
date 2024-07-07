@@ -212,6 +212,9 @@ class RelatController extends Controller
 
         $equip = Relatorio::find($r_id)->equipamento; // equipment data (header)
 
+        // Especifc model of eletric chain hoist
+        $model = Tec_model::where('descricao', $equip->modelo)->get();
+
         $relat = Relatorio::where('finalizado', 0)->find($r_id); // report data (parent class)
 
         $d_t_e_c = Equipamento::find($equip->id)->talEleCorr; // eletric chain hoist data (nominal and limit)
@@ -408,6 +411,7 @@ class RelatController extends Controller
             't' => $d_t_e_c,
             'back' => 'programacao',
             'stat_color' => $stat_color,
+            'model' => $model[0] ?? null,
         ];
 
         return view('relatorio', $data);
@@ -417,6 +421,9 @@ class RelatController extends Controller
     public function relat_show($id) {
 
         $equip = Relatorio::find($id)->equipamento; // equipment data (header)
+
+        // Especifc model of eletric chain hoist
+        $model = Tec_model::where('descricao', $equip->modelo)->get();
 
         $relat = Relatorio::where('finalizado', 1)->find($id); // report data (parent class)
 
@@ -472,6 +479,7 @@ class RelatController extends Controller
             't' => $d_t_e_c,
             'back' => 'relatorios',
             'stat_color' => $stat_color,
+            'model' => $model[0] ?? null,
         ];
 
         return view('relatorio', $data);

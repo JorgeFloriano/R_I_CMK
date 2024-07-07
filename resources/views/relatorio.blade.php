@@ -78,9 +78,9 @@
         
                 <tr>
                     <td style="width: 5%;">31</td><td colspan="2">Alongamento - Medida de 11 elos</td>
-                    <td>{{$t->nom_elos}}</td><td>{{$t->max_elos}}</td><td>{{$rt['item31']}}</td>
+                    <td>{{$model->nom_elos}}</td><td>{{$model->max_elos}}</td><td>{{$rt['item31']}}</td>
                 </tr>
-                <tr><td>32</td><td colspan="2">Medida DM-Diâmetro médio do elo</td><td>{{$t->nom_elo}}</td><td>{{$t->min_elo}}</td><td>{{$rt['item32']}}</td></tr>
+                <tr><td>32</td><td colspan="2">Medida DM-Diâmetro médio do elo</td><td>{{$model->nom_elo}}</td><td>{{$model->min_elo}}</td><td>{{$rt['item32']}}</td></tr>
         
                 <tr><th colspan="6">MEDIÇÕES DO GANCHO INFERIOR (mm)</th></tr>
                 <tr>
@@ -95,9 +95,9 @@
         
                 <tr>
                     <td>33</td>
-                    <td>Medida W1</td><td>{{$t->nom_w1}}</td><td>{{$t->max_w1}}</td><td>{{$rt['item33']}}</td>
+                    <td>Medida W1</td><td>{{$model->nom_w1}}</td><td>{{$model->max_w1}}</td><td>{{$rt['item33']}}</td>
                 </tr>
-                <tr><td>34</td><td>Medida Y</td><td>{{$t->nom_y}}</td><td>{{$t->min_y}}</td><td>{{$rt['item34']}}</td></tr>
+                <tr><td>34</td><td>Medida Y</td><td>{{$model->nom_y}}</td><td>{{$model->min_y}}</td><td>{{$rt['item34']}}</td></tr>
                 <tr><td>35</td><td>Alinhamento</td><td colspan="3">{{$rt['item35']}}</td></tr>
             </table>
         </section>
