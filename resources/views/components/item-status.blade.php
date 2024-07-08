@@ -1,8 +1,8 @@
-<div>
+<div id="idItem{{$i}}" class="{{$class}}">
     <section class="item" id="{{$i}}" name="txt{{$i}}">
         <section class="ask">
             <div class="lab">
-                {{$i}}-{{$msg}}<i id="exclRed{{$i}}" {{$c_important}} class="fa fa-exclamation" style="color: red" aria-hidden="true"></i> 
+                <span class="p-1 {{$c_important}}">{{$zero.$i}}</span> {{$msg}}
             </div>
             <div class="opt">
                 <input type="radio" hidden {{$ok_checked}} name="txt{{$i}}" id="{{$i}}_OK" value="Ok">
@@ -17,7 +17,7 @@
             </div>
         </section>
         @isset($jus[$i])
-            <div> <i style="color:#ffc107" class="fa fa-exclamation-triangle" aria-hidden="true"></i> {{$pend_ant}}<br>
+            <div class="mt-2"> <i class="fa fa-exclamation bg-warning text-white rounded-circle px-2 py-1 m-0.5"></i> {{$pend_ant}}<br>
                 {{$jus[$i]->descricao ?? ''}}</div>
         @endisset
         <section style="{{$disp}}" class="obs" name="txtSecJust{{$i}}" id="secJust{{$i}}">

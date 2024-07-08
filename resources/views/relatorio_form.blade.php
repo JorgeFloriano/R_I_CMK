@@ -11,20 +11,12 @@
               limitMed('nomY', 'minY', 'medY')
               " id="body">
     <div class="container">
-        <div class="mt-2">
-            <a style="color:rgb(41, 50, 184)" href="{{route('programacao')}}">
-                <i class="fa fa-chevron-left" ></i>
-            </a>
-        </div>
         <div class="row mt-1">
             <div class="col-lg-6 offset-lg-3">
                 <div id="hForm">
                     <div id="header1">
-                        <img src="{{asset('assets/img/logo_cmk.jpg')}}" alt="logo cmk" width="70px">
-                    </div>
-                    <div id="header2">
-                        <div>TALHA ELÉTRICA</div>
-                        <div>DE CORRENTE</div>
+                        <div>INSTRUÇÃO DE INSPEÇÃO</div>
+                        <div>TALHA ELÉTRICA DE CORRENTE</div>
                     </div>
                     <div id="header3">
                         RI Nº {{$relat->id}}
@@ -39,10 +31,10 @@
                             <tr><td>Prédio: <strong>{{$equip->predio}}</strong></td><td>Setor: <strong>{{$equip->setor}}</strong></td><td>Área : <strong>{{$equip->area}}</strong></td></tr>
                         </table>
                         <div id="legend">
-                                Legenda: 
-                                <i class="fa fa-thumbs-up iconl" style="margin-left: 0px;"></i>Ok 
-                                <i class="fa fa-wrench iconl" style="color: rgb(100, 100, 100)"></i>Recuperar / Regular
-                                <i class="fa fa-thumbs-down iconl" style="color: red"></i>Trocar
+                            Legenda: 
+                            <i class="fa fa-thumbs-up iconl" style="margin-left: 0px;"></i>Ok 
+                            <i class="fa fa-wrench iconl" style="color: rgb(100, 100, 100)"></i>Recuperar / Regular
+                            <i class="fa fa-thumbs-down iconl" style="color: red"></i>Trocar
                         </div>
                     </section>
                     <form id="form" action="{{route('relat_form_submit')}}" method="post">

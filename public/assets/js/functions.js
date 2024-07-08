@@ -132,8 +132,8 @@ function getScrollHeight(elm){
    let show_message = false;
    for (let index = 1; index < 67; index++) {
       if (document.getElementById(index) !== null ) {
-         let imp_item = document.getElementById("exclRed"+index).hidden;
-         if (imp_item !== null && imp_item == false) {
+         let item_class = document.getElementById("idItem"+index).className;
+         if (item_class == 'important') {
             var bom_cor = document.getElementById(index + "_OK").checked;
             var reg_cor = document.getElementById(index + "_R").checked;
             var tro_cor = document.getElementById(index + "_T").checked;
@@ -145,7 +145,7 @@ function getScrollHeight(elm){
    }
    if (show_message == true) {
       document.getElementById('submit_button').type = "button"
-      window.alert("OS ÍTENS COM EXCLAMAÇÃO EM VERMELHO SÃO CRÍTICOS E DE INSPEÇÃO OBRIGATÓRIA, POIS ESTÃO RELACIONADOS À SEGURANÇA!! NO CASO DE ESTAREM EM CONDIÇÕES RUINS, RECOMENDAR O BLOQUEIO DO EQUIPAMENTO!")
+      window.alert("OS ÍTENS COM NUMERAÇÃO EM VERMELHO SÃO CRÍTICOS E DE INSPEÇÃO OBRIGATÓRIA, POIS ESTÃO RELACIONADOS À SEGURANÇA!! NO CASO DE ESTAREM EM CONDIÇÕES RUINS, RECOMENDAR O BLOQUEIO DO EQUIPAMENTO!")
    } else {
       window.document.getElementById('submit_button').type = "submit"
    }
@@ -156,10 +156,10 @@ function getScrollHeight(elm){
 
    // If element exists
    if (document.getElementById(i) !== null ) {
-      let border_item = document.getElementById(i).style.borderColor;
+      let item_class = document.getElementById("idItem"+i).className;
 
       // If important item (border yellow)
-      if (border_item !== null && border_item !== 'white') {
+      if (item_class == 'important') {
 
          var ok_id = 'i'+i+'Ok'
          var r_id = 'i'+i+'R'

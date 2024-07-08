@@ -16,16 +16,19 @@ class ItemStatus extends Component
     public $re_checked;
     public $tr_checked;
     public $i;
+    public $zero;
     public $msg;
     public $jus;
     public $disp;
     public $req;
     public $pend_ant;
     public $c_important;
+    public $class;
 
     public function __construct($num, $message, $justif, $stat = null, $important = false)
     {
         $this->i = $num;
+        $this->zero = '';
         $this->msg = $message;
         $this->jus = $justif;
         $this->disp = "display: none;";
@@ -38,9 +41,15 @@ class ItemStatus extends Component
         $this->re_checked = '';
         $this->tr_checked = '';
         $this->c_important = 'hidden';
+        $this->class = 'normal';
+
+        if ($this->i < 10) {
+            $this->zero = '0';
+        }
 
         if ($important == true) {
-            $this->c_important = "";
+            $this->c_important = "bg-danger text-white rounded-circle";
+            $this->class = 'important';
         }
         if ($stat == 'Trocar') {
             $this->tr_color = 'color:red';

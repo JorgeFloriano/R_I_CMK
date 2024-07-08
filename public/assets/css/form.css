@@ -24,12 +24,7 @@ div#hForm {
 }
 
 div#header1 {
-  float: left;
-  width: 25%;
-}
-
-div#header2 {
-  width: 55%;
+  width: 85%;
   float: left;
   text-align: center;
   font-weight: bold;
