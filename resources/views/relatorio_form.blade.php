@@ -18,9 +18,6 @@
                         <div>INSTRUÇÃO DE INSPEÇÃO</div>
                         <div>TALHA ELÉTRICA DE CORRENTE</div>
                     </div>
-                    <div id="header3">
-                        RI Nº {{$relat->id}}
-                    </div>
                 </div>
                 <main>
                     <section id="info">
@@ -40,9 +37,17 @@
                     <form id="form" action="{{route('relat_form_submit')}}" method="post">
                         @csrf
 
-                        <input type="hidden" name="txtRelatId" value="{{$relat->id}}">
+                        <input type="hidden" name="txtEquipId" value="{{$equip->id}}">
                         <input type="hidden" name="txtPrevRelatId" value="{{$prev_relat_id}}">
-                        
+
+                        <section class="item">
+                            <section class="ask">
+                                <div class="lab" style="width: 100px;"><label for="idRelatNumber">Relatório nº:</label></div>
+                                <div class="opt">
+                                    <input style="width: 220px;" min="0" type="number" name="relatNumber" id="idRelatNumber" placeholder="Próximo da sequência.">
+                                </div>
+                            </section>
+                        </section>
 
                         <section id="insp" class="insp">
                             INSPEÇÃO MECÂNICA

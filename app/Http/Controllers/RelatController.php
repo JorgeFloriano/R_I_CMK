@@ -92,43 +92,8 @@ class RelatController extends Controller
         // Especifc data of eletric chain hoist
         $t_e_c = Equipamento::find($equip->id)->talEleCorr;
 
-        // Select the open report according to the equipment id
-        $relat = Relatorio::where('finalizado',0)->where('equipamento_id', $equip->id)->get();
-
         // Especifc model of eletric chain hoist
         $model = Tec_model::where('descricao', $equip->modelo)->get();
-
-        if (isset($relat[0])) {
-            $r_t_e_c = T_e_c_relatorio::where('relatorio_id', $relat[0]->id)->get();
-
-            if (isset($r_t_e_c[0])) {
-                if (count($r_t_e_c) !== 1 || count($relat) !== count($r_t_e_c)) {
-                    if (isset($relat[0])) {
-                        $relat[0]->delete();
-                    }
-                    if (isset($r_t_e_c[0])) {
-                        $r_t_e_c[0]->delete();
-                    }
-                }
-            } else {
-                $relat[0]->delete();
-            }
-        }
-
-        // If not, create a new report
-        if (!isset($relat[0]) || $relat[0] == null) {
-            $relat = new Relatorio();
-            $relat->equipamento_id = $equip->id;
-            $relat->finalizado = 0;
-            $relat->save();
-
-            $r_t_e_c = new T_e_c_relatorio();
-            $r_t_e_c->relatorio_id = $relat->id;
-            $r_t_e_c->save();
-
-        } else {
-            $relat = $relat[0];
-        }
 
         // PREVIOUS REPORT
         $prev_relat = Relatorio::where('finalizado',1)
@@ -181,13 +146,10 @@ class RelatController extends Controller
             $pends = $pend_list;
         }
 
-        //dd($pends);
-
         // return relatorio form eletric chain hoist report
         $data = [
             'title' => 'R.I.',
             'equip' => $equip,
-            'relat' => $relat,
             't_e_c' => $t_e_c,
             'prev_r_t_e_c' => $prev_r_t_e_c ?? null, // previous report
             'pends' => $pends ?? null,
@@ -206,20 +168,56 @@ class RelatController extends Controller
     //-------------------------------------------------------------------------------------
     public function relat_form_submit(Request $request) {
 
-        $r_id = $request->txtRelatId; // Report id
+        // Equipment id
+        $equip_id = $request->txtEquipId;
 
-        $p_r_id = $request->txtPrevRelatId; // Previous report id
+        // Select the open report according to the equipment id
+        $relat = Relatorio::where('finalizado',0)->where('equipamento_id', $equip_id)->get();
 
-        $equip = Relatorio::find($r_id)->equipamento; // equipment data (header)
+        if (isset($relat[0])) {
+            $r_t_e_c = T_e_c_relatorio::where('relatorio_id', $relat[0]->id)->get();
+
+            if (isset($r_t_e_c[0])) {
+                if (count($r_t_e_c) !== 1 || count($relat) !== count($r_t_e_c)) {
+                    if (isset($relat[0])) {
+                        $relat[0]->delete();
+                    }
+                    if (isset($r_t_e_c[0])) {
+                        $r_t_e_c[0]->delete();
+                    }
+                }
+            } else {
+                $relat[0]->delete();
+            }
+        }
+
+        // If not, create a new report
+        if (!isset($relat[0]) || $relat[0] == null) {
+            $relat = new Relatorio();
+            $relat->equipamento_id = $equip_id;
+            $relat->finalizado = 0;
+            $relat->save();
+
+            $r_t_e_c = new T_e_c_relatorio();
+            $r_t_e_c->relatorio_id = $relat->id;
+            $r_t_e_c->save();
+
+        } else {
+            $relat = $relat[0];
+        }
+
+        // Previous report id
+        $p_r_id = $request->txtPrevRelatId;
+
+        //get selected equip
+        $equip = Equipamento::find($equip_id);
 
         // Especifc model of eletric chain hoist
         $model = Tec_model::where('descricao', $equip->modelo)->get();
 
-        $relat = Relatorio::where('finalizado', 0)->find($r_id); // report data (parent class)
-
         $d_t_e_c = Equipamento::find($equip->id)->talEleCorr; // eletric chain hoist data (nominal and limit)
 
-        $r_t_e_c = Relatorio::find($r_id)->talEleCorr; // report data (child class)
+        $r_t_e_c = Relatorio::find($relat->id)->talEleCorr; // report data (child class)
 
         // Updated pending issues in the database
         for ($i=1; $i < 67; $i++) { 
@@ -254,10 +252,10 @@ class RelatController extends Controller
                         $pend_soluc->solucao = $just;
                         $pend_soluc->save();
 
-                        $pend_rel_exists = PendenciaRelatorio::where('pendencia_id', $pend_soluc->id)->where('relatorio_id', $r_id)->get();
+                        $pend_rel_exists = PendenciaRelatorio::where('pendencia_id', $pend_soluc->id)->where('relatorio_id', $relat->id)->get();
                         if (!isset($pend_rel_exists[0])) {
                             $pend_rel->pendencia_id = $pend_soluc->id;
-                            $pend_rel->relatorio_id = $r_id;
+                            $pend_rel->relatorio_id = $relat->id;
                             $pend_rel->save();
                         }
                         
@@ -267,29 +265,29 @@ class RelatController extends Controller
                         // If the justification is not changed
                         if ($pend[0]->descricao == $just) {
 
-                            $pend_rel_exists = PendenciaRelatorio::where('pendencia_id', $pend[0]->id)->where('relatorio_id', $r_id)->get();
+                            $pend_rel_exists = PendenciaRelatorio::where('pendencia_id', $pend[0]->id)->where('relatorio_id', $relat->id)->get();
                             if (!isset($pend_rel_exists[0])) {
                                 $pend_rel->pendencia_id = $pend[0]->id;
-                                $pend_rel->relatorio_id = $r_id;
+                                $pend_rel->relatorio_id = $relat->id;
                                 $pend_rel->save();
                             }
 
                         // If the justification was changed
                         } else {
 
-                            $pend_exists = Pendencia::where('created_r_i', $r_id)->where('num_item', $i)->get();
+                            $pend_exists = Pendencia::where('created_r_i', $relat->id)->where('num_item', $i)->get();
                             if (!isset($pend_exists[0])) {
                                 $pend = new Pendencia();
-                                $pend->created_r_i = $r_id;
+                                $pend->created_r_i = $relat->id;
                                 $pend->num_item = $i;
                                 $pend->descricao = $just;
                                 $pend->save();
                             }
 
-                            $pend_rel_exists = PendenciaRelatorio::where('pendencia_id', $pend->id)->where('relatorio_id', $r_id)->get();
+                            $pend_rel_exists = PendenciaRelatorio::where('pendencia_id', $pend->id)->where('relatorio_id', $relat->id)->get();
                             if (!isset($pend_rel_exists[0])) {
                                 $pend_rel->pendencia_id = $pend->id;
-                                $pend_rel->relatorio_id = $r_id;
+                                $pend_rel->relatorio_id = $relat->id;
                                 $pend_rel->save();
                             }
                         }
@@ -301,10 +299,10 @@ class RelatController extends Controller
 
                 if (isset($just) && $just != '' && $stat != 'Ok') {
 
-                    $pend_exists = Pendencia::where('created_r_i', $r_id)->where('num_item', $i)->get();
+                    $pend_exists = Pendencia::where('created_r_i', $relat->id)->where('num_item', $i)->get();
                     if (!isset($pend_exists[0])) {
                         $pend = new Pendencia();
-                        $pend->created_r_i = $r_id;
+                        $pend->created_r_i = $relat->id;
                         $pend->num_item = $i;
                         $pend->descricao = $just;
                         $pend->save();
@@ -313,7 +311,7 @@ class RelatController extends Controller
                     // If New pending issue was created
                     if(isset($pend->id)) {
                         $pend_rel->pendencia_id = $pend->id;
-                        $pend_rel->relatorio_id = $r_id;
+                        $pend_rel->relatorio_id = $relat->id;
                         $pend_rel->save();
                     }
                 }
@@ -321,11 +319,18 @@ class RelatController extends Controller
         }    
 
 
-        $justs = Relatorio::find($r_id)->pendencias()->orderBy('num_item')->get(); // Justification for pending issues
+        $justs = Relatorio::find($relat->id)->pendencias()->orderBy('num_item')->get(); // Justification for pending issues
 
         // Saving the form data in the database
         for ($i=1; $i < 67; $i++) { 
             T_e_c_relatorio::where('relatorio_id', $relat->id)->update(['item'.$i => $request->input('txt'.$i)]);
+        }
+
+        if (isset($request->relatNumber)) {
+            if ($request->relatNumber !== '') {
+                $r_t_e_c->id = $request->relatNumber;
+                $r_t_e_c->relatorio_id = $request->relatNumber;
+            }
         }
 
         $r_t_e_c->v_rede = $request->txt67;
@@ -338,6 +343,12 @@ class RelatController extends Controller
         $r_t_e_c->corr_el_baixa = $request->txt71_2;
         $r_t_e_c->v_el_freio = $request->txt71_3;
         $r_t_e_c->save();
+
+        if (isset($request->relatNumber)) {
+            if ($request->relatNumber !== '') {
+                $relat->id = $request->relatNumber;
+            }
+        }
 
         $relat->stat_insp = $request->status;
         $relat->stat_equip = $request->apto;
@@ -357,12 +368,6 @@ class RelatController extends Controller
         $relat->sign_tec2 = $request->signTec2;
         $relat->finalizado = 1;
         $relat->save();
-
-        // var_dump($r_t_e_c->d_tec1);
-        // echo date('d/m/Y',strtotime($r_t_e_c->d_tec1));
-        // die;
-        
-        //$c = new MyClass();
 
         $r_t_e_c = Relatorio::find($relat->id)->talEleCorr; // report data updated (child class)
 
