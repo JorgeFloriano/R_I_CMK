@@ -48,4 +48,21 @@
             </a>
         </div>
     </div>
+    <div class="row pe-1">
+        <div class="col-10 p-2">
+            @if (session()->has('success'))
+                {{session()->get('success')}}
+            @endif
+
+            @if (auth()->check())
+                {{auth()->user()->name}}
+            @endif
+        </div>
+        
+        <div class="col-2 p-2 ico text-center">
+            <a href="{{route('login.destroy')}}">
+                Logout
+            </a>
+        </div>
+    </div>
 </div>

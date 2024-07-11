@@ -42,9 +42,9 @@
 
                         <section class="item">
                             <section class="ask">
-                                <div class="lab" style="width: 100px;"><label for="idRelatNumber">Relatório nº:</label></div>
+                                <div class="lab"><label for="idRelatNumber">Número do relatório:</label></div>
                                 <div class="opt">
-                                    <input style="width: 220px;" min="0" type="number" name="relatNumber" id="idRelatNumber" placeholder="Próximo da sequência.">
+                                    <input style="width: 65px;" min="0" type="number" name="relatNumber" id="idRelatNumber">
                                 </div>
                             </section>
                         </section>
