@@ -10,46 +10,12 @@
         color: rgb(129, 190, 208)
     }
 </style>
-<div class="container-fluid ico" id="userbar">
-    <div class="row pe-1">
+<div class="container-fluid" id="userbar">
+    <div class="row pe-1 mb-2 ico">
         <div class="col-4 p-2">
             <img src="{{asset('assets/img/logo_cmk_white.png')}}" alt="logo cmk" width="75px">
         </div>
-        <div class="col-2 p-2 ico text-center">
-            <a href="{{route('equip')}}">
-                <i style="font-size: x-large" class="fa fa-cog ico"></i>
-                <div style="font-size: xx-small">
-                    Equipamentos
-                </div>
-            </a>
-        </div>
-        <div class="col-2 p-2 ico text-center">
-            <a href="{{route('programacao')}}">
-                <i style="font-size: x-large" class="fa fa-calendar ico"></i>
-                <div style="font-size: xx-small">
-                    Programação
-                </div>
-            </a>
-        </div>
-        <div class="col-2 p-2 ico text-center">
-            <a href="{{route('relatorios')}}">
-                <i style="font-size: x-large" class="fa fa-file-text ico"></i>
-                <div style="font-size: xx-small">
-                    Relatórios
-                </div>
-            </a>
-        </div>
-        <div class="col-2 p-2 ico text-center">
-            <a href="{{route('tec_models.index')}}">
-                <i style="font-size: x-large" class="fa fa-chain"></i>
-                <div style="font-size: xx-small">
-                    Modelos
-                </div>
-            </a>
-        </div>
-    </div>
-    <div class="row pe-1">
-        <div class="col-10 p-2">
+        <div class="col-6 pt-4" style="font-size: large">
             @if (session()->has('success'))
                 {{session()->get('success')}}
             @endif
@@ -58,11 +24,17 @@
                 {{auth()->user()->name}}
             @endif
         </div>
-        
-        <div class="col-2 p-2 ico text-center">
-            <a href="{{route('login.destroy')}}">
-                Logout
+        <div class="nav-item dropdown col-2 pt-3 text-center">
+            <a href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <i style="font-size: x-large" class="fa fa-bars" aria-hidden="true"></i>
             </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="{{route('equip')}}"><i class="fa fa-cog"></i> Equipamentos</a></li>
+              <li><a class="dropdown-item" href="{{route('programacao')}}"><i class="fa fa-calendar"></i> Programação</a></li>
+              <li><a class="dropdown-item" href="{{route('relatorios')}}"><i class="fa fa-file-text"></i> Relatórios</a></li>
+              <li><a class="dropdown-item" href="{{route('login.destroy')}}"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a></li>
+            </ul>
         </div>
+      
     </div>
 </div>

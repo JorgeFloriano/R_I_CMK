@@ -20,8 +20,7 @@
                             <th>Nº</th>
                             <th>Modelo</th>
                             <th>Fabricante</th>
-                            <th>Edit</th>
-                            <th>Del.</th>
+                            <th>Show</th>
                         </tr>
                     </thead>
 
@@ -33,12 +32,7 @@
                                 <td>{{$tecm->fabricante}}</td>
                                 <td>
                                     <a href="{{route('tec_models.edit', ['tec_model' => $tecm->id])}}" class="btn btn-primary btn-sm">
-                                        <i class="fa fa-edit"></i>
-                                    </a>
-                                </td>
-                                <td>
-                                    <a href="{{route('tec_models.show', ['tec_model' => $tecm->id])}}" class="btn btn-primary btn-sm">
-                                        <i class="fa fa-trash"></i>
+                                        <i class="fa fa-file-text"></i>
                                     </a>
                                 </td>
                             </tr>

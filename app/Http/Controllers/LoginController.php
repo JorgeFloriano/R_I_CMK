@@ -25,8 +25,11 @@ class LoginController extends Controller
         if (!$authenticated) {
             return redirect()->route('login.index')->withErrors(['error' => 'Email or password invalid']);
         }
-        
-        return redirect()->route('programacao')->with('success', 'Logged in');
+
+        return redirect()->route('programacao')->with([
+            'success'=>'Logged in',
+            ''=> 'show'
+        ]);
     }
     
     public function destroy()

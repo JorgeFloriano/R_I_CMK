@@ -18,7 +18,10 @@ class TecModelController extends Controller
     {
         $tecms = $this->tecm->orderBy('descricao')->get();
 
-        return view('tec_model_list', ['tecms' => $tecms]);
+        if (auth()->user()->type == 1) {
+            return view('tec_model_list', ['tecms' => $tecms]);
+        }
+        return view('tec_model_user_list', ['tecms' => $tecms]);
     }
 
     public function create()
@@ -78,7 +81,16 @@ class TecModelController extends Controller
      */
     public function edit(Tec_model $tec_model)
     {
-        return view('tec_edit', ['tec_model' => $tec_model]);
+        if (auth()->user()->type == 1) {
+            $disabled = '';
+        } else {
+            $disabled = 'disabled';
+        }
+
+        return view('tec_edit', [
+            'tec_model' => $tec_model,
+            'disabled' => $disabled
+        ]);
     }
 
     /**

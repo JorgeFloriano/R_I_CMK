@@ -4,15 +4,15 @@
     <div class="container">
         <div class="row mt-5">
             <div class="col-lg-4 offset-lg-4">
+                <div class="text-center">
+                    <img class="my-3" src="{{asset('assets/img/logo_cmk.jpg')}}" alt="logo cmk">
+                    <h1>EQUIPAMENTOS</h1>
+                    <hr>
+                </div>
 
                 {{-- form --}}
                 <form action="{{route('login.store')}}" method="post">
-
-                    {{-- csrf --}}
                     @csrf
-
-                    <h1>LOGIN</h1>
-                    <hr>
                     <div class="form-group my-3">
                         <label>User:</label>
                         <input type="email" name="email" class="form-control">
