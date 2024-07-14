@@ -18,6 +18,9 @@ class TecModelController extends Controller
     {
         $tecms = $this->tecm->orderBy('descricao')->get();
 
+        if (!isset(auth()->user()->type)) {
+            return view('tec_table', ['tecms' => $tecms]);
+        }
         if (auth()->user()->type == 1) {
             return view('tec_model_list', ['tecms' => $tecms]);
         }

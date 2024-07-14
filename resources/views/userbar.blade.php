@@ -29,10 +29,11 @@
                 <i style="font-size: x-large" class="fa fa-bars" aria-hidden="true"></i>
             </a>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="{{route('equip')}}"><i class="fa fa-cog"></i> Equipamentos</a></li>
-              <li><a class="dropdown-item" href="{{route('programacao')}}"><i class="fa fa-calendar"></i> Programação</a></li>
-              <li><a class="dropdown-item" href="{{route('relatorios')}}"><i class="fa fa-file-text"></i> Relatórios</a></li>
-              <li><a class="dropdown-item" href="{{route('login.destroy')}}"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a></li>
+              <li><a class="dropdown-item btn-lg" href="{{route('equip')}}"><i class="fa fa-cog"></i> Equipamentos</a></li>
+              <li><a class="dropdown-item btn-lg" href="{{route('programacao')}}"><i class="fa fa-calendar"></i> Programação</a></li>
+              <li><a class="dropdown-item btn-lg" href="{{route('relatorios')}}"><i class="fa fa-file-text"></i> Relatórios</a></li>
+              <li><a class="dropdown-item btn-lg" href="{{route('tec_models.index')}}"><i class="fa fa-chain"></i> Modelos</a></li>
+              <li><a class="dropdown-item btn-lg" href="{{route('login.destroy')}}"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a></li>
             </ul>
         </div>
       
