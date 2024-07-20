@@ -15,6 +15,73 @@ use Symfony\Component\VarDumper\VarDumper;
 class RelatController extends Controller
 {
 
+    public $important_itens;
+
+    public function __construct()
+    {
+        $this->important_itens = [2,9,10,12,21,22,23,24,25,27,28,29,36,54,55];
+    }
+
+    //---------------------------------------------------------------------------------
+    private function process_report_data($relat, $equip, $r_t_e_c, $justs, $d_t_e_c, $model) {
+        if (!isset($relat->stat_equip)) {
+            $relat->stat_equip = 'NÃO APTO PARA OPERAR';
+        }
+
+        switch ($relat->stat_equip) {
+            case 'NÃO APTO PARA OPERAR':
+                $equip_stat = 'bad';
+                break;
+            case 'APTO PARA OPERAR':
+                $equip_stat = 'good';
+                break;
+            default:
+                $equip_stat = 'm_o_l';
+        }
+
+        if ($relat->stat_insp == '100% FINALIZADA') {
+            $insp_stat = 'light-good';
+        } else {
+            $insp_stat = 'light-m_o_l';
+        }
+
+        if (isset($relat->d_tec1)) {
+            $relat->d_tec1 = date('d/m/Y',strtotime($relat->d_tec1));
+        }
+        if (isset($relat->d_tec2)) {
+            $relat->d_tec2 = date('d/m/Y',strtotime($relat->d_tec2));
+        }
+        if (isset($relat->h_i_tec1)) {
+            $relat->h_i_tec1 = date('H:i',strtotime($relat->h_i_tec1));
+        }
+        if (isset($relat->h_f_tec1)) {
+            $relat->h_f_tec1 = date('H:i',strtotime($relat->h_f_tec1));
+        }
+        if (isset($relat->h_i_tec2)) {
+            $relat->h_i_tec2 = date('H:i',strtotime($relat->h_i_tec2));
+        }
+        if (isset($relat->h_f_tec2)) {
+            $relat->h_f_tec2 = date('H:i',strtotime($relat->h_f_tec2));
+        }
+
+        $r_t_e_c = $r_t_e_c->toArray();
+
+        $data = [
+            'e' => $equip,
+            'r' => $relat,
+            'rt' => $r_t_e_c,
+            'title' => 'R.I.',
+            'js' => $justs,
+            't' => $d_t_e_c,
+            'back' => 'relatorios',
+            'equip_stat' => $equip_stat,
+            'insp_stat' => $insp_stat,
+            'model' => $model[0] ?? null,
+            'important_itens' => $this->important_itens
+        ];
+
+        return ($data);
+    }
     //---------------------------------------------------------------------------------
     public function teste() {
 
@@ -106,7 +173,6 @@ class RelatController extends Controller
         $prev_r_t_e_c = Relatorio::find($prev_relat[0]->id ?? 0)->talEleCorr ?? 0;
 
         // Important items
-        $important = [2,9,10,12,21,22,23,24,25,27,28,29,36,54,55];
         $num_imp = 0;
         $imp = [];
 
@@ -115,7 +181,7 @@ class RelatController extends Controller
         }   
 
         for ($i=1; $i < 67; $i++) { 
-            if (in_array($i, $important, $imp[$i] = false)) {
+            if (in_array($i, $this->important_itens, $imp[$i] = false)) {
                 $imp[$i] = True;
                 if (isset($array_prev_r_t_e_c['item'.$i])) {
                     if ($array_prev_r_t_e_c['item'.$i] == "Trocar") {
@@ -371,54 +437,7 @@ class RelatController extends Controller
 
         $r_t_e_c = Relatorio::find($relat->id)->talEleCorr; // report data updated (child class)
 
-        if (!isset($relat->stat_equip)) {
-            $relat->stat_equip = 'NÃO APTO PARA OPERAR';
-        }
-
-        if ($relat->stat_equip == 'NÃO APTO PARA OPERAR') {
-            $stat_color = 'red';
-        } else {
-            $stat_color = 'black';
-        }
-
-        if (isset($relat->d_tec1)) {
-            $relat->d_tec1 = date('d/m/Y',strtotime($relat->d_tec1));
-        }
-
-        if (isset($relat->d_tec2)) {
-            $relat->d_tec2 = date('d/m/Y',strtotime($relat->d_tec2));
-        }
-
-        if (isset($relat->h_i_tec1)) {
-            $relat->h_i_tec1 = date('H:i',strtotime($relat->h_i_tec1));
-        }
-
-        if (isset($relat->h_f_tec1)) {
-            $relat->h_f_tec1 = date('H:i',strtotime($relat->h_f_tec1));
-        }
-
-        if (isset($relat->h_i_tec2)) {
-            $relat->h_i_tec2 = date('H:i',strtotime($relat->h_i_tec2));
-        }
-
-        if (isset($relat->h_f_tec2)) {
-            $relat->h_f_tec2 = date('H:i',strtotime($relat->h_f_tec2));
-        }
-
-        $r_t_e_c = $r_t_e_c->toArray();
-
-        $data = [
-            'e' => $equip,
-            'r' => $relat,
-            'rt' => $r_t_e_c,
-            'title' => 'R.I.',
-            'js' => $justs,
-            't' => $d_t_e_c,
-            'back' => 'programacao',
-            'stat_color' => $stat_color,
-            'model' => $model[0] ?? null,
-        ];
-
+        $data = $this->process_report_data($relat, $equip, $r_t_e_c, $justs, $d_t_e_c, $model);
         return view('relatorio', $data);
     }
 
@@ -438,55 +457,7 @@ class RelatController extends Controller
 
         $r_t_e_c = Relatorio::find($id)->talEleCorr; // report data updated (child class)
 
-        if (!isset($relat->stat_equip)) {
-            $relat->stat_equip = 'NÃO APTO PARA OPERAR';
-        }
-
-        if ($relat->stat_equip == 'NÃO APTO PARA OPERAR') {
-            $stat_color = 'red';
-        } else {
-            $stat_color = 'black';
-        }
-
-        if (isset($relat->d_tec1)) {
-            $relat->d_tec1 = date('d/m/Y',strtotime($relat->d_tec1));
-        }
-
-        if (isset($relat->d_tec2)) {
-            $relat->d_tec2 = date('d/m/Y',strtotime($relat->d_tec2));
-        }
-
-        if (isset($relat->h_i_tec1)) {
-            $relat->h_i_tec1 = date('H:i',strtotime($relat->h_i_tec1));
-        }
-
-        if (isset($relat->h_f_tec1)) {
-            $relat->h_f_tec1 = date('H:i',strtotime($relat->h_f_tec1));
-        }
-
-        if (isset($relat->h_i_tec2)) {
-            $relat->h_i_tec2 = date('H:i',strtotime($relat->h_i_tec2));
-        }
-
-        if (isset($relat->h_f_tec2)) {
-            $relat->h_f_tec2 = date('H:i',strtotime($relat->h_f_tec2));
-        }
-
-        $r_t_e_c = $r_t_e_c->toArray();
-
-
-        $data = [
-            'e' => $equip,
-            'r' => $relat,
-            'rt' => $r_t_e_c,
-            'title' => 'R.I.',
-            'js' => $justs,
-            't' => $d_t_e_c,
-            'back' => 'relatorios',
-            'stat_color' => $stat_color,
-            'model' => $model[0] ?? null,
-        ];
-
+        $data = $this->process_report_data($relat, $equip, $r_t_e_c, $justs, $d_t_e_c, $model);
         return view('relatorio', $data);
     }
 }

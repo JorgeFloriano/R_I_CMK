@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="{{asset('assets/boodstrap/bootstrap.min.css')}}">
     <style>
         body {
-            background-image: linear-gradient(to left, #a0bddf, #1e3b5d);
+            background-image: linear-gradient(to left, #5f81a8, #0e2846);
         }
         .card {
             padding: 15px;
@@ -20,6 +20,10 @@
 <body>
 
     @yield('content')
+
+    <div class="text-center my-2 text-white">
+        <small>Created by Jorge Luis &copy; {{date('Y')}}</small>
+    </div>
 
     <script src="{{asset('assets/boodstrap/bootstrap.bundle.min.js')}}"></script>
     <script src="{{asset('assets/js/functions.js')}}"></script>

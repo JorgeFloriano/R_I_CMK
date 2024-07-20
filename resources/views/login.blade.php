@@ -9,7 +9,7 @@
                         <a href="{{route('tec_models.index')}}"><button type="submit" class="btn btn-secondary"><i class="fa fa-link" aria-hidden="true"></i></button></a>
                     </div>
                     <div class="text-center">
-                        <img class="my-3" src="{{asset('assets/img/logo_cmk.jpg')}}" alt="logo cmk">
+                        <img class="my-3" src="{{asset('assets/img/talha_color.png')}}" width="60%" alt="logo cmk">
                         <h2>EQUIPAMENTOS</h2>
                         <hr>
                     </div>

@@ -52,13 +52,13 @@ class ItemStatus extends Component
             $this->class = 'important';
         }
         if ($stat == 'Trocar') {
-            $this->tr_color = 'color:red';
+            $this->tr_color = 'color:#dc3545'; // boodstrap red
             $this->tr_checked = 'checked';
         } elseif ($stat == 'Ok') {
-            $this->ok_color = 'color:rgb(41, 50, 184)';
+            $this->ok_color = 'color: #198754'; // boodstrap green
             $this->ok_checked = 'checked';
         } elseif ($stat == 'Recuperar') {
-            $this->re_color = 'color:rgb(100, 100, 100)';
+            $this->re_color = 'color:rgb(50, 50, 50)'; // dark gray
             $this->re_checked = 'checked';
         }
 

@@ -122,17 +122,6 @@ table {
   font-size: 15px;
 }
 
-.btn {
-  background-color: var(--blue2);
-  border:2px solid var(--blue1);
-  border-radius: 5px;
-  font-weight: bold;
-  cursor: pointer;
-  color: white;
-  padding: 5px;
-  margin: 5px 0;
-}
-
 .fa {
   display: inline-block;
   font: normal normal normal 14px / 1 FontAwesome;
@@ -162,16 +151,14 @@ textarea {
   width: 100%;
 }
 
-textarea:focus, input:focus, .signature-pad:focus {
+textarea:focus, input:focus {
   border: var(--inputBorder);
   outline:0;
   box-shadow: var(--focusBoxShadow)
 }
 
 .signature-pad {
-  border: 1px solid #86b7fe;
   cursor:pointer;
-  border-radius: 4px;
   margin: auto;
 }
 

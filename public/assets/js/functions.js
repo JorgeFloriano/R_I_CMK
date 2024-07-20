@@ -2,9 +2,10 @@
 function check(c1, ch, c2, u1, c3, u2, opt, obs, txt, just) {
    var col = document.getElementById(c1).style.color;
    var che = document.getElementById(ch).checked;
-   const blue = "rgb(41, 50, 184)";
-   const gray = "rgb(198, 194, 194)";
-   var checked_color = blue;
+   const green = "#198754";
+   const gray = "rgb(200, 200, 200)";
+   const red = "#dc3545";
+   var checked_color = green;
   
    document.getElementById(c2).style.color = gray;
    document.getElementById(u1).checked = false;
@@ -19,7 +20,7 @@ function check(c1, ch, c2, u1, c3, u2, opt, obs, txt, just) {
       document.getElementById(obs).style.display = 'block';
       document.getElementById(txt).required = true;
       document.getElementById(txt).placeholder = "Razão da recomendação para substituição o ítem";
-      checked_color = 'red';
+      checked_color = red;
       if (c1 == "i52T") {
          document.getElementById(txt).value = "Substituir reparos da botoeira.";
       }
@@ -27,7 +28,7 @@ function check(c1, ch, c2, u1, c3, u2, opt, obs, txt, just) {
       document.getElementById(obs).style.display = 'block';
       document.getElementById(txt).required = true;
       document.getElementById(txt).placeholder = "Razão da recomendação para reparação do ítem";
-      checked_color = 'rgb(100, 100, 100)';
+      checked_color = 'rgb(50, 50, 50)';
    }
    if(che == true && col != gray ) {
       document.getElementById(c1).style.color = gray;

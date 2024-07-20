@@ -41,14 +41,14 @@
                     "Teste de carga (kg)"
                 ]'/>
                 
-                <tr><th colspan="2">REDUTOR</th><th></th></tr>
+                <tr><th colspan="2">REDUTOR</th></tr>
                 <x-report-element :relat="$rt" num="16" :descriptions='[
                     "Vazamento de óleo ( retentores, juntas e bujões )",
                     "Nível de óleo (completar se necessário)",
                     "Ruídos e aquecimento anormal",
                     "Reapertar parafusos de fixação"
                 ]'/>
-                <tr><th colspan="2">CORRENTE DE CARGA</th><th></th></tr>
+                <tr><th colspan="2">CORRENTE DE CARGA</th></tr>
                 <x-report-element :relat="$rt" num="20" :descriptions='[
                     "Limpeza e lubrificação da corrente",
                     "Corrente prende, salta ou produz ruído",
@@ -119,7 +119,7 @@
                     "Banco de resistência",
                     "Célula de carga"
                 ]'/>
-                <tr><th colspan="2">BOTOEIRA</th><th></th></tr>
+                <tr><th colspan="2">BOTOEIRA</th></tr>
                 <x-report-element :relat="$rt" num="48" :descriptions='[
                     "Funcionamento do botões",
                     "Cabo elétrico e prensa cabo",
@@ -127,13 +127,13 @@
                     "Caixa de conexão",
                     "Carcaça e identificão dos botões"
                 ]'/>
-                <tr><th colspan="2">ELETRIFICAÇÃO TRANSVERSAL</th><th></th></tr>
+                <tr><th colspan="2">ELETRIFICAÇÃO TRANSVERSAL</th></tr>
                 <x-report-element :relat="$rt" num="53" :descriptions='[
                     "Fixação e conservação dos cabos",
                     "Fixações e emendas do perfil da eletrificação",
                     "Carros porta cabos e arrastador"
                 ]'/>
-                <tr><th colspan="2">RÁDIO CONTROLE</th><th></th></tr>
+                <tr><th colspan="2">RÁDIO CONTROLE</th></tr>
                 <x-report-element :relat="$rt" num="56" :descriptions='[
                     "Funcionamento e estado dos botões do emissor",
                     "Reaperto de todas as conexões e ligações",
@@ -141,13 +141,13 @@
                     "Estado da bateria / pilhas do emissor",
                     "Sinais luminosos do receptor e transmissor"
                 ]'/>
-                <tr><th colspan="2">LIMITE DE FIM DE CURSO - Elevação</th><th></th></tr>
+                <tr><th colspan="2">LIMITE DE FIM DE CURSO - Elevação</th></tr>
                 <x-report-element :relat="$rt" num="61" :descriptions='[
                     "Funcionamento da chave limite",
                     "Cabos ou corrente do pino",
                     "Contatos, molas e articulação"
                 ]'/>
-                <tr><th colspan="2">LIMITE DE FIM DE CURSO - Direção</th><th></th></tr>
+                <tr><th colspan="2">LIMITE DE FIM DE CURSO - Direção</th></tr>
                 <x-report-element :relat="$rt" num="64" :descriptions='[
                     "Funcionamento da chave limite",
                     "Cabos ou corrente do pino",
@@ -171,11 +171,11 @@
     </div>
 
     <section id="status">
-        <div id="status1">STATUS FINAL DA INSPEÇÃO: {{$r->stat_insp ?? "RESTAM PENDÊNCIAS"}}!</div>
-        <div id="status2">STATUS DO EQUIPAMENTO : <span style="color: {{$stat_color}};">{{ $r->stat_equip ?? "NÃO APTO PARA OPERAR"}}!</span></div>
+        <div id="status1" class="{{$insp_stat}}">STATUS FINAL DA INSPEÇÃO: {{$r->stat_insp ?? "RESTAM PENDÊNCIAS"}}!</div>
+        <div id="status2" class="{{$equip_stat}}">STATUS DO EQUIPAMENTO :{{ $r->stat_equip ?? "NÃO APTO PARA OPERAR"}}!</div>
     </section>
     <section id="ressalvas">
-        <strong>Ressalvas: </strong>{{$r->ressalva ?? 'Sem ressalvas!'}}
+        <strong>RESSALVAS: {{$r->ressalva ?? 'Sem ressalvas!'}}</strong>
     </section>
     @include('relat_parts/r_footer')
     <section id="verso">

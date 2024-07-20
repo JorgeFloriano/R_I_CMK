@@ -31,16 +31,15 @@ clearButton.addEventListener('click', (event) => {
 
 signButton.addEventListener('click', (event) => {
     event.preventDefault();
-    sc.style.overflow = "hidden";
     writingModeBtn = true;
-    canvas.style.boxShadow = " 0 0 0 .25rem rgba(13,110,253,.25)";
+    //canvas.style.boxShadow = " 0 0 0 .25rem rgba(13,110,253,.25)";
 })
 
 okButton.addEventListener('click', (event) => {
     event.preventDefault();
     sc.style.overflow = "";
     writingModeBtn = false;
-    canvas.style.border = "1px solid #86b7fe";
+    //canvas.style.border = "1px solid #86b7fe";
     canvas.style.boxShadow = "none";
 })
 

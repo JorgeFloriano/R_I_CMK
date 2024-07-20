@@ -34,7 +34,7 @@
                             <i class="fa fa-thumbs-down iconl" style="color: red"></i>Trocar
                         </div>
                     </section>
-                    <form id="form" action="{{route('relat_form_submit')}}" method="post">
+                    <form id="form" action="{{route('relat_form_submit')}}" method="post" autocomplete="on">
                         @csrf
 
                         <input type="hidden" name="txtEquipId" value="{{$equip->id}}">
@@ -350,15 +350,15 @@
                             </div>
                             <div >
                                 <div>
-                                    <input type="radio" name="status" id="stat100" value="100% FINALIZADA">
+                                    <input required type="radio" name="status" id="stat100" value="100% FINALIZADA">
                                     <label for="stat100">100% FINALIZADA</label>
                                 </div>
                                 <div>
-                                    <input type="radio" name="status" id="statRP" value="RESTAM PENDÊNCIAS">
+                                    <input required type="radio" name="status" id="statRP" value="RESTAM PENDÊNCIAS">
                                     <label for="statRP">RESTAM PENDÊNCIAS</label>
                                 </div>
                                 <div>
-                                    <input type="radio" name="status" id="statRPA" value="RESTAM PENDÊNCIAS ANTERIORES">
+                                    <input required type="radio" name="status" id="statRPA" value="RESTAM PENDÊNCIAS ANTERIORES">
                                     <label for="statRPA">RESTAM PENDÊNCIAS ANTERIORES</label>
                                 </div>
                             </div>
@@ -371,15 +371,15 @@
                             </div>
                             <div >
                                 <div onclick="displayoff('secRessalva', 'secApto', 'idressalvas')">
-                                    <input type="radio" name="apto" id="apto" value="APTO PARA OPERAR">
+                                    <input required type="radio" name="apto" id="apto" value="APTO PARA OPERAR">
                                     <label for="apto">SIM</label>
                                 </div>
                                 <div onclick="displayoff('secRessalva', 'secApto', 'idressalvas')">
-                                    <input {{$n_apto_checked ?? ""}} type="radio" name="apto" id="nApto" value="NÃO APTO PARA OPERAR">
+                                    <input required {{$n_apto_checked ?? ""}} type="radio" name="apto" id="nApto" value="NÃO APTO PARA OPERAR">
                                     <label for="nApto">NÃO</label>
                                 </div>
                                 <div onclick="displayon('secRessalva', 'secApto')">
-                                    <input type="radio" name="apto" id="aptoCR" value="APTO PARA OPERAR COM RESSALVAS">
+                                    <input required type="radio" name="apto" id="aptoCR" value="APTO PARA OPERAR COM RESSALVAS">
                                     <label for="aptoCR">SIM COM RESSALVAS</label>
                                 </div>
                             </div>
@@ -393,11 +393,11 @@
                             <p><b>APONTAMENTO DO TÉCNICO 1</b></p>
                             <div class="itInfTec">
                                 <label class="ltec" for="tec1Name">Nome: </label>
-                                <input class="itec" type="text" name="txtTec1Name" id="tec1Name">
+                                <input maxlength="30" class="itec" type="text" name="txtTec1Name" id="tec1Name">
                             </div>
                             <div class="itInfTec">
                                 <label class="ltec" for="tec1Func">Função: </label>
-                                <input class="itec" type="text" name="txtTec1Func" id="tec1Func">
+                                <input maxlength="30" class="itec" type="text" name="txtTec1Func" id="tec1Func">
                             </div>
                             <div class="itInfTec">
                                 <label class="ltec" for="tec1data">Data: </label>
@@ -409,27 +409,48 @@
                                 <label class="horario" for="tec1HF" style="margin-left: 5px;">H. final: </label>
                                 <input class="horario" type="time" name="txtTec1HF" id="tec1HF">
                             </div>
-                            <p>
-                                <a id="pen1" href="#" class="signature-button"><i class="fa fa-pencil" aria-hidden="true"></i>Assinar </a>
-                                <a id="okSign1" href="#" class="signature-button"><i class="fa fa-check" aria-hidden="true"></i>Ok </a>
-                                <a id="clear1" href="#" class="signature-button"><i class="fa fa-eraser" aria-hidden="true"></i>Apagar </a>
-                            </p>
-                            <div class="signature">
-                                <canvas height="200" width="320" class="signature-pad" id="canv1"></canvas>
-                            
-                                <input type="hidden" name="signTec1" id="idSignTec1">
+
+                            <button class="btn btn-primary" id="pen1" href="#" class="signature-button" data-bs-toggle="modal"     data-bs-target="#signature1Modal" style="width: 100%;"><i class="fa fa-pencil" aria-hidden="true"></i>ASSINAR
+                            </button>
+                        </div>
+                        
+                        <!-- Modal signature 01-->
+                        <div class="modal fade" id="signature1Modal" tabindex="-1" aria-labelledby="signature1ModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                    <h5 class="modal-title" id="signature1ModalLabel">Assinatura do Técnico 01</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+
+                                    <div class="modal-body signature">
+                                        <canvas height="200" width="320" class="signature-pad" id="canv1"></canvas>
+                                        <input type="hidden" name="signTec1" id="idSignTec1">
+                                    </div>
+
+                                    <div class="modal-footer">
+                                        <a id="okSign1" href="#" class="signature-button" data-bs-dismiss="modal">
+                                            <i class="fa fa-check" aria-hidden="true" ></i>Ok
+                                        </a>
+                                        <a id="clear1" href="#" class="signature-button">
+                                            <i class="fa fa-eraser" aria-hidden="true"></i>Apagar
+                                        </a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
+                        
+                        
 
                         <div id="infoTec2" class="infoTec">
                             <p><b>APONTAMENTO DO TÉCNICO 2</b></p>
                             <div class="itInfTec">
                                 <label class="ltec" for="tec2Name">Nome: </label>
-                                <input class="itec" type="text" name="txtTec2Name" id="tec2Name">
+                                <input maxlength="30" class="itec" type="text" name="txtTec2Name" id="tec2Name">
                             </div>
                             <div class="itInfTec">
                                 <label class="ltec" for="tec2Func">Função: </label>
-                                <input class="itec" type="text" name="txtTec2Func" id="tec2Func">
+                                <input maxlength="30" class="itec" type="text" name="txtTec2Func" id="tec2Func">
                             </div>
                             <div class="itInfTec">
                                 <label class="ltec" for="tec2data">Data: </label>
@@ -443,18 +464,36 @@
                                 <input class="horario" type="time" name="txtTec2HF" id="tec2HF" 
                                 >
                             </div>
-                            <p>
-                                <a id="pen2" href="#" class="signature-button"><i class="fa fa-pencil" aria-hidden="true"></i>Assinar </a>
-                                <a id="okSign2" href="#" class="signature-button"><i class="fa fa-check" aria-hidden="true"></i>Ok </a>
-                                <a id="clear2" href="#" class="signature-button"><i class="fa fa-eraser" aria-hidden="true"></i>Apagar </a>
-                            </p>
-                            <div class="signature">
-                                <canvas height="200" width="320" class="signature-pad" id="canv2" aria-placeholder="assine aqui"></canvas>
-                                <input type="hidden" name="signTec2" id="idSignTec2">
+                            
+                            <button class="btn btn-primary" id="pen2" href="#" class="signature-button" data-bs-toggle="modal" data-bs-target="#signature2Modal" style="width: 100%;"><i class="fa fa-pencil" aria-hidden="true"></i>ASSINAR
+                            </button>
+                           
+                        </div>
+                        
+                        <!-- Modal signature 02-->
+                        <div class="modal fade" id="signature2Modal" tabindex="-1" aria-labelledby="signature2ModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                    <h5 class="modal-title" id="signature2ModalLabel">Assinatura do Técnico 02</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    
+                                    <div class="modal-body signature">
+                                        <canvas height="200" width="320" class="signature-pad" id="canv2" aria-placeholder="assine aqui"></canvas>
+                                        <input type="hidden" name="signTec2" id="idSignTec2">
+                                    </div>
+
+                                    <div class="modal-footer">
+                                    <a id="okSign2" href="#" class="signature-button" data-bs-dismiss="modal"><i class="fa fa-check" aria-hidden="true"></i>Ok </a>
+                                    <a id="clear2" href="#" class="signature-button"><i class="fa fa-eraser" aria-hidden="true"></i>Apagar </a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
+                        
 
-                        <button onclick="unlockScreen(),limitDate('tec2data','tec2HI','tec2HF'),limitDate('tec1data','tec1HI','tec1HF'),requiredItem()" id="submit_button" type="submit" class="btn" style="width: 100%;">CONFIRMA</button>
+                        <button onclick="unlockScreen(),limitDate('tec2data','tec2HI','tec2HF'),limitDate('tec1data','tec1HI','tec1HF'),requiredItem()" id="submit_button" type="submit" class="btn btn-primary mb-2" style="width: 100%;">CONFIRMA</button>
                     </form>
                     <script src="{{asset('assets/js/signature.js')}}"></script>
                     <script src="{{asset('assets/js/signature2.js')}}"></script>

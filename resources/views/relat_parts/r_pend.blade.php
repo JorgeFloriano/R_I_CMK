@@ -3,8 +3,12 @@
     foreach ($js as $j) {
         if (!isset($j->solucao) || $j->solucao == '') {
             $contpend++;
+            $class = "";
+            if (in_array($j->num_item, $important_itens)) {
+                $class = "light-bad";
+            }
             echo "<tr>
-            <td>".$j->num_item."</td>
+            <td class='".$class."'' >".$j->num_item."</td>
             <td>".$j->descricao."</td>
             <td>".$j->created_r_i."</td>
             <td>".date('d/m/Y',strtotime($j->created_at))."</td></tr>";
