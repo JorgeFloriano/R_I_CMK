@@ -146,7 +146,7 @@ function getScrollHeight(elm){
    }
    if (show_message == true) {
       document.getElementById('submit_button').type = "button"
-      window.alert("OS ÍTENS COM NUMERAÇÃO EM VERMELHO SÃO CRÍTICOS E DE INSPEÇÃO OBRIGATÓRIA, POIS ESTÃO RELACIONADOS À SEGURANÇA!! NO CASO DE ESTAREM EM CONDIÇÕES RUINS, RECOMENDAR O BLOQUEIO DO EQUIPAMENTO!")
+      window.alert("OS ÍTENS COM ASTERISCO VERMELHO SÃO CRÍTICOS E DE INSPEÇÃO OBRIGATÓRIA, POIS ESTÃO RELACIONADOS À SEGURANÇA!! NO CASO DE ESTAREM EM CONDIÇÕES RUINS, RECOMENDAR O BLOQUEIO DO EQUIPAMENTO!")
    } else {
       window.document.getElementById('submit_button').type = "submit"
    }
@@ -159,31 +159,23 @@ function getScrollHeight(elm){
    if (document.getElementById(i) !== null ) {
       let item_class = document.getElementById("idItem"+i).className;
 
-      // If important item (border yellow)
+      // If important item
       if (item_class == 'important') {
 
-         var ok_id = 'i'+i+'Ok'
-         var r_id = 'i'+i+'R'
          var t_id = 'i'+i+'T'
 
-         var ok_checked = document.getElementById(i+'_OK').checked
-         var r_checked = document.getElementById(i+'_R').checked
          var t_checked = document.getElementById(i+'_T').checked
 
-         var color_ok = window.getComputedStyle(document.getElementById('i'+i+'Ok'),null).getPropertyValue('color')
-         var color_r = window.getComputedStyle(document.getElementById('i'+i+'R'),null).getPropertyValue('color')
-         var color_t = window.getComputedStyle(document.getElementById('i'+i+'T'),null).getPropertyValue('color')
          var tcont = document.getElementById("contApto")
          var cont = Number(tcont.value)
 
-         if (clicked.id == t_id && color_t != 'rgb(255, 0, 0)' && t_checked == false) { 
+         if (clicked.id == t_id && t_checked == false) { 
 
             cont++
             document.getElementById("contApto").value = cont
             //window.alert(clicked.id)
          }
-         if (clicked.id != t_id && color_t == 'rgb(255, 0, 0)' && t_checked == true ||
-            clicked.id == t_id && color_t == 'rgb(255, 0, 0)' && t_checked == true) {
+         if (t_checked == true) {
 
             cont--
             document.getElementById("contApto").value = cont

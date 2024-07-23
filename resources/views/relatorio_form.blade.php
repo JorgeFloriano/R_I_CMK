@@ -29,9 +29,9 @@
                         </table>
                         <div id="legend">
                             Legenda: 
-                            <i class="fa fa-thumbs-up iconl" style="margin-left: 0px;"></i>Ok 
-                            <i class="fa fa-wrench iconl" style="color: rgb(100, 100, 100)"></i>Recuperar / Regular
-                            <i class="fa fa-thumbs-down iconl" style="color: red"></i>Trocar
+                            <i class="fa fa-thumbs-up iconl" style="margin-left: 0px;color: #198754"></i>Ok 
+                            <i class="fa fa-wrench iconl" style="color: rgb(50, 50, 50)"></i>Recuperar / Regular
+                            <i class="fa fa-thumbs-down iconl" style="color: #dc3545"></i>Trocar
                         </div>
                     </section>
                     <form id="form" action="{{route('relat_form_submit')}}" method="post" autocomplete="on">
@@ -410,7 +410,7 @@
                                 <input class="horario" type="time" name="txtTec1HF" id="tec1HF">
                             </div>
 
-                            <button class="btn btn-primary" id="pen1" href="#" class="signature-button" data-bs-toggle="modal"     data-bs-target="#signature1Modal" style="width: 100%;"><i class="fa fa-pencil" aria-hidden="true"></i>ASSINAR
+                            <button class="btn btn-outline-primary" id="pen1" href="#" class="signature-button" data-bs-toggle="modal"     data-bs-target="#signature1Modal" style="width: 100%;"><i class="fa fa-pencil" aria-hidden="true"></i>ASSINAR
                             </button>
                         </div>
                         
@@ -465,7 +465,7 @@
                                 >
                             </div>
                             
-                            <button class="btn btn-primary" id="pen2" href="#" class="signature-button" data-bs-toggle="modal" data-bs-target="#signature2Modal" style="width: 100%;"><i class="fa fa-pencil" aria-hidden="true"></i>ASSINAR
+                            <button class="btn btn-outline-primary" id="pen2" href="#" class="signature-button" data-bs-toggle="modal" data-bs-target="#signature2Modal" style="width: 100%;"><i class="fa fa-pencil" aria-hidden="true"></i>ASSINAR
                             </button>
                            
                         </div>

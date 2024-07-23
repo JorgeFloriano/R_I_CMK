@@ -214,3 +214,7 @@ div.signature {
   text-align: center;
 }
 
+hr {
+  margin-top: 7px;
+  margin-bottom: 0px;
+}

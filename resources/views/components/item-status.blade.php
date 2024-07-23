@@ -2,7 +2,7 @@
     <section class="item" id="{{$i}}" name="txt{{$i}}">
         <section class="ask">
             <div class="lab">
-                <span class="p-1 {{$c_important}}">{{$zero.$i}}</span> {{$msg}}
+                <span class="p-1 "><span style="color:#dc3545; font-weight: bold;">{{$c_important}}</span>{{$zero.$i}}</span>-{{$msg}}
             </div>
             <div class="opt">
                 <input type="radio" hidden {{$ok_checked}} name="txt{{$i}}" id="{{$i}}_OK" value="Ok">
@@ -17,7 +17,7 @@
             </div>
         </section>
         @isset($jus[$i])
-            <div class="mt-2"> <i class="fa fa-exclamation bg-warning text-white rounded-circle px-2 py-1 m-0.5"></i> {{$pend_ant}}<br>
+            <div class="p-1 my-1 alert alert-warning"><span style="color: #ffc107; font-weight: bold;"></span> Observação do relatório anterior: <br>
                 {{$jus[$i]->descricao ?? ''}}</div>
         @endisset
         <section style="{{$disp}}" class="obs" name="txtSecJust{{$i}}" id="secJust{{$i}}">

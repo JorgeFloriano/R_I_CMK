@@ -33,14 +33,13 @@ class ItemStatus extends Component
         $this->jus = $justif;
         $this->disp = "display: none;";
         $this->req = '';
-        $this->pend_ant = '';
         $this->ok_color = '';
         $this->re_color = '';
         $this->tr_color = '';
         $this->ok_checked = '';
         $this->re_checked = '';
         $this->tr_checked = '';
-        $this->c_important = 'hidden';
+        $this->c_important = '';
         $this->class = 'normal';
 
         if ($this->i < 10) {
@@ -48,7 +47,7 @@ class ItemStatus extends Component
         }
 
         if ($important == true) {
-            $this->c_important = "bg-danger text-white rounded-circle";
+            $this->c_important = '* ';
             $this->class = 'important';
         }
         if ($stat == 'Trocar') {
@@ -65,7 +64,6 @@ class ItemStatus extends Component
         // Justification will only be shown if it exists
         if (isset($this->jus[$num])) {
             $this->req = 'required';
-            $this->pend_ant = 'Pendência anterior: ';
         }
     }
 
