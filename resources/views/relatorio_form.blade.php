@@ -34,7 +34,7 @@
                             <i class="fa fa-thumbs-down iconl" style="color: #dc3545"></i>Trocar
                         </div>
                     </section>
-                    <form id="form" action="{{route('relat_form_submit')}}" method="post" autocomplete="on">
+                    <form id="form" action="{{route('relat_form_submit')}}" method="post" autocomplete="on" enctype="multipart/form-data">
                         @csrf
 
                         <input type="hidden" name="txtEquipId" value="{{$equip->id}}">
@@ -350,15 +350,15 @@
                             </div>
                             <div >
                                 <div>
-                                    <input required type="radio" name="status" id="stat100" value="100% FINALIZADA">
+                                    <input type="radio" name="status" id="stat100" value="100% FINALIZADA">
                                     <label for="stat100">100% FINALIZADA</label>
                                 </div>
                                 <div>
-                                    <input required type="radio" name="status" id="statRP" value="RESTAM PENDÊNCIAS">
+                                    <input type="radio" name="status" id="statRP" value="RESTAM PENDÊNCIAS">
                                     <label for="statRP">RESTAM PENDÊNCIAS</label>
                                 </div>
                                 <div>
-                                    <input required type="radio" name="status" id="statRPA" value="RESTAM PENDÊNCIAS ANTERIORES">
+                                    <input type="radio" name="status" id="statRPA" value="RESTAM PENDÊNCIAS ANTERIORES">
                                     <label for="statRPA">RESTAM PENDÊNCIAS ANTERIORES</label>
                                 </div>
                             </div>
@@ -371,15 +371,15 @@
                             </div>
                             <div >
                                 <div onclick="displayoff('secRessalva', 'secApto', 'idressalvas')">
-                                    <input required type="radio" name="apto" id="apto" value="APTO PARA OPERAR">
+                                    <input type="radio" name="apto" id="apto" value="APTO PARA OPERAR">
                                     <label for="apto">SIM</label>
                                 </div>
                                 <div onclick="displayoff('secRessalva', 'secApto', 'idressalvas')">
-                                    <input required {{$n_apto_checked ?? ""}} type="radio" name="apto" id="nApto" value="NÃO APTO PARA OPERAR">
+                                    <input {{$n_apto_checked ?? ""}} type="radio" name="apto" id="nApto" value="NÃO APTO PARA OPERAR">
                                     <label for="nApto">NÃO</label>
                                 </div>
                                 <div onclick="displayon('secRessalva', 'secApto')">
-                                    <input required type="radio" name="apto" id="aptoCR" value="APTO PARA OPERAR COM RESSALVAS">
+                                    <input type="radio" name="apto" id="aptoCR" value="APTO PARA OPERAR COM RESSALVAS">
                                     <label for="aptoCR">SIM COM RESSALVAS</label>
                                 </div>
                             </div>

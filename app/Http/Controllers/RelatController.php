@@ -291,6 +291,10 @@ class RelatController extends Controller
             $just = $request->input('txtJust'.$i);
             $stat = $request->input('txt'.$i);
 
+            if ($request->file('imagePend'.$i) !== null) {
+                $request->file('imagePend'.$i)->storeAs('public/pend_photos/', 'img_report'.$relat->id.'_item'.$i.'.jpg');
+            }
+                
             // If there is previous report id
             if (isset($p_r_id)) {
 

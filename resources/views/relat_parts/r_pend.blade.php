@@ -11,7 +11,8 @@
             <td class='".$class."'' >".$j->num_item."</td>
             <td>".$j->descricao."</td>
             <td>".$j->created_r_i."</td>
-            <td>".date('d/m/Y',strtotime($j->created_at))."</td></tr>";
+            <td>".date('d/m/Y',strtotime($j->created_at))."</td></tr>
+            <tr><td colspan='4'><img src=".asset('storage/pend_photos/img_report'.$r->id.'_item'.$j->num_item.'.jpg')." width='100%'></td></tr>";
         } else {
             $contpend++;
             echo "<tr>
