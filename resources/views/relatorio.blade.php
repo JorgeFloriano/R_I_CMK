@@ -180,22 +180,13 @@
     @include('relat_parts/r_footer')
     <section id="verso">
         @include('relat_parts/r_header')
-        <table id="tabVerso" class="z">
-            <tr>
-                <th colspan="4">Relação de pendências do equipamento:</th>
-            </tr>
-            <tr>
-                <th>Ítem</th><th style="width: 620px;">Descrição</th><th>R.I.</th><th>Data</th>
-            </tr>
-            @include('relat_parts/r_pend')
-        <tr>
-            <th colspan="4">Observações gerais e serviços executados durante a inspeção:</th>
-        </tr>
-        </table>
+        
+        @include('relat_parts/r_pend')
+            
         <div id="versoObs">
-                <p>
-                    {{$r->obs ?? 'Sem observações!'}}
-                </p>
+            <p>
+                {{$r->obs ?? 'Sem observações!'}}
+            </p>
         </div>
         @include('relat_parts/r_footer')
     </section>

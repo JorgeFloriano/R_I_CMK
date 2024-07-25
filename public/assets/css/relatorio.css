@@ -116,7 +116,7 @@ table {
   margin: auto;
 }
 
-table, td, th, tr  {
+table, td, th, tr, .pends{
     border:1px solid black;
 }
 
