@@ -181,7 +181,9 @@
     <section id="verso">
         @include('relat_parts/r_header')
         
-        @include('relat_parts/r_pend')
+        <div id="pendencias">
+            @include('relat_parts/r_pend')
+        </div>
             
         <div id="versoObs">
             <p>

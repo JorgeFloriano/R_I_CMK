@@ -166,11 +166,17 @@ table td {
   margin: auto;
 }
 
+#pendencias {
+  border: 1px solid black;
+  font-size: 10.5px;
+}
+
 #versoObs {
   border: 1px solid black;
   font-size: 10.5px;
   padding: 5px;
-  min-height: 300px;
+  height: 100px;
+  margin-top: 10px;
 }
 
 .bad {
