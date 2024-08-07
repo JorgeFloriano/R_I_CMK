@@ -3,23 +3,18 @@
 @section('content')
 
 <style media="print">
-    #back {
+    #buttonGroup {
         display: none;
     }
 </style>
 
 <section id="relatorio">
-    <div class="my-2" id="back">
-        <a style="color:rgb(41, 50, 184)" href="{{route('relatorios')}}">
-            <i class="fa fa-chevron-left" ></i>
-        </a>
-    </div>
     @include('relat_parts/r_header')
     <div class="main">
         <section id="mecanica" class="half">
             <table>
                 <tr><th colspan="3">INSPEÇÃO MECÂNICA</th></tr>
-                <tr><th colspan="2">TROLE</th><th style="width: 20%;">{{$e->capacidade}} kg</th></tr>
+                <tr><th colspan="3">TROLE - {{$e->capacidade}} kg</th></tr>
                 <x-report-element :relat="$rt" num="1" :descriptions='[
                     "Rodas e rolamentos",
                     "Fixação da talha e parafusos de fechamento",
@@ -28,7 +23,7 @@
                     "Freio",
                     "Redutor"
                 ]'/>
-                <tr><th colspan="2">TALHA</th><th>{{$e->capacidade}} kg</th></tr>
+                <tr><th colspan="3">TALHA - {{$e->capacidade}} kg</th></tr>
                 <x-report-element :relat="$rt" num="7" :descriptions='[
                     "Guia da corrente",
                     "Batedor stop",
@@ -41,14 +36,14 @@
                     "Teste de carga (kg)"
                 ]'/>
                 
-                <tr><th colspan="2">REDUTOR</th></tr>
+                <tr><th colspan="3">REDUTOR</th></tr>
                 <x-report-element :relat="$rt" num="16" :descriptions='[
                     "Vazamento de óleo ( retentores, juntas e bujões )",
                     "Nível de óleo (completar se necessário)",
                     "Ruídos e aquecimento anormal",
                     "Reapertar parafusos de fixação"
                 ]'/>
-                <tr><th colspan="2">CORRENTE DE CARGA</th></tr>
+                <tr><th colspan="3" style="padding-top: 1px;">CORRENTE DE CARGA</th></tr>
                 <x-report-element :relat="$rt" num="20" :descriptions='[
                     "Limpeza e lubrificação da corrente",
                     "Corrente prende, salta ou produz ruído",
@@ -56,7 +51,7 @@
                     "Montagem (não está torcida ou com a solda invertida)",
                     "Pino da corrente (se houver fissura, deformação ou desgaste visível, o mesmo deve ser substituido)"
                 ]'/>
-                <tr><th colspan="2" style="padding-top: 1px;">BLOCO INFERIOR</th><th>{{$e->capacidade}} kg</th></tr>
+                <tr><th colspan="3" style="padding-top: 1px;">BLOCO INFERIOR - {{$e->capacidade}} kg</th></tr>
                 <x-report-element :relat="$rt" num="25" :descriptions='[
                     "Caixa do gancho",
                     "Carretel e rolamentos",
@@ -85,7 +80,7 @@
                 <tr><th colspan="6">MEDIÇÕES DO GANCHO INFERIOR (mm)</th></tr>
                 <tr>
                     <th rowspan="2">--</th>
-                    <td rowspan="5" style="width: 19%;">
+                    <td rowspan="5" style="width: 19%;border: none">
                         <img src="{{asset('assets/img/gancho.jpg')}}" alt="figura do gancho" width="60px">
                     </td>
                     <th rowspan="2">NORMA TÉCNICA <br> NBR 10070/1987</th>
@@ -104,7 +99,7 @@
         <section id="eletrica" class="half">
             <table>
                 <tr><th colspan="3">INSPEÇÃO ELÉTRICA</th><tr>
-                <tr><th colspan="2">TALHA</th><th style="width: 20%;"></th></tr>
+                <tr><th colspan="3">TALHA</th></tr>
                 <x-report-element :relat="$rt" num="36" :descriptions='[
                     "Fixação do painel, tampa e limpeza",
                     "Chave geral, fusíveis e disjuntores",
@@ -119,7 +114,7 @@
                     "Banco de resistência",
                     "Célula de carga"
                 ]'/>
-                <tr><th colspan="2">BOTOEIRA</th></tr>
+                <tr><th colspan="3">BOTOEIRA</th></tr>
                 <x-report-element :relat="$rt" num="48" :descriptions='[
                     "Funcionamento do botões",
                     "Cabo elétrico e prensa cabo",
@@ -127,13 +122,13 @@
                     "Caixa de conexão",
                     "Carcaça e identificão dos botões"
                 ]'/>
-                <tr><th colspan="2">ELETRIFICAÇÃO TRANSVERSAL</th></tr>
+                <tr><th colspan="3">ELETRIFICAÇÃO TRANSVERSAL</th></tr>
                 <x-report-element :relat="$rt" num="53" :descriptions='[
                     "Fixação e conservação dos cabos",
                     "Fixações e emendas do perfil da eletrificação",
                     "Carros porta cabos e arrastador"
                 ]'/>
-                <tr><th colspan="2">RÁDIO CONTROLE</th></tr>
+                <tr><th colspan="3">RÁDIO CONTROLE</th></tr>
                 <x-report-element :relat="$rt" num="56" :descriptions='[
                     "Funcionamento e estado dos botões do emissor",
                     "Reaperto de todas as conexões e ligações",
@@ -141,13 +136,13 @@
                     "Estado da bateria / pilhas do emissor",
                     "Sinais luminosos do receptor e transmissor"
                 ]'/>
-                <tr><th colspan="2">LIMITE DE FIM DE CURSO - Elevação</th></tr>
+                <tr><th colspan="3">LIMITE DE FIM DE CURSO - Elevação</th></tr>
                 <x-report-element :relat="$rt" num="61" :descriptions='[
                     "Funcionamento da chave limite",
                     "Cabos ou corrente do pino",
                     "Contatos, molas e articulação"
                 ]'/>
-                <tr><th colspan="2">LIMITE DE FIM DE CURSO - Direção</th></tr>
+                <tr><th colspan="3">LIMITE DE FIM DE CURSO - Direção</th></tr>
                 <x-report-element :relat="$rt" num="64" :descriptions='[
                     "Funcionamento da chave limite",
                     "Cabos ou corrente do pino",
@@ -168,16 +163,16 @@
                 <tr><td>Tensão do freio (VCC)</td><td>{{$t->v_el_freio}}</td><td>{{$rt['v_el_freio']}}</td></tr>
             </table>
         </section>
+        <section id="status">
+            <div id="status1" class="{{$insp_stat}}">STATUS FINAL DA INSPEÇÃO: {{$r->stat_insp ?? "RESTAM PENDÊNCIAS"}}!</div>
+            <div id="status2" class="{{$equip_stat}}">STATUS DO EQUIPAMENTO :{{ $r->stat_equip ?? "NÃO APTO PARA OPERAR"}}!</div>
+        </section>
+        <section id="ressalvas">
+            <strong>RESSALVAS: {{$r->ressalva ?? 'Sem ressalvas!'}}</strong>
+        </section>
+        @include('relat_parts/r_footer')
     </div>
 
-    <section id="status">
-        <div id="status1" class="{{$insp_stat}}">STATUS FINAL DA INSPEÇÃO: {{$r->stat_insp ?? "RESTAM PENDÊNCIAS"}}!</div>
-        <div id="status2" class="{{$equip_stat}}">STATUS DO EQUIPAMENTO :{{ $r->stat_equip ?? "NÃO APTO PARA OPERAR"}}!</div>
-    </section>
-    <section id="ressalvas">
-        <strong>RESSALVAS: {{$r->ressalva ?? 'Sem ressalvas!'}}</strong>
-    </section>
-    @include('relat_parts/r_footer')
     <section id="verso">
         @include('relat_parts/r_header')
         
@@ -193,4 +188,8 @@
         @include('relat_parts/r_footer')
     </section>
 </section>
+<div id="buttonGroup">
+    <button id="btnPdf" class="btn btn-info">BAIXAR PDF</button>
+    <a href="{{route('relatorios')}}" class="btn btn-secondary ms-2">VOLTAR</a>
+</div>
 @endsection

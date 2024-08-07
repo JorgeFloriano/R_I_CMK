@@ -2,9 +2,10 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="Content-Type"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{asset('assets/fontawesome/font-awesome.min.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/boodstrap/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{ asset('assets/fontawesome/font-awesome.min.css')}}" type="text/css">
+    <link rel="stylesheet" href="{{ asset('assets/boodstrap/bootstrap.min.css')}}" type="text/css">
     <style>
         body {
             background-image: linear-gradient(to left, #5f81a8, #0e2846);
@@ -14,6 +15,7 @@
             border-radius: 15px;
             box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.529);
         }
+        
     </style>
     <title>Login</title>
 </head>

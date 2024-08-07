@@ -27,7 +27,7 @@
             "<tr>
                 <td style='width: 4%;'>".$i."</td>
                 <td>".$descr."</td>
-                <td style='text-align: center;' class='".$class."'>".$r['item'.$i]."</td>
+                <td style='text-align: center;width: 20%;' class='".$class."'>".$r['item'.$i]."</td>
             </tr>";
             $i++;
         }

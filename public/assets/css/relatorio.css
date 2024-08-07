@@ -21,6 +21,7 @@ body, html {
 }
 
 section#relatorio {
+  margin-top: 10px;
   width:770px;
   margin: auto;
   padding:10px;
@@ -28,6 +29,7 @@ section#relatorio {
 
 .header {
   height: 95px;
+  margin-top: 10px;
 }
 
 div#h {
@@ -57,7 +59,7 @@ div#header3 {
 
 .main {
   width: 100%;
-  height: 840px;
+  height: 1050px;
 }
 
 section#eletrica, section#mecanica {
@@ -74,7 +76,7 @@ section#status {
   font-size: 10.5px;
   font-weight: bold;
   padding: 0px;
-  margin: 0px;
+  margin-top: 10px;
   width: 100%;
   height: 21px;
   display: inline-flex;
@@ -116,7 +118,7 @@ table {
   margin: auto;
 }
 
-table, td, th, tr, .pends{
+table, td, th, .pends{
     border:1px solid black;
 }
 
@@ -210,4 +212,10 @@ table td {
   background-color: #fff3cd;
   color: #664d03;
   font-weight: bold;
+}
+
+div#buttonGroup {
+  width:770px;
+  margin: auto;
+  padding:0px 0px 10px 10px;
 }

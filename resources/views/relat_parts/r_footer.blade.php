@@ -1,4 +1,4 @@
-<table style="margin-bottom: 100px;">
+<table style="margin-bottom: 10px;">
     <tr>
         <th>Assinatura do cliente.</th>
         <th colspan="6">Apontamento de Horas e relação dos técnicos</th>

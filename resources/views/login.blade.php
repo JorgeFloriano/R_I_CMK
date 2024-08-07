@@ -6,10 +6,10 @@
             <div class="col-lg-4 offset-lg-4 col-md-6 offset-md-3 col-sm-8 offset-sm-2">
                 <div class="card">
                     <div class="form-group my-2">
-                        <a href="{{route('tec_models.index')}}"><button type="submit" class="btn btn-secondary"><i class="fa fa-link" aria-hidden="true"></i></button></a>
+                        <a href="{{route('table')}}"><button type="submit" class="btn btn-secondary"><i class="fa fa-link" aria-hidden="true"></i></button></a>
                     </div>
                     <div class="text-center">
-                        <img class="my-3" src="{{asset('assets/img/talha_color.png')}}" width="60%" alt="logo cmk">
+                        <img class="my-3" src="{{ asset('assets/img/talha_color.png')}}" width="60%" alt="logo cmk">
                         <h2>EQUIPAMENTOS</h2>
                         <hr>
                     </div>

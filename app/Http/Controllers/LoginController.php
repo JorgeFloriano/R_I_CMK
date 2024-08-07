@@ -9,6 +9,10 @@ class LoginController extends Controller
 {
     public function index()
     {
+         // Check if the user is logged out
+         if(auth()->user()) {
+            return redirect()->route('programacao');
+        }
         return view('login');
     }
 
@@ -36,6 +40,5 @@ class LoginController extends Controller
     {
         Auth::logout();
         return redirect()->route('login.index');
-
     }
 }

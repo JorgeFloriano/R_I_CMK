@@ -145,10 +145,11 @@ function getScrollHeight(elm){
       }
    }
    if (show_message == true) {
-      document.getElementById('submit_button').type = "button"
-      window.alert("OS ÍTENS COM ASTERISCO VERMELHO SÃO CRÍTICOS E DE INSPEÇÃO OBRIGATÓRIA, POIS ESTÃO RELACIONADOS À SEGURANÇA!! NO CASO DE ESTAREM EM CONDIÇÕES RUINS, RECOMENDAR O BLOQUEIO DO EQUIPAMENTO!")
+      document.getElementById('submit_button').type = "button";
+      document.getElementById('reqItem').innerHTML = "Os ítens com asterisco vermelho são críticos e de inspeção obrigatória, pois estão relacionados à segurança!! No caso de estarem em condições ruins, recomendar o bloqueio do equipamento!<br>";
    } else {
-      window.document.getElementById('submit_button').type = "submit"
+      window.document.getElementById('submit_button').type = "submit";
+      document.getElementById('reqItem').innerHTML = "";
    }
  }
 

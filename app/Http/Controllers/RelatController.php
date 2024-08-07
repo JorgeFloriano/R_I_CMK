@@ -10,6 +10,7 @@ use App\Models\Relatorio;
 use App\Models\PendenciaRelatorio;
 use App\Models\T_e_c_relatorio;
 use App\Models\Tec_model;
+use App\Models\User;
 use Symfony\Component\VarDumper\VarDumper;
 
 class RelatController extends Controller
@@ -153,7 +154,10 @@ class RelatController extends Controller
     //------------------------------------------------------------------------------------
     public function relat_form($id) {
 
-        //get selected equip
+        // Technical
+        $tecs = User::select('id', 'name', 'surname')->get();
+
+        // get selected equip
         $equip = Equipamento::find($id);
 
         // Especifc data of eletric chain hoist
@@ -216,6 +220,7 @@ class RelatController extends Controller
         $data = [
             'title' => 'R.I.',
             'equip' => $equip,
+            'tecs' => $tecs,
             't_e_c' => $t_e_c,
             'prev_r_t_e_c' => $prev_r_t_e_c ?? null, // previous report
             'pends' => $pends ?? null,
@@ -420,18 +425,21 @@ class RelatController extends Controller
             }
         }
 
+        $tec1 = User::select('name', 'surname', 'function')->find($request->txtTec1Id);
+        $tec2 = User::select('name', 'surname', 'function')->find($request->txtTec2Id);
+
         $relat->stat_insp = $request->status;
         $relat->stat_equip = $request->apto;
         $relat->ressalva = $request->txtRessalvas;
         $relat->obs = $request->txtObservacoes;
-        $relat->n_tec1 = $request->txtTec1Name;
-        $relat->f_tec1 = $request->txtTec1Func;
+        $relat->n_tec1 = $tec1->name.' '.$tec1->surname;
+        $relat->f_tec1 = $tec1->function;
         $relat->d_tec1 = $request->txtTec1Data;
         $relat->h_i_tec1 = $request->txtTec1HI;
         $relat->h_f_tec1 = $request->txtTec1HF;
         $relat->sign_tec1 = $request->signTec1;
-        $relat->n_tec2 = $request->txtTec2Name;
-        $relat->f_tec2 = $request->txtTec2Func;
+        $relat->n_tec2 = $tec2->name.' '.$tec2->surname;
+        $relat->f_tec2 = $tec2->function;
         $relat->d_tec2 = $request->txtTec2Data;
         $relat->h_i_tec2 = $request->txtTec2HI;
         $relat->h_f_tec2 = $request->txtTec2HF;

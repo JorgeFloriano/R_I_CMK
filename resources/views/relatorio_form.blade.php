@@ -391,23 +391,29 @@
 
                         <div id="infoTec1" class="infoTec">
                             <p><b>APONTAMENTO DO TÉCNICO 1</b></p>
+                            
                             <div class="itInfTec">
-                                <label class="ltec" for="tec1Name">Nome: </label>
-                                <input maxlength="30" class="itec" type="text" name="txtTec1Name" id="tec1Name">
-                            </div>
-                            <div class="itInfTec">
-                                <label class="ltec" for="tec1Func">Função: </label>
-                                <input maxlength="30" class="itec" type="text" name="txtTec1Func" id="tec1Func">
+                                <label class="ltec" for="tec1Id">Nome: </label>
+                                <select name="txtTec1Id" id="tec1Id" class="itec">
+                                    <option value="{{auth()->user()->id}}">
+                                        {{auth()->user()->name}} {{auth()->user()->surname}}
+                                    </option>
+                                    @foreach ($tecs as $tec)
+                                        @if (auth()->user()->id != $tec->id)
+                                            <option value="{{$tec->id}}">{{$tec->name}} {{$tec->surname}}</option>
+                                        @endif
+                                    @endforeach
+                                </select>
                             </div>
                             <div class="itInfTec">
                                 <label class="ltec" for="tec1data">Data: </label>
-                                <input class="itec" type="date" name="txtTec1Data" id="tec1data" max="<?= date("Y-m-d")?>">
+                                <input class="itec" type="date" value="{{ date("Y-m-d") }}" name="txtTec1Data" id="tec1data" max="<?= date("Y-m-d")?>">
                             </div>
                             <div class="itInfTec">
                                 <label class="horario" for="tec1HI">H. inicial: </label>
-                                <input class="horario" type="time" name="txtTec1HI" id="tec1HI">
+                                <input class="horario" type="time" name="txtTec1HI" id="tec1HI" value="{{ date('h:i', strtotime('-2 hours'))}}">
                                 <label class="horario" for="tec1HF" style="margin-left: 5px;">H. final: </label>
-                                <input class="horario" type="time" name="txtTec1HF" id="tec1HF">
+                                <input class="horario" type="time" name="txtTec1HF" id="tec1HF" value="{{ date("h:i") }}">
                             </div>
 
                             <button class="btn btn-outline-primary" id="pen1" href="#" class="signature-button" data-bs-toggle="modal"     data-bs-target="#signature1Modal" style="width: 100%;"><i class="fa fa-pencil" aria-hidden="true"></i>ASSINAR
@@ -439,29 +445,29 @@
                                 </div>
                             </div>
                         </div>
-                        
-                        
-
+                    
                         <div id="infoTec2" class="infoTec">
                             <p><b>APONTAMENTO DO TÉCNICO 2</b></p>
                             <div class="itInfTec">
-                                <label class="ltec" for="tec2Name">Nome: </label>
-                                <input maxlength="30" class="itec" type="text" name="txtTec2Name" id="tec2Name">
-                            </div>
-                            <div class="itInfTec">
-                                <label class="ltec" for="tec2Func">Função: </label>
-                                <input maxlength="30" class="itec" type="text" name="txtTec2Func" id="tec2Func">
+                                <label class="ltec" for="tec2Id">Nome: </label>
+                                <select name="txtTec2Id" id="tec2Id" class="itec">
+                                    @foreach ($tecs as $tec)
+                                        @if (auth()->user()->id != $tec->id)
+                                            <option value="{{$tec->id}}">{{$tec->name}} {{$tec->surname}}</option>
+                                        @endif
+                                    @endforeach
+                                </select>
                             </div>
                             <div class="itInfTec">
                                 <label class="ltec" for="tec2data">Data: </label>
-                                <input class="itec " type="date" name="txtTec2Data" id="tec2data" max="<?= date("Y-m-d")?>">
+                                <input class="itec " type="date" value="{{ date("Y-m-d") }}" name="txtTec2Data" id="tec2data" max="<?= date("Y-m-d")?>">
                             </div>
                             <div class="itInfTec">
                                 <label class="horario" for="tec2HI">H. inicial: </label>
-                                <input class="horario" type="time" name="txtTec2HI" id="tec2HI"
+                                <input class="horario" type="time" name="txtTec2HI" id="tec2HI" value="{{ date('h:i', strtotime('-2 hours'))}}"
                                 >
                                 <label class="horario" for="tec2HF" style="margin-left: 5px;">H. final: </label>
-                                <input class="horario" type="time" name="txtTec2HF" id="tec2HF" 
+                                <input class="horario" type="time" name="txtTec2HF" id="tec2HF" value="{{ date("h:i") }}"
                                 >
                             </div>
                             
@@ -491,9 +497,34 @@
                                 </div>
                             </div>
                         </div>
+
+
+                        <!-- Button trigger confirm modal -->
+                        <button id="confirm_button" onclick="limitDate('tec2data','tec2HI','tec2HF'),limitDate('tec1data','tec1HI','tec1HF'),requiredItem()" type="button" class="btn btn-primary mb-2" data-bs-toggle="modal" data-bs-target="#confirmModal" style="width: 100%;">
+                            CONFIRMA
+                        </button>
+                        
+                        <!-- Confirm Modal -->
+                        <div class="modal fade" id="confirmModal" tabindex="-1" aria-labelledby="confirmModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="confirmModalLabel">Concluir inspeção?</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body mx-2">
+                                <p>Atenção!<br> <span id="reqItem"></span> Após a confirmação, os dados deste relatório serão salvos e não poderão ser alterados posteriormente!</p>
+                                </div>
+                                <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Voltar</button>
+                                <button onclick="limitDate('tec2data','tec2HI','tec2HF'),limitDate('tec1data','tec1HI','tec1HF'),requiredItem()" id="submit_button" type="submit" class="btn btn-primary mb-2" data-bs-dismiss="modal">Ok</button>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
                         
 
-                        <button onclick="unlockScreen(),limitDate('tec2data','tec2HI','tec2HF'),limitDate('tec1data','tec1HI','tec1HF'),requiredItem()" id="submit_button" type="submit" class="btn btn-primary mb-2" style="width: 100%;">CONFIRMA</button>
+                        
                     </form>
                     <script src="{{asset('assets/js/signature.js')}}"></script>
                     <script src="{{asset('assets/js/signature2.js')}}"></script>
