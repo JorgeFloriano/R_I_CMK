@@ -24,8 +24,10 @@ class ItemStatus extends Component
     public $pend_ant;
     public $c_important;
     public $class;
+    public $image;
+    public $image_exists;
 
-    public function __construct($num, $message, $justif, $stat = null, $important = false)
+    public function __construct($num, $message, $justif, $stat = null, $important = false, $report = null)
     {
         $this->i = $num;
         $this->zero = '';
@@ -41,6 +43,8 @@ class ItemStatus extends Component
         $this->tr_checked = '';
         $this->c_important = '';
         $this->class = 'normal';
+        $this->image = '';
+        $this->image_exists = null;
 
         if ($this->i < 10) {
             $this->zero = '0';
@@ -64,6 +68,12 @@ class ItemStatus extends Component
         // Justification will only be shown if it exists
         if (isset($this->jus[$num])) {
             $this->req = 'required';
+        }
+
+        // Image verification
+        $this->image = 'storage/public/pend_photos/img_report'.$report.'_item'.$this->i.'.jpg';
+        if (file_exists($this->image)) {
+            $this->image_exists = true;
         }
     }
 

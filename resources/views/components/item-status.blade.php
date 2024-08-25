@@ -17,8 +17,13 @@
             </div>
         </section>
         @isset($jus[$i])
-            <div class="p-1 my-1 alert alert-warning"><span style="color: #ffc107; font-weight: bold;"></span> Observação do relatório anterior: <br>
-                {{$jus[$i]->descricao ?? ''}}</div>
+            <div class="p-1 my-1 alert alert-warning">
+                Observação do relatório anterior: <br>
+                {{$jus[$i]->descricao ?? ''}}
+                @isset($jus[$i]->descr_img)
+                    <img src={{ url("storage/{$jus[$i]->descr_img}") }} width='100%' alt=" - Sem imagem para exibir.">
+                @endisset
+            </div>
         @endisset
         <section style="{{$disp}}" class="obs" name="txtSecJust{{$i}}" id="secJust{{$i}}">
             <hr>
@@ -27,7 +32,7 @@
             <hr>
             <label class="custom-file-upload" for="IdImagePend{{$i}}"><i class="fa fa-picture-o"></i> Anexar imagem:</label>
             <input type="file" id="IdImagePend{{$i}}" name="imagePend{{$i}}" accept="image/png, image/jpeg"/>
-            
         </section>
+
     </section>
 </div>

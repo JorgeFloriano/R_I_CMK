@@ -166,6 +166,9 @@ class RelatController extends Controller
         // Especifc model of eletric chain hoist
         $model = Tec_model::where('descricao', $equip->modelo)->get();
 
+        // Select the open report according to the equipment id
+        $report = Relatorio::where('finalizado',0)->where('equipamento_id', $equip->id)->first();
+
         // PREVIOUS REPORT
         $prev_relat = Relatorio::where('finalizado',1)
             ->where('equipamento_id', $equip->id)
@@ -218,6 +221,7 @@ class RelatController extends Controller
 
         // return relatorio form eletric chain hoist report
         $data = [
+            'report' => $report ?? null,
             'title' => 'R.I.',
             'equip' => $equip,
             'tecs' => $tecs,
@@ -296,8 +300,8 @@ class RelatController extends Controller
             $just = $request->input('txtJust'.$i);
             $stat = $request->input('txt'.$i);
 
-            if ($request->file('imagePend'.$i) !== null) {
-                $request->file('imagePend'.$i)->storeAs('public/pend_photos/', 'img_report'.$relat->id.'_item'.$i.'.jpg');
+            if ($request->file('imagePend'.$i) !== null && $request->file('imagePend'.$i) !== '') {      
+                $image = $request->file('imagePend'.$i)->store('pend_photos');
             }
                 
             // If there is previous report id
@@ -325,6 +329,7 @@ class RelatController extends Controller
                         $pend_soluc->num_item = $pend[0]->num_item;
                         $pend_soluc->descricao = $pend[0]->descricao;
                         $pend_soluc->solucao = $just;
+                        $pend_soluc->soluc_img = $image ?? '';
                         $pend_soluc->save();
 
                         $pend_rel_exists = PendenciaRelatorio::where('pendencia_id', $pend_soluc->id)->where('relatorio_id', $relat->id)->get();
@@ -356,6 +361,7 @@ class RelatController extends Controller
                                 $pend->created_r_i = $relat->id;
                                 $pend->num_item = $i;
                                 $pend->descricao = $just;
+                                $pend->descr_img = $image ?? '';
                                 $pend->save();
                             }
 
@@ -380,6 +386,7 @@ class RelatController extends Controller
                         $pend->created_r_i = $relat->id;
                         $pend->num_item = $i;
                         $pend->descricao = $just;
+                        $pend->descr_img = $image ?? '';
                         $pend->save();
                     }
 
@@ -391,10 +398,17 @@ class RelatController extends Controller
                     }
                 }
             }
+
+            // if (isset($image)) {
+            //     return redirect()->route('relat_form', [
+            //         'id' => $equip->id
+            //     ]);
+            // }
+            // $image = null;
         }    
 
-
-        $justs = Relatorio::find($relat->id)->pendencias()->orderBy('num_item')->get(); // Justification for pending issues
+        // Justification for pending issues
+        $justs = Relatorio::find($relat->id)->pendencias()->orderBy('num_item')->get();
 
         // Saving the form data in the database
         for ($i=1; $i < 67; $i++) { 
@@ -450,6 +464,7 @@ class RelatController extends Controller
         $r_t_e_c = Relatorio::find($relat->id)->talEleCorr; // report data updated (child class)
 
         $data = $this->process_report_data($relat, $equip, $r_t_e_c, $justs, $d_t_e_c, $model);
+
         return view('relatorio', $data);
     }
 

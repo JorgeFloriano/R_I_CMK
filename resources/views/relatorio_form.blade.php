@@ -44,7 +44,7 @@
                             <section class="ask">
                                 <div class="lab"><label for="idRelatNumber">Número do relatório:</label></div>
                                 <div class="opt">
-                                    <input style="width: 65px;" min="0" type="number" name="relatNumber" id="idRelatNumber">
+                                    <input style="width: 65px;" min="0" type="number" name="relatNumber" id="idRelatNumber" value="{{$report->id ?? ''}}">
                                 </div>
                             </section>
                         </section>
@@ -56,24 +56,24 @@
                         <section id="trole" class="element">
                             TROLE - Capacidade: {{$equip->capacidade}} kg
                         </section>
-                        <x-item-status :important="$imp[1] ?? null" :stat="$prev_r_t_e_c->item1 ?? null" :justif="$pends" num="1" message="Rodas e rolamentos"/>
-                        <x-item-status :important="$imp[2] ?? null" :stat="$prev_r_t_e_c->item2 ?? null" :justif="$pends" num="2" message="Fixação da talha e parafusos de fechamento"/>
-                        <x-item-status :important="$imp[3] ?? null" :stat="$prev_r_t_e_c->item3 ?? null" :justif="$pends" num="3" message="Batentes fim de curso"/>
-                        <x-item-status :important="$imp[4] ?? null" :stat="$prev_r_t_e_c->item4 ?? null" :justif="$pends" num="4" message="Motor"/>
-                        <x-item-status :important="$imp[5] ?? null" :stat="$prev_r_t_e_c->item5 ?? null" :justif="$pends" num="5" message="Freio"/>
-                        <x-item-status :important="$imp[6] ?? null" :stat="$prev_r_t_e_c->item6 ?? null" :justif="$pends" num="6" message="Redutor"/>
+                        <x-item-status :report="$report->id ?? null" :important="$imp[1] ?? null" :stat="$prev_r_t_e_c->item1 ?? null" :justif="$pends" num="1" message="Rodas e rolamentos"/>
+                        <x-item-status :report="$report->id ?? null" :important="$imp[2] ?? null" :stat="$prev_r_t_e_c->item2 ?? null" :justif="$pends" num="2" message="Fixação da talha e parafusos de fechamento"/>
+                        <x-item-status :report="$report->id ?? null" :important="$imp[3] ?? null" :stat="$prev_r_t_e_c->item3 ?? null" :justif="$pends" num="3" message="Batentes fim de curso"/>
+                        <x-item-status :report="$report->id ?? null" :important="$imp[4] ?? null" :stat="$prev_r_t_e_c->item4 ?? null" :justif="$pends" num="4" message="Motor"/>
+                        <x-item-status :report="$report->id ?? null" :important="$imp[5] ?? null" :stat="$prev_r_t_e_c->item5 ?? null" :justif="$pends" num="5" message="Freio"/>
+                        <x-item-status :report="$report->id ?? null" :important="$imp[6] ?? null" :stat="$prev_r_t_e_c->item6 ?? null" :justif="$pends" num="6" message="Redutor"/>
 
                         <section id="trole" class="element">
                             TALHA - Capacidade: {{$equip->capacidade}} kg
                         </section>
-                        <x-item-status :important="$imp[7] ?? null" :stat="$prev_r_t_e_c->item7 ?? null" :justif="$pends" num="7" message="Guia da corrente"/>
-                        <x-item-status :important="$imp[8] ?? null" :stat="$prev_r_t_e_c->item8 ?? null" :justif="$pends" num="8" message="Batedor stop"/>
-                        <x-item-status :important="$imp[9] ?? null" :stat="$prev_r_t_e_c->item9 ?? null" :justif="$pends" num="9" message="Armazenador de corrente"/>
-                        <x-item-status :important="$imp[10] ?? null" :stat="$prev_r_t_e_c->item10 ?? null" :justif="$pends" num="10" message="Fixação superior"/>
-                        <x-item-status :important="$imp[11] ?? null" :stat="$prev_r_t_e_c->item11 ?? null" :justif="$pends" num="11" message="Fricção"/>
-                        <x-item-status :important="$imp[12] ?? null" :stat="$prev_r_t_e_c->item12 ?? null" :justif="$pends" num="12" message="Freio (regular se necessário)"/>
-                        <x-item-status :important="$imp[13] ?? null" :stat="$prev_r_t_e_c->item13 ?? null" :justif="$pends" num="13" message="Lubrificação"/>
-                        <x-item-status :important="$imp[14] ?? null" :stat="$prev_r_t_e_c->item14 ?? null" :justif="$pends" num="14" message="Carcaça"/>
+                        <x-item-status :report="$report->id ?? null" :important="$imp[7] ?? null" :stat="$prev_r_t_e_c->item7 ?? null" :justif="$pends" num="7" message="Guia da corrente"/>
+                        <x-item-status :report="$report->id ?? null" :important="$imp[8] ?? null" :stat="$prev_r_t_e_c->item8 ?? null" :justif="$pends" num="8" message="Batedor stop"/>
+                        <x-item-status :report="$report->id ?? null" :important="$imp[9] ?? null" :stat="$prev_r_t_e_c->item9 ?? null" :justif="$pends" num="9" message="Armazenador de corrente"/>
+                        <x-item-status :report="$report->id ?? null" :important="$imp[10] ?? null" :stat="$prev_r_t_e_c->item10 ?? null" :justif="$pends" num="10" message="Fixação superior"/>
+                        <x-item-status :report="$report->id ?? null" :important="$imp[11] ?? null" :stat="$prev_r_t_e_c->item11 ?? null" :justif="$pends" num="11" message="Fricção"/>
+                        <x-item-status :report="$report->id ?? null" :important="$imp[12] ?? null" :stat="$prev_r_t_e_c->item12 ?? null" :justif="$pends" num="12" message="Freio (regular se necessário)"/>
+                        <x-item-status :report="$report->id ?? null" :important="$imp[13] ?? null" :stat="$prev_r_t_e_c->item13 ?? null" :justif="$pends" num="13" message="Lubrificação"/>
+                        <x-item-status :report="$report->id ?? null" :important="$imp[14] ?? null" :stat="$prev_r_t_e_c->item14 ?? null" :justif="$pends" num="14" message="Carcaça"/>
 
                         <section class="item">
                             <section class="ask">
@@ -87,30 +87,30 @@
                         <section id="trole" class="element">
                             REDUTOR
                         </section>
-                        <x-item-status :important="$imp[16] ?? null" :stat="$prev_r_t_e_c->item16 ?? null" :justif="$pends" num="16" message="Vazamento ( retentores, juntas e bujões )"/>
-                        <x-item-status :important="$imp[17] ?? null" :stat="$prev_r_t_e_c->item17 ?? null" :justif="$pends" num="17" message="Nível de óleo (completar se necessário)"/>
-                        <x-item-status :important="$imp[18] ?? null" :stat="$prev_r_t_e_c->item18 ?? null" :justif="$pends" num="18" message="Ruídos e aquecimento anormal"/>
-                        <x-item-status :important="$imp[19] ?? null" :stat="$prev_r_t_e_c->item19 ?? null" :justif="$pends" num="19" message="Reapertar parafusos de fixação"/>
+                        <x-item-status :report="$report->id ?? null" :important="$imp[16] ?? null" :stat="$prev_r_t_e_c->item16 ?? null" :justif="$pends" num="16" message="Vazamento ( retentores, juntas e bujões )"/>
+                        <x-item-status :report="$report->id ?? null" :important="$imp[17] ?? null" :stat="$prev_r_t_e_c->item17 ?? null" :justif="$pends" num="17" message="Nível de óleo (completar se necessário)"/>
+                        <x-item-status :report="$report->id ?? null" :important="$imp[18] ?? null" :stat="$prev_r_t_e_c->item18 ?? null" :justif="$pends" num="18" message="Ruídos e aquecimento anormal"/>
+                        <x-item-status :report="$report->id ?? null" :important="$imp[19] ?? null" :stat="$prev_r_t_e_c->item19 ?? null" :justif="$pends" num="19" message="Reapertar parafusos de fixação"/>
 
                         <section id="trole" class="element">
                             CORRENTE
                         </section>
-                        <x-item-status :important="$imp[20] ?? null" :stat="$prev_r_t_e_c->item20 ?? null" :justif="$pends" num="20" message="Limpeza e lubrificação da corrente"/>
-                        <x-item-status :important="$imp[21] ?? null" :stat="$prev_r_t_e_c->item21 ?? null" :justif="$pends" num="21" message="Corrente prende, salta ou produz ruído"/>
-                        <x-item-status :important="$imp[22] ?? null" :stat="$prev_r_t_e_c->item22 ?? null" :justif="$pends" num="22" message="Amassamentos, estrias, fissuras, respingos de solda, corrosão ou deformação elo a elo"/>
-                        <x-item-status :important="$imp[23] ?? null" :stat="$prev_r_t_e_c->item23 ?? null" :justif="$pends" num="23" message="Montagem (verificar se a corrente não está torcida ou com a posição da solda invertida)"/>
-                        <x-item-status :important="$imp[24] ?? null" :stat="$prev_r_t_e_c->item24 ?? null" :justif="$pends" num="24" message="Pino de fixação (substituir no caso de qualquer imperfeição visível)"/>
+                        <x-item-status :report="$report->id ?? null" :important="$imp[20] ?? null" :stat="$prev_r_t_e_c->item20 ?? null" :justif="$pends" num="20" message="Limpeza e lubrificação da corrente"/>
+                        <x-item-status :report="$report->id ?? null" :important="$imp[21] ?? null" :stat="$prev_r_t_e_c->item21 ?? null" :justif="$pends" num="21" message="Corrente prende, salta ou produz ruído"/>
+                        <x-item-status :report="$report->id ?? null" :important="$imp[22] ?? null" :stat="$prev_r_t_e_c->item22 ?? null" :justif="$pends" num="22" message="Amassamentos, estrias, fissuras, respingos de solda, corrosão ou deformação elo a elo"/>
+                        <x-item-status :report="$report->id ?? null" :important="$imp[23] ?? null" :stat="$prev_r_t_e_c->item23 ?? null" :justif="$pends" num="23" message="Montagem (verificar se a corrente não está torcida ou com a posição da solda invertida)"/>
+                        <x-item-status :report="$report->id ?? null" :important="$imp[24] ?? null" :stat="$prev_r_t_e_c->item24 ?? null" :justif="$pends" num="24" message="Pino de fixação (substituir no caso de qualquer imperfeição visível)"/>
 
                         <section id="trole" class="element">
                             BLOCO INFERIOR - Capacidade: {{$equip->capacidade}} kg
                         </section>
                     
-                        <x-item-status :important="$imp[25] ?? null" :stat="$prev_r_t_e_c->item25 ?? null" :justif="$pends" num="25" message="Caixa do gancho"/>
-                        <x-item-status :important="$imp[26] ?? null" :stat="$prev_r_t_e_c->item26 ?? null" :justif="$pends" num="26" message="Carretel e rolamentos"/>
-                        <x-item-status :important="$imp[27] ?? null" :stat="$prev_r_t_e_c->item27 ?? null" :justif="$pends" num="27" message="Carcaça quanto à desgastes e trincas"/>
-                        <x-item-status :important="$imp[28] ?? null" :stat="$prev_r_t_e_c->item28 ?? null" :justif="$pends" num="28" message="Trava de gancho"/>
-                        <x-item-status :important="$imp[29] ?? null" :stat="$prev_r_t_e_c->item29 ?? null" :justif="$pends" num="29" message="Placa de identificação"/>
-                        <x-item-status :important="$imp[30] ?? null" :stat="$prev_r_t_e_c->item30 ?? null" :justif="$pends" num="30" message="Lubrificar caixa de gancho"/>
+                        <x-item-status :report="$report->id ?? null" :important="$imp[25] ?? null" :stat="$prev_r_t_e_c->item25 ?? null" :justif="$pends" num="25" message="Caixa do gancho"/>
+                        <x-item-status :report="$report->id ?? null" :important="$imp[26] ?? null" :stat="$prev_r_t_e_c->item26 ?? null" :justif="$pends" num="26" message="Carretel e rolamentos"/>
+                        <x-item-status :report="$report->id ?? null" :important="$imp[27] ?? null" :stat="$prev_r_t_e_c->item27 ?? null" :justif="$pends" num="27" message="Carcaça quanto à desgastes e trincas"/>
+                        <x-item-status :report="$report->id ?? null" :important="$imp[28] ?? null" :stat="$prev_r_t_e_c->item28 ?? null" :justif="$pends" num="28" message="Trava de gancho"/>
+                        <x-item-status :report="$report->id ?? null" :important="$imp[29] ?? null" :stat="$prev_r_t_e_c->item29 ?? null" :justif="$pends" num="29" message="Placa de identificação"/>
+                        <x-item-status :report="$report->id ?? null" :important="$imp[30] ?? null" :stat="$prev_r_t_e_c->item30 ?? null" :justif="$pends" num="30" message="Lubrificar caixa de gancho"/>
 
                         <section id="trole" class="element">
                             MEDIÇÕES DA CORRENTE DE CARGA (mm)
@@ -184,62 +184,62 @@
                         <section id="trole" class="element">
                             TALHA
                         </section>
-                        <x-item-status :important="$imp[36] ?? null" :stat="$prev_r_t_e_c->item36 ?? null" :justif="$pends" num="36" message="Fixação do painel, tampa e limpeza"/>
-                        <x-item-status :important="$imp[37] ?? null" :stat="$prev_r_t_e_c->item37 ?? null" :justif="$pends" num="37" message="Chave geral, fusíveis e disjuntores"/>
-                        <x-item-status :important="$imp[38] ?? null" :stat="$prev_r_t_e_c->item38 ?? null" :justif="$pends" num="38" message="Motores (medições e aquecimento)"/>
-                        <x-item-status :important="$imp[39] ?? null" :stat="$prev_r_t_e_c->item39 ?? null" :justif="$pends" num="39" message="Caixa de ligação"/>
-                        <x-item-status :important="$imp[40] ?? null" :stat="$prev_r_t_e_c->item40 ?? null" :justif="$pends" num="40" message="Cabo de alimentação"/>
-                        <x-item-status :important="$imp[41] ?? null" :stat="$prev_r_t_e_c->item41 ?? null" :justif="$pends" num="41" message="Prensa cabos"/>
-                        <x-item-status :important="$imp[42] ?? null" :stat="$prev_r_t_e_c->item42 ?? null" :justif="$pends" num="42" message="Tomadas de engate rápido"/>
-                        <x-item-status :important="$imp[43] ?? null" :stat="$prev_r_t_e_c->item43 ?? null" :justif="$pends" num="43" message="Contatores e contatos"/>
-                        <x-item-status :important="$imp[44] ?? null" :stat="$prev_r_t_e_c->item44 ?? null" :justif="$pends" num="44" message="Trafos de potência e comando"/>
-                        <x-item-status :important="$imp[45] ?? null" :stat="$prev_r_t_e_c->item45 ?? null" :justif="$pends" num="45" message="Bornes e terminais"/>
-                        <x-item-status :important="$imp[46] ?? null" :stat="$prev_r_t_e_c->item46 ?? null" :justif="$pends" num="46" message="Banco de resistências"/>
-                        <x-item-status :important="$imp[47] ?? null" :stat="$prev_r_t_e_c->item47 ?? null" :justif="$pends" num="47" message="Célula de carga"/>
+                        <x-item-status :report="$report->id ?? null" :important="$imp[36] ?? null" :stat="$prev_r_t_e_c->item36 ?? null" :justif="$pends" num="36" message="Fixação do painel, tampa e limpeza"/>
+                        <x-item-status :report="$report->id ?? null" :important="$imp[37] ?? null" :stat="$prev_r_t_e_c->item37 ?? null" :justif="$pends" num="37" message="Chave geral, fusíveis e disjuntores"/>
+                        <x-item-status :report="$report->id ?? null" :important="$imp[38] ?? null" :stat="$prev_r_t_e_c->item38 ?? null" :justif="$pends" num="38" message="Motores (medições e aquecimento)"/>
+                        <x-item-status :report="$report->id ?? null" :important="$imp[39] ?? null" :stat="$prev_r_t_e_c->item39 ?? null" :justif="$pends" num="39" message="Caixa de ligação"/>
+                        <x-item-status :report="$report->id ?? null" :important="$imp[40] ?? null" :stat="$prev_r_t_e_c->item40 ?? null" :justif="$pends" num="40" message="Cabo de alimentação"/>
+                        <x-item-status :report="$report->id ?? null" :important="$imp[41] ?? null" :stat="$prev_r_t_e_c->item41 ?? null" :justif="$pends" num="41" message="Prensa cabos"/>
+                        <x-item-status :report="$report->id ?? null" :important="$imp[42] ?? null" :stat="$prev_r_t_e_c->item42 ?? null" :justif="$pends" num="42" message="Tomadas de engate rápido"/>
+                        <x-item-status :report="$report->id ?? null" :important="$imp[43] ?? null" :stat="$prev_r_t_e_c->item43 ?? null" :justif="$pends" num="43" message="Contatores e contatos"/>
+                        <x-item-status :report="$report->id ?? null" :important="$imp[44] ?? null" :stat="$prev_r_t_e_c->item44 ?? null" :justif="$pends" num="44" message="Trafos de potência e comando"/>
+                        <x-item-status :report="$report->id ?? null" :important="$imp[45] ?? null" :stat="$prev_r_t_e_c->item45 ?? null" :justif="$pends" num="45" message="Bornes e terminais"/>
+                        <x-item-status :report="$report->id ?? null" :important="$imp[46] ?? null" :stat="$prev_r_t_e_c->item46 ?? null" :justif="$pends" num="46" message="Banco de resistências"/>
+                        <x-item-status :report="$report->id ?? null" :important="$imp[47] ?? null" :stat="$prev_r_t_e_c->item47 ?? null" :justif="$pends" num="47" message="Célula de carga"/>
                         
                         <section id="trole" class="element">
                             BOTOEIRA
                         </section>
                     
-                        <x-item-status :important="$imp[48] ?? null" :stat="$prev_r_t_e_c->item48 ?? null" :justif="$pends" num="48" message="Funcionamento do botões"/>
-                        <x-item-status :important="$imp[49] ?? null" :stat="$prev_r_t_e_c->item49 ?? null" :justif="$pends" num="49" message="Cabo elétrico e prensa cabo"/>
-                        <x-item-status :important="$imp[50] ?? null" :stat="$prev_r_t_e_c->item50 ?? null" :justif="$pends" num="50" message="Cabo de aço de sustentação e fixação"/>
-                        <x-item-status :important="$imp[51] ?? null" :stat="$prev_r_t_e_c->item51 ?? null" :justif="$pends" num="51" message="Caixa de conexão"/>
-                        <x-item-status :important="$imp[52] ?? null" :stat="$prev_r_t_e_c->item52 ?? null" :justif="$pends" num="52" message="Carcaça e identificão dos botões"/>
+                        <x-item-status :report="$report->id ?? null" :important="$imp[48] ?? null" :stat="$prev_r_t_e_c->item48 ?? null" :justif="$pends" num="48" message="Funcionamento do botões"/>
+                        <x-item-status :report="$report->id ?? null" :important="$imp[49] ?? null" :stat="$prev_r_t_e_c->item49 ?? null" :justif="$pends" num="49" message="Cabo elétrico e prensa cabo"/>
+                        <x-item-status :report="$report->id ?? null" :important="$imp[50] ?? null" :stat="$prev_r_t_e_c->item50 ?? null" :justif="$pends" num="50" message="Cabo de aço de sustentação e fixação"/>
+                        <x-item-status :report="$report->id ?? null" :important="$imp[51] ?? null" :stat="$prev_r_t_e_c->item51 ?? null" :justif="$pends" num="51" message="Caixa de conexão"/>
+                        <x-item-status :report="$report->id ?? null" :important="$imp[52] ?? null" :stat="$prev_r_t_e_c->item52 ?? null" :justif="$pends" num="52" message="Carcaça e identificão dos botões"/>
 
                         <section id="trole" class="element">
                             ELETRIFICAÇÃO TRANSVERSAL
                         </section>
 
-                        <x-item-status :important="$imp[53] ?? null" :stat="$prev_r_t_e_c->item53 ?? null" :justif="$pends" num="53" message="Fixação e conservação dos cabos"/>
-                        <x-item-status :important="$imp[54] ?? null" :stat="$prev_r_t_e_c->item54 ?? null" :justif="$pends" num="54" message="Estado do perfil, fixações e emendas"/>
-                        <x-item-status :important="$imp[55] ?? null" :stat="$prev_r_t_e_c->item55 ?? null" :justif="$pends" num="55" message="Carros porta cabos e arrastador"/>
+                        <x-item-status :report="$report->id ?? null" :important="$imp[53] ?? null" :stat="$prev_r_t_e_c->item53 ?? null" :justif="$pends" num="53" message="Fixação e conservação dos cabos"/>
+                        <x-item-status :report="$report->id ?? null" :important="$imp[54] ?? null" :stat="$prev_r_t_e_c->item54 ?? null" :justif="$pends" num="54" message="Estado do perfil, fixações e emendas"/>
+                        <x-item-status :report="$report->id ?? null" :important="$imp[55] ?? null" :stat="$prev_r_t_e_c->item55 ?? null" :justif="$pends" num="55" message="Carros porta cabos e arrastador"/>
 
                         <section id="trole" class="element">
                             RÁDIO CONTROLE
                         </section>
 
-                        <x-item-status :important="$imp[56] ?? null" :stat="$prev_r_t_e_c->item56 ?? null" :justif="$pends" num="56" message="Funcionamento e estado do emissor"/>
-                        <x-item-status :important="$imp[57] ?? null" :stat="$prev_r_t_e_c->item57 ?? null" :justif="$pends" num="57" message="Reaperto de todas as conexões e ligações"/>
-                        <x-item-status :important="$imp[58] ?? null" :stat="$prev_r_t_e_c->item58 ?? null" :justif="$pends" num="58" message="Estado de conservação da carcaça"/>
-                        <x-item-status :important="$imp[59] ?? null" :stat="$prev_r_t_e_c->item59 ?? null" :justif="$pends" num="59" message="Estado da bateria / pilhas do emissor"/>
-                        <x-item-status :important="$imp[60] ?? null" :stat="$prev_r_t_e_c->item60 ?? null" :justif="$pends" num="60" message="Sinais luminosos do receptor e transmissor"/>
+                        <x-item-status :report="$report->id ?? null" :important="$imp[56] ?? null" :stat="$prev_r_t_e_c->item56 ?? null" :justif="$pends" num="56" message="Funcionamento e estado do emissor"/>
+                        <x-item-status :report="$report->id ?? null" :important="$imp[57] ?? null" :stat="$prev_r_t_e_c->item57 ?? null" :justif="$pends" num="57" message="Reaperto de todas as conexões e ligações"/>
+                        <x-item-status :report="$report->id ?? null" :important="$imp[58] ?? null" :stat="$prev_r_t_e_c->item58 ?? null" :justif="$pends" num="58" message="Estado de conservação da carcaça"/>
+                        <x-item-status :report="$report->id ?? null" :important="$imp[59] ?? null" :stat="$prev_r_t_e_c->item59 ?? null" :justif="$pends" num="59" message="Estado da bateria / pilhas do emissor"/>
+                        <x-item-status :report="$report->id ?? null" :important="$imp[60] ?? null" :stat="$prev_r_t_e_c->item60 ?? null" :justif="$pends" num="60" message="Sinais luminosos do receptor e transmissor"/>
 
                         <section id="trole" class="element">
                             LIMITE DE FIM DE CURSO - Elevação
                         </section>
 
-                        <x-item-status :important="$imp[61] ?? null" :stat="$prev_r_t_e_c->item61 ?? null" :justif="$pends" num="61" message="Funcionamento da chave limite"/>
-                        <x-item-status :important="$imp[62] ?? null" :stat="$prev_r_t_e_c->item62 ?? null" :justif="$pends" num="62" message="Cabos ou corrente do pino"/>
-                        <x-item-status :important="$imp[63] ?? null" :stat="$prev_r_t_e_c->item63 ?? null" :justif="$pends" num="63" message="Contatos, molas e articulação"/>
+                        <x-item-status :report="$report->id ?? null" :important="$imp[61] ?? null" :stat="$prev_r_t_e_c->item61 ?? null" :justif="$pends" num="61" message="Funcionamento da chave limite"/>
+                        <x-item-status :report="$report->id ?? null" :important="$imp[62] ?? null" :stat="$prev_r_t_e_c->item62 ?? null" :justif="$pends" num="62" message="Cabos ou corrente do pino"/>
+                        <x-item-status :report="$report->id ?? null" :important="$imp[63] ?? null" :stat="$prev_r_t_e_c->item63 ?? null" :justif="$pends" num="63" message="Contatos, molas e articulação"/>
                         
                         <section id="trole" class="element">
                             LIMITE DE FIM DE CURSO - Direção
                         </section>
 
-                        <x-item-status :important="$imp[64] ?? null" :stat="$prev_r_t_e_c->item64 ?? null" :justif="$pends" num="64" message="Funcionamento da chave limite"/>
-                        <x-item-status :important="$imp[65] ?? null" :stat="$prev_r_t_e_c->item65 ?? null" :justif="$pends" num="65" message="Cabos ou corrente do pino"/>
-                        <x-item-status :important="$imp[66] ?? null" :stat="$prev_r_t_e_c->item66 ?? null" :justif="$pends" num="66" message="Contatos, molas e articulação"/>
+                        <x-item-status :report="$report->id ?? null" :important="$imp[64] ?? null" :stat="$prev_r_t_e_c->item64 ?? null" :justif="$pends" num="64" message="Funcionamento da chave limite"/>
+                        <x-item-status :report="$report->id ?? null" :important="$imp[65] ?? null" :stat="$prev_r_t_e_c->item65 ?? null" :justif="$pends" num="65" message="Cabos ou corrente do pino"/>
+                        <x-item-status :report="$report->id ?? null" :important="$imp[66] ?? null" :stat="$prev_r_t_e_c->item66 ?? null" :justif="$pends" num="66" message="Contatos, molas e articulação"/>
                         
                         <section id="trole" class="element">
                             MEDIÇÕES DAS GRANDEZAS ELÉTRICAS

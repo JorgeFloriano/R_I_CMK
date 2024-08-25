@@ -13,7 +13,7 @@
 <div class="container-fluid" id="userbar">
     <div class="row pe-1 mb-2 ico">
         <div class="col-4 p-2">
-            <img src="{{asset('assets/img/logo_cmk_white.png')}}" alt="logo cmk" width="75px">
+            JL Dev
         </div>
         <div class="col-6 pt-4" style="font-size: large">
             @if (session()->has('success'))

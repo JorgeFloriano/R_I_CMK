@@ -16,7 +16,9 @@ return new class extends Migration
             $table->bigInteger('created_r_i');
             $table->integer('num_item');
             $table->string('descricao');
-            $table->string('solucao');
+            $table->string('descr_img')->nullable();
+            $table->string('solucao')->nullable();
+            $table->string('soluc_img')->nullable();
             $table->dateTime('created_at')->nullable();
             $table->dateTime('updated_at')->nullable();
             $table->dateTime('deleted_at')->nullable();
@@ -26,6 +28,7 @@ return new class extends Migration
     /**
      * Reverse the migrations.
      */
+    
     public function down(): void
     {
         Schema::dropIfExists('pendencias');

@@ -286,8 +286,8 @@ function autoFillMin (clicked, nom, min) {
 }
 
 //border-color:#fe8686;outline:0;box-shadow:0 0 0 .25rem rgba(253, 13, 13, 0.25)
-function limitMin() {
-
+function formUpdate() {
+   document.getElementById("form").submit();
 }
  
  // global delegated event listener
