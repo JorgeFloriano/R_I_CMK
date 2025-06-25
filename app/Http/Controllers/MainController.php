@@ -28,7 +28,7 @@ class MainController extends Controller
         //get equipments
         $relats = Relatorio::where('finalizado', 1)
                     ->orderBy('id')
-                    ->get();
+                    ->simplePaginate(5);
 
         //$relats = Equipamento::orderBy('created_at', 'desc')->get();
 

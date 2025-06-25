@@ -32,6 +32,9 @@
                         @endforeach
                     </tbody> 
                 </table>
+                <div>
+                    {{$relats->links()}}
+                </div>
             </div>
         </div>
      </div>
