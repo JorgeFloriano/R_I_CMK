@@ -35,7 +35,7 @@
                         Ao deleter o cadastro todos os dados deste modelo de equipamento serão perdidos.
                     </div>
                     <div style="margin:10px 0;">
-                        <button type="submit" class="btn btn-danger">DELETAR</button>
+                        <button type="submit" class="btn btn-danger me-2">DELETAR</button>
                         <a href="{{route('tec_models.index')}}" class="btn btn-secondary">VOLTAR</a>
                     </div>
                     

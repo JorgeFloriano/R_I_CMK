@@ -37,7 +37,7 @@
                                     </a>
                                 </td>
                                 <td>
-                                    <a href="{{route('tec_models.show', ['tec_model' => $tecm->id])}}" class="btn btn-primary btn-sm">
+                                    <a href="{{route('tec_models.show', ['tec_model' => $tecm->id])}}" class="btn btn-danger btn-sm">
                                         <i class="fa fa-trash"></i>
                                     </a>
                                 </td>

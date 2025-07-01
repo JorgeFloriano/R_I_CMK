@@ -142,7 +142,7 @@
                     </div>
 
                     <div style="margin:10px 0;">
-                        <button id="idBtnSave" type="submit" class="btn btn-primary" onclick="autoFillMax(this, 'idNomElos', 'idMaxElos'),
+                        <button id="idBtnSave" type="submit" class="btn btn-primary me-2" onclick="autoFillMax(this, 'idNomElos', 'idMaxElos'),
                                                                                               autoFillMin(this, 'idNomElo', 'idMinElo'),
                                                                                               autoFillMax(this, 'idNomW1', 'idMaxW1'),
                                                                                               autoFillMin(this, 'idNomY', 'idMinY')

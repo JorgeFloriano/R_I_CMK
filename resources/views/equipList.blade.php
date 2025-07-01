@@ -8,7 +8,7 @@
                 <h3 class="mt-2">Equipamentos {{$title}}</h3>
                 <hr>
                 <div>
-                    <a href="{{route('new_equip')}}" class="btn btn-primary">Cadastrar</a>
+                    <a href="{{route('new_equip')}}" class="btn btn-primary me-2">Cadastrar</a>
                     <a href="{{route($route)}}" class="btn btn-secondary">{{$msg}}</a>
                 </div>
                 <hr>
@@ -42,7 +42,7 @@
                                     </td>
                                     <td>
                                         @if ($equip->ativo === 1)
-                                            <a href="{{route('desat_equip', ['id' => $equip->id])}}" class="btn btn-primary btn-sm">
+                                            <a href="{{route('desat_equip', ['id' => $equip->id])}}" class="btn btn-danger btn-sm">
                                                 <i class="fa fa-trash"></i>
                                             </a>
                                         @else

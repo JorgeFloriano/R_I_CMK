@@ -18,7 +18,7 @@
 
                     <div class="input-group mb-2">
                         <label for="idDescr" class="input-group-text" id="lblDescr">Modelo: </label>
-                        <input type="text" class="form-control" placeholder="Ex.: DC PRO 01" aria-label="Ex.: DC PRO 01" aria-describedby="lblDescr" id="idDescr" name="descricao">
+                        <input type="text" class="form-control" placeholder="Ex.: DC PRO 01" aria-label="Ex.: DC PRO 01" aria-describedby="lblDescr" id="idDescr" name="descricao" required>
                     </div>
 
                     <div class="input-group mb-2">
@@ -141,7 +141,7 @@
                     </div>
 
                     <div style="margin:10px 0;">
-                        <button id="idBtnSave" type="submit" class="btn btn-primary" onclick="autoFillMax(this, 'idNomElos', 'idMaxElos'),
+                        <button id="idBtnSave" type="submit" class="btn btn-primary me-2" onclick="autoFillMax(this, 'idNomElos', 'idMaxElos'),
                                                                                               autoFillMin(this, 'idNomElo', 'idMinElo'),
                                                                                               autoFillMax(this, 'idNomW1', 'idMaxW1'),
                                                                                               autoFillMin(this, 'idNomY', 'idMinY')

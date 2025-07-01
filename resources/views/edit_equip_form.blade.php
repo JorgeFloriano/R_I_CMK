@@ -148,7 +148,7 @@
                     <hr>
 
                     <div style="margin:10px 0;">
-                        <input type="submit" class="btn btn-primary" value="SALVAR">
+                        <input type="submit" class="btn btn-primary me-2" value="SALVAR">
                         <a href="{{route('equip')}}" class="btn btn-secondary">VOLTAR</a>
                     </div>
                     
