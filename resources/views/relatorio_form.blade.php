@@ -167,10 +167,10 @@
                                 <tr>
                                     <td>35-Alinham.</td>
                                     <td>
-                                        <label for="35_Ok">Ok </label><input type="radio" name="txt35" id="35_Ok" value="Ok (alinhado)">
+                                        <label for="35_Ok">Ok </label> <input type="radio" name="txt35" id="35_Ok" value="Ok (alinhado)">
                                     </td>
                                     <td colspan="2">
-                                        <label for="35_T">Trocar</label><input type="radio" name="txt35" id="35_T" value="Substituir (desalinhado)">
+                                        <label for="35_T">Trocar </label> <input type="radio" name="txt35" id="35_T" value="Substituir (desalinhado)">
                                     </td>
                                 </tr>
                             </table>
