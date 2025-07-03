@@ -19,7 +19,7 @@
 
                     <div class="input-group mb-2">
                         <label for="idDescr" class="input-group-text" id="lblDescr">Modelo: </label>
-                        <input {{$disabled}} type="text" class="form-control" placeholder="Ex.: DC PRO 01" aria-label="Ex.: DC PRO 01" aria-describedby="lblDescr" id="idDescr" name="descricao" value="{{$tec_model->descricao}}">
+                        <input {{$disabled}} type="text" class="form-control" placeholder="Ex.: DC PRO 01" aria-label="Ex.: DC PRO 01" aria-describedby="lblDescr" id="idDescr" name="descricao" value="{{$tec_model->descricao}}" required>
                     </div>
 
                     <div class="input-group mb-2">

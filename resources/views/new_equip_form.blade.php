@@ -14,7 +14,7 @@
 
                     <div class="input-group mb-2">
                         <label for="idId" class="input-group-text" id="lblId">Nº ID: </label>
-                        <input type="text" class="form-control" placeholder="Ex.: 15993" aria-label="Ex.: 15993" aria-describedby="lblId" id="idId" name="txtId">
+                        <input type="text" class="form-control" placeholder="Ex.: 15993" aria-label="Ex.: 15993" aria-describedby="lblId" id="idId" name="txtId" required>
                     </div>
 
                     <div class="input-group mb-2">

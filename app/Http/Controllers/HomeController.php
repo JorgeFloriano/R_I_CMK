@@ -10,7 +10,7 @@ class HomeController extends Controller
 {
     public function index() {
 
-        //dd(Hash::make('science123J'));
+        //dd(Hash::make('test123J'));
         // Check if the user is logged out
         if(auth()->user()) {
             return redirect()->route('programacao');

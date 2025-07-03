@@ -500,9 +500,12 @@
 
 
                         <!-- Button trigger confirm modal -->
-                        <button id="confirm_button" onclick="limitDate('tec2data','tec2HI','tec2HF'),limitDate('tec1data','tec1HI','tec1HF'),requiredItem()" type="button" class="btn btn-primary mb-2" data-bs-toggle="modal" data-bs-target="#confirmModal" style="width: 100%;">
+                        <button id="confirm_button" onclick="requiredItem()" type="button" class="btn btn-primary mb-2" data-bs-toggle="modal" data-bs-target="#confirmModal" style="width: 100%;">
                             CONFIRMA
                         </button>
+                        {{-- <button id="confirm_button" onclick="limitDate('tec2data','tec2HI','tec2HF'),limitDate('tec1data','tec1HI','tec1HF'),requiredItem()" type="button" class="btn btn-primary mb-2" data-bs-toggle="modal" data-bs-target="#confirmModal" style="width: 100%;">
+                            CONFIRMA
+                        </button> --}}
                         
                         <!-- Confirm Modal -->
                         <div class="modal fade" id="confirmModal" tabindex="-1" aria-labelledby="confirmModalLabel" aria-hidden="true">
@@ -516,8 +519,9 @@
                                 <p>Atenção!<br> <span id="reqItem"></span> Após a confirmação, os dados deste relatório serão salvos e não poderão ser alterados posteriormente!</p>
                                 </div>
                                 <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Voltar</button>
-                                <button onclick="limitDate('tec2data','tec2HI','tec2HF'),limitDate('tec1data','tec1HI','tec1HF'),requiredItem()" id="submit_button" type="submit" class="btn btn-primary mb-2" data-bs-dismiss="modal">Ok</button>
+                                {{-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Voltar</button>
+                                <button onclick="limitDate('tec2data','tec2HI','tec2HF'),limitDate('tec1data','tec1HI','tec1HF'),requiredItem()" id="submit_button" type="submit" class="btn btn-primary mb-2" data-bs-dismiss="modal">Ok</button> --}}
+                                <button onclick="requiredItem()" id="submit_button" type="submit" class="btn btn-primary mb-2" data-bs-dismiss="modal">Ok</button>
                                 </div>
                             </div>
                             </div>
